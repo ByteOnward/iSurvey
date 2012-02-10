@@ -1,0 +1,71 @@
+// Place all the styles related to the Surveys controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.template{
+  display: none;
+}
+
+div{
+  &.survey{
+	background-color:#f0f0fc;
+	padding:5px 20px 20px 20px;
+	a.delete{
+	  text-decoration:none;
+	  color:#87a32e;
+	}
+  	.questions{
+		margin: 10px 0px 10px 0px;	
+		div.group{		
+			margin: 3px 0px 10px 0px;
+			padding:10px 10px 10px 10px;
+			background-color:#e8e8e8;
+			border: 3px solid #e0e0e0;
+			label {
+				font-weight: bold;
+				font-size: 12px;
+			}
+			.choices{
+				background-color:#efefef;
+				margin-top: 10px;
+				div{
+					margin:3px 5px 5px 5px;
+					padding: 5px 10px 5px 10px;
+					background-color:#f6f9f6;
+					border:3px solid #f6f6f6;
+				}
+			}
+		}
+	  }
+	  button{
+		  &.title{
+			padding:8px 10px 6px 10px;
+			font-size:16px;
+			color:#999999;
+			font-weight:bolder;
+		  }
+      }
+      .submit{
+		width: 100px;
+		height: 30px;
+		float: right;
+	  }
+
+	span {
+	  &.title{
+		font-size:16px;
+		color:#87a32e;
+		cursor: pointer;
+		a {
+		  color: #87a32e;
+		  &:visited {
+		    color: #87a32e; }
+		  &:hover {
+		    color: #fff;
+		    background-color: #000; } }
+	  }
+	}
+  }
+}

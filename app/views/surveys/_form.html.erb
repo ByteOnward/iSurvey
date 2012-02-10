@@ -1,0 +1,45 @@
+<%= form_for(@survey) do |f| %>
+  <% if @survey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+      <ul>
+      <% @survey.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="survey">
+<p>
+  <span class="title">Name:</span><br />
+  <%= f.text_field :name, :size => 100%><br />
+  <span class="title">Description:</span><br />
+  <%= f.text_area :desc, :size => "90x6" %><br />
+</p>
+
+  <div class="questions">
+    <span class="title question_link" data-confirm="Are you sure add new Question.">Questions</span> 
+	<%= f.fields_for :questions do |builder| %>	
+	    <%= render 'question_fields', :f => builder %>   
+	<% end %>
+  </div>
+
+  <button class="title" type="button">Add Question</button>
+
+  <div class="actions">
+    <%= f.submit "Submit", :class=>"submit"%>
+  </div>
+
+
+<% link_to_template(f,  new_question, :questions) %>
+
+</div>
+
+
+<% end %>
+
+<div class="template">
+	<%= yield(:question_template)%>
+	<%= yield(:choice_template)%>
+</div>

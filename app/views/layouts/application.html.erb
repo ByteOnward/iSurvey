@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : "iSurvey" %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+</head>
+<body>
+  <div id="container">
+    <div id="user_nav">
+      <% if user_signed_in? %>
+        Signed in as <%= current_user.email %>.<br />
+        Not you? <%= link_to "Sign out", destroy_user_session_path, :confirm => 'Are you sure you want to Logout!', :method => :delete, :class => "remove"%>
+      <% else %>
+        <%= link_to "Sign In", authentications_path %>
+      <% end %>
+    </div>
+		
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+		
+    <%= content_tag :h1, yield(:title) if show_title? %>
+		
+    <%= yield %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+  </div>
+
+<%= yield(:footer)%>
+
+</body>
+</html>

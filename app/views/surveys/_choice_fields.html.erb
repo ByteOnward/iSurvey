@@ -1,0 +1,9 @@
+<span class="group">
+  <%= f.label :content do %>
+	Choice:
+	<%= f.hidden_field(:_destroy) %>
+	<%=link_to " X ", "javascript:return true;", :confirm => "Are you sure to delete this question.", :class => "delete" %>
+  <%end%>
+  <br />
+  <%= f.text_area :content, :size => "90x2" %><br />
+</span>

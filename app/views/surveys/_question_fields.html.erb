@@ -1,0 +1,24 @@
+<div class="group">
+	<%= f.label :title do %>
+	Question:
+	<%= f.hidden_field(:_destroy) %>
+	<%=link_to " X ", "javascript:return true;", :confirm => "Are you sure to delete this question.", :class => "delete" %>
+	<%end%><br />
+		
+	<%= f.text_area :title, :size => "90x3" %><br />
+	<hr />
+	<%= f.label :question_type, "Question Type:" %><br />
+	<%= f.select :question_type, {" -- Choice Question Type -- " => 0, "Multiple Choices" => 1, "Single Choice" => 2} %>
+	<hr />
+	<div class="choices">
+	<span class="title">Answer Choices</span>
+	<div>
+	<%= f.fields_for :choices do |builder| %>
+	  <%= render 'choice_fields', :f => builder %>
+	<% end %>
+	</div>
+	<button class="title" type="button">Add Choice</button>
+	
+	</div>	
+	<% link_to_template(f,  new_choice, :choices) unless content_for?(:choice_template) %>
+</div>  
