@@ -10,11 +10,46 @@
 
 div{
   &.survey{
+	clear:both;
 	background-color:#f0f0fc;
 	padding:5px 20px 20px 20px;
 	a.delete{
 	  text-decoration:none;
 	  color:#87a32e;
+	}
+	.survey_title{
+	  font-size:28px;
+	  text-align:center;
+	  font-weight:bold;
+	  padding:2px 0px 2px 0px;
+	  background-color:#e0e0ef;
+	}
+	.survey_info{
+	  margin:0px 0px 5px 0px;
+	  padding:5px 6px 5px 6px;
+	  .page_status{
+	    text-align:right;
+	    font-size:10px;	
+	    margin-bottom:5px;    
+	  }
+	}
+	.survey_body{
+	  padding: 5px 10px 5px 10px;
+	  border:3px solid #e0e0ef;
+	  .question{
+		margin:2px 0px 10px 0px;
+		.question_title{
+		  color:#ff6633;
+		  font-size:16px;
+		}
+		.question_body{
+		  .question_item{
+		    margin:10px 10px 10px 1px;
+		  }
+		  padding-bottom:10px;
+		  border-bottom:1px dashed #909090;
+		}
+	  }
 	}
   	.questions{
 		margin: 10px 0px 10px 0px;	
@@ -22,7 +57,7 @@ div{
 			margin: 3px 0px 10px 0px;
 			padding:10px 10px 10px 10px;
 			background-color:#e8e8e8;
-			border: 3px solid #e0e0e0;
+			border: 1px outset #e0e0e0;
 			label {
 				font-weight: bold;
 				font-size: 12px;

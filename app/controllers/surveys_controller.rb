@@ -89,15 +89,6 @@ class SurveysController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  def add_question
-#    f = ActionView::Base.default_form_builder
-#    ActionView::Helpers::FormHelper.fields_for(Question.new) do |builder|
-#      render :partial => 'question_fields', 
-#      render("question_fields", :f => builder)
-#    end
-
-#   render :partial => "question_fields", :locals => {:f => ActionView::Base.default_form_builder}
-#   render :partial => "question_fields", :locals => {:f => ActionView::Helpers::FormBuilder.new(:question, Question.new, @template, {}, proc{})}
-  end
+ 
+ 
 end

@@ -1,22 +1,24 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @survey.name %><br />
-  <%= @survey.desc %>
-</p>
-
-<ul>
-<% for question in @survey.questions %>
-  <li><%= question.title %>
-  <ol>
-  <% for c in question.choices %>
-    <li><%= c.content %></li>
-  <% end %>
-  </ol>
-  </li>
-<% end %>
-</ul>
+<% title @survey.name %>
+<div class="survey">
+  <div class="survey_title"><%= @survey.name %></div>	
+  <div class="survey_info">
+	<div class="page_status">Page: 1/1 Question No:<%= @survey.questions.size %></div>
+	<%= @survey.desc %>
+  </div>
+  <div class="survey_body">
+    <% @survey.questions.each_with_index do |q, i|%>
+	<div class="question">
+	  <div class="question_title"><%= i + 1 %>.<%= q.title %></div>
+	  <div class="question_body">
+		<% for c in q.choices %>
+			<div class="question_item"><%= leading_choice q %> <%= c.content %></div>
+		<% end %>
+	  </div>
+    </div>
+    <%end%> 
+  </div>
+  <div><button class="title" type="button">Take Survey</button></div>
+</div>
 
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
 <%= link_to 'Back', surveys_path %>

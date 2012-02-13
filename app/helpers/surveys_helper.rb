@@ -29,5 +29,13 @@ module SurveysHelper
     Choice.new
   end
   
+  def leading_choice(question)
+    if(question.question_type == 1)
+      raw "<input type='checkbox' />"
+    else
+      raw "<input type='radio' />"
+    end
+  end
+  
   
 end
