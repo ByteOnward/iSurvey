@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120209025740) do
+ActiveRecord::Schema.define(:version => 20120213083305) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,30 @@ ActiveRecord::Schema.define(:version => 20120209025740) do
     t.integer  "question_type", :default => 0
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "records", :force => true do |t|
+    t.integer  "statistics_id"
+    t.integer  "survey_id"
+    t.integer  "question_id"
+    t.integer  "choice_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "results", :force => true do |t|
+    t.integer  "survey_id"
+    t.integer  "question_id"
+    t.integer  "choice_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "statistics", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "survey_id"
   end
 
   create_table "surveys", :force => true do |t|

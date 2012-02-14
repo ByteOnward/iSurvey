@@ -12,12 +12,40 @@ class SurveysController < ApplicationController
       format.json { render json: @surveys }
     end
   end
+  
+  def stats
+    @stats = Statistics.where("survey_id = ?", params[:id]).first
+  end
+  
 
+  def take 
+    status = false
+    @stats = Statistics.where("survey_id=?", params[:id]).first
+    s = Statistics.new(params[:statistics])
+    if @stats
+      new_records = @stats.records + s.records
+      status = @stats.update_attribute(:records, new_records);
+    else
+      @stats = s
+      status = @stats.save
+    end
+    respond_to do |format|
+      if status
+        format.html { redirect_to action: "stats", notice: 'Thank you for your suggestions.' }
+        format.json { render json: @stats, status: :created, location: @survey }
+      else
+        format.html { render action: "show" }
+        format.json { render json: @stats.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
+  
   # GET /surveys/1
   # GET /surveys/1.json
   def show
     @survey = Survey.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @survey }

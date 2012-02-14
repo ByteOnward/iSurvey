@@ -1,4 +1,11 @@
 <% title @survey.name %>
+
+<% cnt = 0%>
+
+<%= form_tag(:action => "take") do%>
+
+<%= hidden_field_tag("statistics[survey_id]", @survey.id)%>
+
 <div class="survey">
   <div class="survey_title"><%= @survey.name %></div>	
   <div class="survey_info">
@@ -9,16 +16,31 @@
     <% @survey.questions.each_with_index do |q, i|%>
 	<div class="question">
 	  <div class="question_title"><%= i + 1 %>.<%= q.title %></div>
+
 	  <div class="question_body">
-		<% for c in q.choices %>
-			<div class="question_item"><%= leading_choice q %> <%= c.content %></div>
+		<% q.choices.each_with_index do |c, j| %>			
+			<div class="question_item">
+			<%= leading_choice q %>
+			<%= hidden_field_tag("statistics[records_attributes][#{cnt}][_destroy]", true)%>
+			<%# hidden_field_tag("records[#{@survey.id}][#{q.id}][#{c.id}]", 0)%>
+			<%= hidden_field_tag("statistics[records_attributes][#{cnt}][survey_id]", @survey.id)%>
+			<%= hidden_field_tag("statistics[records_attributes][#{cnt}][question_id]", q.id)%>
+			<%= hidden_field_tag("statistics[records_attributes][#{cnt}][choice_id]", c.id)%>
+			<%cnt = cnt + 1%>
+			<%= c.content %>
+			</div>
 		<% end %>
 	  </div>
     </div>
     <%end%> 
   </div>
-  <div><button class="title" type="button">Take Survey</button></div>
+  <div class="take_survey">
+	<%= submit_tag("Take Survey", :class => "title") %>
+  </div>
 </div>
+
+<%end%>
+
 
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
 <%= link_to 'Back', surveys_path %>

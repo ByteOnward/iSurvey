@@ -51,6 +51,14 @@ div{
 		}
 	  }
 	}
+	.take_survey{
+	  text-align:center;
+      margin-top:20px;
+	  input.title{
+		width:160px;
+		padding:30px 0px 20px 0px;
+	  }
+	}
   	.questions{
 		margin: 10px 0px 10px 0px;	
 		div.group{		
@@ -103,4 +111,14 @@ div{
 	  }
 	}
   }
+}
+
+div.progress{
+	clear:both;
+	width:360px;
+	.progress_number{
+	  font-size:10px;
+	  height:100%;
+	  padding-left:305px;
+	}
 }

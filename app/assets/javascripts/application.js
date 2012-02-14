@@ -39,4 +39,33 @@ $(document).ready(function(){
 	
 	$(".choices > button.title").click(bind_choice);	
 	$(".questions label>.delete").click(delete_op);
+	
+	$(':checkbox').click(function(){
+		$(this).next(':hidden').val(!$(this).is(':checked'));
+	});
+	$(':radio').click(function(){
+		var name = $(this).attr('name');
+		$('input[name="' + name + '"]').each(function(){
+			var checked = $(this).is(':checked');			
+			$(this).next(':hidden').val(!checked);
+		});
+	});
+	
+	//For user go back the Browser(Safari, Chrome), we should keep the operation record.
+	$(':checked').each(function(){
+		$(this).next(':hidden').val(false);
+	});
+	
+	
+	$('div[data-progress]').each(function(i, e){
+		var $cur = $(e), progress = $cur.data('progress');
+		$cur.css("border", "solid 1px #cccccc").css("height", "10px").css("width", "300px").css("float", "left");
+		$('<div></div>').css("width", 300 * progress)
+			.css("height", "100%")
+			.css("background-color", "#ff9900")
+			.css("float", "left")
+			.appendTo($cur);
+	});
+	
+	
 });

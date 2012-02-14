@@ -1,0 +1,28 @@
+<%@survey = survey(@stats)%>
+<% result = stats_of_percentage @stats, @survey %>
+
+<div class="survey">
+  <div class="survey_title"><%= @survey.name %></div>	
+  <div class="survey_info">
+	<div class="page_status">Page: 1/1 Question No:<%= @survey.questions.size %></div>
+	<%= @survey.desc %>
+  </div>
+  <div class="survey_body">
+    <% @survey.questions.each_with_index do |q, i|%>
+	<div class="question">
+	  <div class="question_title"><%= i + 1 %>.<%= q.title %></div>
+	  <div class="question_body">
+		<% q.choices.each_with_index do |c, j| %>			
+			<div class="question_item">
+			<%= j %>. <%= c.content %>
+			<div class="progress"> 
+				<div data-progress="<%= "%.2f" % result[c.id] %>"></div><div class="progress_number"> <%= "%.2f" % result[c.id] %>%</div>
+			</div>
+			</div>
+		<% end %>
+	  </div>
+    </div>
+    <%end%> 
+  </div>
+  
+</div>

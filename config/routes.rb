@@ -1,14 +1,17 @@
 ISurvey::Application.routes.draw do
   resources :authentications
-
+  resources :statistics
   resources :surveys
-
+  
+  
+  
   devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout', :registration => 'register' },
             :controllers => { :sessions => "sessions" }
             
   root :to => 'surveys#index'
   
-  match 'add_question' => 'surveys#add_question'
+  get   'surveys/:id/stats' =>  'surveys#stats'  
+  post  'surveys/:id/take'  =>  'surveys#take'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
