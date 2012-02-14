@@ -71,15 +71,34 @@ $(document).ready(function(){
 	
 	
 	//Make percentage bar.
+/*	
 	$('div[data-progress]').each(function(i, e){
 		var $ctx = $(e), progress = $ctx.data('progress');
 		$ctx.css("border", "solid 1px #cccccc").css("height", "10px").css("width", "300px").css("float", "left");
 		$('<div></div>').css("width", 300 * progress)
 			.css("height", "100%")
-			.css("background-color", "#ff9900")
+			.css("background-color", "#66cc99")
 			.css("float", "left")
 			.appendTo($ctx);
 	});
+*/
 	
+	//We use colorful bar.
+	$('.question_body').each(function(){
+		$ctx = $(this), colors = ['#ccf066', '#ff9933', '#66cc99', '#6699cc', '#999933', '#333399'], i = 0;
+		$('div[data-progress]', $ctx).each(function(i, e){
+			var $ctx = $(e), progress = $ctx.data('progress');
+			$ctx.css("border", "solid 1px #cccccc").css("height", "10px").css("width", "300px").css("float", "left");
+			$('<div></div>').css("width", 300 * progress)
+				.css("height", "100%")
+				.css("background-color", colors[(i++) % colors.length])
+				.css("float", "left")
+				.appendTo($ctx);
+		});
+	});
+	
+	$('input[data-link]').click(function(){
+		window.open($(this).data('link'), '_self');
+	});
 	
 });

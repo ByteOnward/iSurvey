@@ -26,6 +26,7 @@
 			<%= hidden_field_tag("statistics[records_attributes][#{cnt}][survey_id]", @survey.id)%>
 			<%= hidden_field_tag("statistics[records_attributes][#{cnt}][question_id]", q.id)%>
 			<%= hidden_field_tag("statistics[records_attributes][#{cnt}][choice_id]", c.id)%>
+			<%= hidden_field_tag("statistics[records_attributes][#{cnt}][user_id]", current_user.id)%>
 			<%cnt = cnt + 1%>
 			<%= c.content %>
 			</div>
@@ -36,6 +37,7 @@
   </div>
   <div class="take_survey">
 	<%= submit_tag("Take Survey", :class => "title") %>
+	<%= submit_tag("View Result", :class => "title", :type => 'button', "data-link" => url_for(:action => 'stats')) %>
   </div>
 </div>
 

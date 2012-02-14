@@ -15,30 +15,24 @@ class SurveysController < ApplicationController
   
   def stats
     @stats = Statistics.where("survey_id = ?", params[:id]).first
+    @survey = Survey.find(params[:id]);
+    @result = stats_of_percentage(@stats, @survey)
   end
   
 
-  def take 
-    status = false
-    @stats = Statistics.where("survey_id=?", params[:id]).first
-    s = Statistics.new(params[:statistics])
-    if @stats
-      new_records = @stats.records + s.records
-      status = @stats.update_attribute(:records, new_records);
-    else
-      @stats = s
-      status = @stats.save
-    end
+  def take       
+    status = allow_user_take_survey && take_survey
     respond_to do |format|
       if status
-        format.html { redirect_to action: "stats", notice: 'Thank you for your suggestions.' }
+        format.html { redirect_to action: 'stats', notice: 'Thank you for your participation.' }
         format.json { render json: @stats, status: :created, location: @survey }
       else
-        format.html { render action: "show" }
-        format.json { render json: @stats.errors, status: :unprocessable_entity }
+        error = @stats ? @stats.errors : "You have already taken this survey."
+        @survey = Survey.find(params[:id])
+        format.html { redirect_to @survey, alert: error }
+        format.json { render json: error, status: :unprocessable_entity }
       end
     end
-
   end
 
   
@@ -118,5 +112,49 @@ class SurveysController < ApplicationController
     end
   end
  
+  private
+    def take_survey
+      status = false
+      @stats = Statistics.where("survey_id=?", params[:id]).first
+      s = Statistics.new(params[:statistics])
+      if @stats
+        new_records = @stats.records + s.records
+        status = @stats.update_attribute(:records, new_records);
+      else
+        @stats = s
+        status = @stats.save
+      end
+      return status
+    end
+    
+    def allow_user_take_survey
+      record = Record.where("user_id = ? and survey_id = ?", current_user.id, params[:id]).first
+      if record
+        return false
+      else
+        return true
+      end
+    end
+    
+    def stats_by_questions(stats)
+      stats.records.reduce(Hash.new(0)){|m, r| m.tap{|ht| ht[r.question_id] += 1}}
+    end
+
+    def stats_by_choices(stats)
+      stats.records.reduce(Hash.new(0)){|m, r| m.tap{|ht| ht[r.choice_id] += 1}}
+    end
+    
+    def stats_of_percentage(stats, survey)
+      questions = stats_by_questions(stats)
+      choices = stats_by_choices(stats)
+      result = {}
+      survey.questions.each do |q|
+        q.choices.each do |c|
+          result[c.id] = choices[c.id] * 1.0 / questions[q.id]
+        end
+      end
+      return result  
+    end
+    
  
 end
