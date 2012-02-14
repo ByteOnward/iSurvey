@@ -1,6 +1,6 @@
 ISurvey::Application.routes.draw do
   resources :authentications
-  resources :statistics
+#  resorces :statistics
   resources :surveys
   
   
@@ -12,6 +12,8 @@ ISurvey::Application.routes.draw do
   
   get   'surveys/:id/stats' =>  'surveys#stats'  
   post  'surveys/:id/take'  =>  'surveys#take'
+  
+  get   'stats/:user_id/:survey_id' => 'statistics#search'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

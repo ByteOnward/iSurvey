@@ -21,7 +21,10 @@
     </div>
     <%end%> 
   </div>
-  
+
+  <div class="take_survey">
+	<%= submit_tag("View My Selection", :class => "title", :type => 'button', "data-link" => url_for(:action => 'search', :controller => 'statistics', :user_id => current_user.id, :survey_id => @survey.id)) %>
+  </div>
 </div>
 
 <%= link_to 'Back', @survey %>
