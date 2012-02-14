@@ -56,15 +56,29 @@ $(document).ready(function(){
 		$(this).next(':hidden').val(false);
 	});
 	
+	//User for every question, ensure they must select one.
+	$('form[name=take_survey_form]').submit(function(){
+		var accepted = true;
+		$('.question_body').each(function(){
+			if(!$(':checked', $(this)).length){
+				alert('You must select a choice for question:\n ' + $(this).prev('.question_title').text());
+				accepted = false;
+				return false;
+			}
+		});
+		return accepted;
+	});
 	
+	
+	//Make percentage bar.
 	$('div[data-progress]').each(function(i, e){
-		var $cur = $(e), progress = $cur.data('progress');
-		$cur.css("border", "solid 1px #cccccc").css("height", "10px").css("width", "300px").css("float", "left");
+		var $ctx = $(e), progress = $ctx.data('progress');
+		$ctx.css("border", "solid 1px #cccccc").css("height", "10px").css("width", "300px").css("float", "left");
 		$('<div></div>').css("width", 300 * progress)
 			.css("height", "100%")
 			.css("background-color", "#ff9900")
 			.css("float", "left")
-			.appendTo($cur);
+			.appendTo($ctx);
 	});
 	
 	

@@ -2,7 +2,7 @@
 
 <% cnt = 0%>
 
-<%= form_tag(:action => "take") do%>
+<%= form_tag({:action => "take"}, :name => 'take_survey_form') do%>
 
 <%= hidden_field_tag("statistics[survey_id]", @survey.id)%>
 

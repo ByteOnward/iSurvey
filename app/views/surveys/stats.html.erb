@@ -16,7 +16,7 @@
 			<div class="question_item">
 			<%= j %>. <%= c.content %>
 			<div class="progress"> 
-				<div data-progress="<%= "%.2f" % result[c.id] %>"></div><div class="progress_number"> <%= "%.2f" % result[c.id] %>%</div>
+				<div data-progress="<%= "%.2f" % result[c.id] %>"></div><div class="progress_number"> <%= "%.0f" % (result[c.id] * 100) %>%</div>
 			</div>
 			</div>
 		<% end %>
