@@ -8,6 +8,34 @@
   display: none;
 }
 
+div.view_surveys{
+	clear:both;
+	.title_bar{
+		border:1px outset #cfcfcf;
+		background-color:#fcfcfc;
+		font-weight:thin;
+		height:30px;
+		line-height:30px;
+		veritical-align:bottom;
+		padding-left:5px;
+	}
+	.list_surveys{
+		border:1px outset #cfcfcf;
+		margin-top:0px;
+		background-color:#fcfcfc;
+		li{
+			margin:10px 10px 10px 0;
+			border-bottom:1px dotted #cfcfcf;
+			.title{
+			
+			}
+			.time{
+				float: right;
+			}
+		}
+	}
+}
+
 div{
   &.survey{
 	clear:both;

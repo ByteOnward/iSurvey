@@ -16,7 +16,7 @@ class SurveysController < ApplicationController
   def stats
     @stats = Statistics.where("survey_id = ?", params[:id]).first
     @survey = Survey.find(params[:id]);
-    @result = stats_of_percentage(@stats, @survey)
+    @result = @stats ? stats_of_percentage(@stats, @survey) : Hash.new(0)
   end
   
 

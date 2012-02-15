@@ -1,27 +1,28 @@
-<%title "<a>List Surveys!</a>"%>
+<%title "Vanceinfo Surveys"%>
 
-<h1>Listing surveys</h1>
+<div class="view_surveys">
+	<div class="title_bar">Survey</div>
+	<ul class="list_surveys">
+		<% @surveys.each do |survey| %>
+		<li>
+			<span class="title"><td><%= link_to survey.name, survey %></td></span>
+			<span class="time"><%= survey.created_at.strftime('%Y-%m-%d %H:%M:%S') %></span>
+		</li>
+		<% end %>
+	</ul>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Desc</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<table class="list_survey" style="display:none">
 <% @surveys.each do |survey| %>
   <tr>
-    <td><%= survey.name %></td>
-    <td><%= survey.desc %></td>
+	<td>.</td>
+    <td style="width:600px;"><%= survey.name %></td>
+
     <td><%= link_to 'Show', survey %></td>
     <td><%= link_to 'Edit', edit_survey_path(survey) %></td>
     <td><%= link_to 'Destroy', survey, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
 
 <%= link_to 'New Survey', new_survey_path %>
