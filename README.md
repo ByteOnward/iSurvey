@@ -75,6 +75,8 @@ Feel free to choose the one you prefer!
 After install the postgresql, we need execute command as following:
 
 initdb -D /var/data/pgsql
+
 createdb isurvey_development
-pg_ctl -D /usr/local/routine/var/data/pgsql -l /usr/local/routine/var/data/pgsql/postgresql.log start
+
+pg_ctl -D /var/data/pgsql -l /var/data/pgsql/postgresql.log start
 
