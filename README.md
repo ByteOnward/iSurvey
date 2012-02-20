@@ -72,60 +72,9 @@ Feel free to choose the one you prefer!
 
 
 
+After install the postgresql, we need execute command as following:
 
+initdb -D /var/data/pgsql
+createdb isurvey_development
+pg_ctl -D /usr/local/routine/var/data/pgsql -l /usr/local/routine/var/data/pgsql/postgresql.log start
 
-
-
-
-config/initializers/omniauth.rb:
-
-Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :developer unless Rails.env.production?
-  provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
-end
-
-match '/auth/:provider/callback', to: 'sessions#create'
-
-rails g scaffold Authentication user_id:integer provider:string uid:string
-
-
-
-
-
-
-
-
-
-
-
-
- {"utf8"=>"✓", "authenticity_token"=>"O1pxJ/1XzX6iZCvsvhT8SoKCxTwSGOULRpfSsNcxLUE=", 
-"questionaire"=>{
-	"name"=>"aa", 
-	"questions_attributes"=>{
-		"0"=>{
-			"_destroy"=>"false", 
-			"content"=>"b", 
-			"answers_attributes"=>{
-				"0"=>{
-					"content"=>"c", 
-					"_destroy"=>"false"
-				}, 
-				"1"=>{
-					"content"=>"de", 
-					"_destroy"=>"false"
-				}, 
-				"2"=>{
-					"content"=>"e", 
-					"_destroy"=>"false"
-				}, 
-				"3"=>{
-					"content"=>"f", 
-					"_destroy"=>"false"
-				}
-			}
-		}, 
-		"1"=>{
-			"_destroy"=>"false", 
-			"content"=>"g", 
-			"answers_attributes"=>{"0"=>{"content"=>"h", "_destroy"=>"false"}, "1"=>{"content"=>"i", "_destroy"=>"false"}, "2"=>{"content"=>"j", "_destroy"=>"false"}, "3"=>{"content"=>"k", "_destroy"=>"false"}}}, "2"=>{"_destroy"=>"false", "content"=>"l", "answers_attributes"=>{"0"=>{"content"=>"m", "_destroy"=>"false"}, "1"=>{"content"=>"n", "_destroy"=>"false"}, "2"=>{"content"=>"o", "_destroy"=>"false"}, "3"=>{"content"=>"p", "_destroy"=>"false"}}}}}, "commit"=>"Submit"}

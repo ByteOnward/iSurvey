@@ -5,6 +5,8 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+#gem 'sqlite3'
+
 group :production do
   # gems specifically for Heroku go here
   gem "pg"
@@ -12,12 +14,10 @@ end
 
 group :development do
   gem "pg"
-#  gem 'sqlite3'
 end
 
 group :test do
   gem "pg"
-#  gem 'sqlite3'
 end
 
 # Gems used only for assets and not required
@@ -50,6 +50,6 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'devise'
-#gem 'omniauth-github'
+gem 'omniauth-github'
 #gem 'omniauth-sina'
-#gem 'omniauth-identity'
+gem 'omniauth-identity'
