@@ -11,15 +11,15 @@ gem 'therubyracer'
 
 group :production do
   # gems specifically for Heroku go here
-  gem "pg"
+  gem "sqlite3"
 end
 
 group :development do
-  gem "pg"
+  gem "sqlite3"
 end
 
 group :test do
-  gem "pg"
+  gem "sqlite3"
 end
 
 # Gems used only for assets and not required
