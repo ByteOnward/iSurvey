@@ -12,9 +12,9 @@
 
 <div class="survey">
 <p>
-  <span class="title">Name:</span><br />
+  <span class="title"><%= f.label :name, "Name:" %></span><br />
   <%= f.text_field :name, :size => 100%><br />
-  <span class="title">Description:</span><br />
+  <span class="title"><%= f.label :desc, "Description:" %></span><br />
   <%= f.text_area :desc, :size => "90x6" %><br />
 </p>
 
