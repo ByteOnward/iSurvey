@@ -13,8 +13,17 @@
       <% if user_signed_in? %>
         Signed in as <%= current_user.email %>.<br />
         Not you? <%= link_to "Sign out", destroy_user_session_path, :confirm => 'Are you sure you want to Logout!', :method => :delete, :class => "remove"%>
+				
+				<% if can? :manage, Role %>
+				<%= link_to "Manage Roles", '/roles/' %>
+				<% end%>
+				
+				<% if can? :manage, Survey %>
+				<%= link_to "Manage Surveys", surveys_path %>
+				<% end%>
+				
       <% else %>
-        <%= link_to "Sign In", authentications_path %>
+        <%= link_to "Sign In", '/users/login' %>
       <% end %>
     </div>
 		

@@ -27,7 +27,7 @@ $(document).ready(function(){
 	
 	var delete_op = function(){
 		$(this).prev("input[type=hidden]").val(1);
-	  	$(this).parentsUntil(".group").parent().hide(100);
+		$(this).parentsUntil(".group").parent().hide(100);
 	};
 	
 	$('.survey > button.title').click(function(){
@@ -100,5 +100,31 @@ $(document).ready(function(){
 	$('input[data-link]').click(function(){
 		window.open($(this).data('link'), '_self');
 	});
+	
+});
+
+
+//Here script need to move to roles..js.coffee
+$(function(){
+	$('form[data-remote]').on('ajax:success', function(evt, data, eventName, xhr){
+		var status = data.status;
+		if(!status){
+			alert(data);
+		}else if(status == "success"){
+			window.location.reload();
+		}else if(status == 'nochanged'){
+			alert("No data changed.");
+		}
+	}).on('ajax:error', function(evt, xhr, eventName, statusText){
+		alert(statusText);
+	});
+	
+	$('form[name=grant_form] :button').on('click', function(evt){
+		$(this).parents('form[name=grant_form]').attr('action', $(this).data('link')).submit();
+	});
+	
+	$(".role:contains('Admin')").css('background-color', '#ffcc66').css('color', '#006699');
+	$(".role:contains('SuperAdmin')").css('background-color', '#ff6600').css('color', '#f0f0f0');
+	$(".role:contains('Creator')").css('background-color', '#669933').css('color', '#cfcfcf');	
 	
 });

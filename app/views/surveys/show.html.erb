@@ -43,6 +43,7 @@
 
 <%end%>
 
-
-<%= link_to 'Edit', edit_survey_path(@survey) %> |
+<%if can? :update, @survey %>
+<%= link_to 'Edit', edit_survey_path(@survey) %> 
+<% end %>|
 <%= link_to 'Back', surveys_path %>

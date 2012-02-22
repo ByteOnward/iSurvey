@@ -1,5 +1,6 @@
 class StatisticsController < ApplicationController
-  def search
+  
+  def search    
     records = Record.where('user_id = ? and survey_id = ?', params[:user_id], params[:survey_id])
     @survey = Survey.find(params[:survey_id])
     @choices = records.reduce([]) do|a, r|

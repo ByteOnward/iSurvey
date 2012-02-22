@@ -6,23 +6,20 @@
 		<% @surveys.each do |survey| %>
 		<li>
 			<span class="title"><td><%= link_to survey.name, survey %></td></span>
+			<span class="management">
+			<%if can? :update, survey%>
+				<%= link_to 'Edit', edit_survey_path(survey) %> | 
+			<%end%> 
+			<%if can? :destroy, survey%>
+				<%= link_to 'Destroy', survey, confirm: 'Are you sure?', method: :delete %>
+			<%end%>
+			</span>
 			<span class="time"><%= survey.created_at.strftime('%Y-%m-%d %H:%M:%S') %></span>
 		</li>
 		<% end %>
 	</ul>
 </div>
 
-<table class="list_survey" style="display:none">
-<% @surveys.each do |survey| %>
-  <tr>
-	<td>.</td>
-    <td style="width:600px;"><%= survey.name %></td>
-
-    <td><%= link_to 'Show', survey %></td>
-    <td><%= link_to 'Edit', edit_survey_path(survey) %></td>
-    <td><%= link_to 'Destroy', survey, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
+<%if can? :create, Survey %>
 <%= link_to 'New Survey', new_survey_path %>
+<% end %>

@@ -3,8 +3,6 @@ ISurvey::Application.routes.draw do
 #  resorces :statistics
   resources :surveys
   
-  
-  
   devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout', :registration => 'register' },
             :controllers => { :sessions => "sessions" }
             
@@ -14,6 +12,8 @@ ISurvey::Application.routes.draw do
   post  'surveys/:id/take'  =>  'surveys#take'
   
   get   'stats/:user_id/:survey_id' => 'statistics#search'
+  
+  match ':controller(/:action(/:id))(.:format)'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,26 @@
+// Place all the styles related to the roles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.view_roles{
+	width:600px;
+	padding:5px;
+	table.user_roles{
+		width:600px;
+		background:#6699cc;
+		td{
+			background:#fffefe;
+			padding:5px 5px 1px 3px;
+			.role{
+				font-size:10px;
+				padding:3px;
+				background-color:#cfcfcf;
+			}
+		}
+	}
+	div.grant_operation{
+		float:right;
+		clear:both;
+		margin-top:2px;
+	}	
+}

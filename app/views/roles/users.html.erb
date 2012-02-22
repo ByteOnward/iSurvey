@@ -1,0 +1,28 @@
+<%title "Roles Mangement"%>
+
+<div class="view_roles">
+	<div class="title_bar">Roles Grant.</div>
+	<%= form_tag({:action => "grant"}, :name => 'grant_form', :remote => true) do%>
+	<table class="user_roles" cellspacing="1" cellspadding="0">
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= user.email %></td>
+			<td>
+				<%user.roles.each do|role|%>
+					<span class="role"><%= role.name %></span>
+				<%end%>
+			</td>
+			<td><%= check_box_tag("users[#{user.id}]") %></td>
+		</tr>
+		<% end %>
+	</table>
+	<div class="grant_operation">
+	Role: <%= select_tag :role, options_for_select(@roles.reduce(Hash.new){|m, role| m.tap{|ht| ht[role.name] = role.id}}) %>
+	<%= button_tag :grant, :name => 'grant', :type => 'button', "data-link" => 'grant'%>
+	<%= button_tag :ungrant, :name => 'ungrant', :type => 'button', "data-link" => 'ungrant' %>
+	</div>
+	<%end%>
+	
+</div>
+
+<%= link_to 'Back', '/roles' %>

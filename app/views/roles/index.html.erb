@@ -1,0 +1,25 @@
+<%title "Roles Mangement"%>
+
+<div class="view_roles">
+	<div class="title_bar">Roles</div>
+	<ul class="list_roles">
+		<% @roles.each do |role| %>
+		<li>
+			<span class="title"><td><%= link_to role.name %></td></span>
+			<ul>
+			</ul>
+		</li>
+		<% end %>
+	</ul>
+	
+	
+	<%= form_tag({:action => "add"}, :name => 'add_role_form', :remote => true) do%>
+		<%= text_field_tag("role[name]") %>
+		<%= hidden_field_tag("role[group]", 'expedia')%>
+		<%= submit_tag("Add Role", :class => "title") %>
+	<% end %>
+	
+	<br />
+	<%= link_to 'Grant Roles for Users', '/roles/users' %>
+	
+</div>
