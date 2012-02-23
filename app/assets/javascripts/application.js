@@ -22,23 +22,25 @@ $(document).ready(function(){
 		var new_id = new Date().getTime();
 		var content = $('#choice_template').html().replace(/\d+(?=(\]\[|_)choices_attributes(\]|_))/gi, index).replace(/new_placeholder/gi, new_id);
 		$(".choices>div", $ctx).append(content);
-		$(".questions label>.delete").click(delete_op);
+		$(".questions label>.delete").on('confirm:complete', delete_op);
 	};
 	
-	var delete_op = function(){
-		$(this).prev("input[type=hidden]").val(1);
-		$(this).parentsUntil(".group").parent().hide(100);
+	var delete_op = function(e, sure){
+		if(sure){
+			$(this).prev("input[type=hidden]").val(1);
+			$(this).parentsUntil(".group").parent().hide(100);
+		}
 	};
 	
 	$('.survey > button.title').click(function(){
 //		$('#question_template>div').clone().appendTo(".questions");
 		var new_id = new Date().getTime();
 		$('.questions').append($('#question_template').html().replace(/new_placeholder/gi, new_id));
-		$(".choices > button.title").click(bind_choice);		
+		$(".choices > button.title").on('click', bind_choice);		
 	});
 	
-	$(".choices > button.title").click(bind_choice);	
-	$(".questions label>.delete").click(delete_op);
+	$(".choices > button.title").on('click', bind_choice);	
+	$(".questions label>.delete").on('confirm:complete', delete_op);
 	
 	$(':checkbox').click(function(){
 		$(this).next(':hidden').val(!$(this).is(':checked'));
