@@ -24293,3 +24293,434 @@ Served asset /surveys.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-02-27 10:14:43 +0800
 Served asset /application.js - 304 Not Modified (1ms)
+  [1m[36m (4.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20120208142352)
+Migrating to CreateSurveys (20120208143153)
+Migrating to CreateAuthentications (20120208153332)
+Migrating to CreateQuestions (20120209025710)
+Migrating to CreateChoices (20120209025740)
+Migrating to RemoveSurveyIdFromChoice (20120213020036)
+Migrating to CreateStatistics (20120213022627)
+Migrating to CreateRecords (20120213022957)
+Migrating to AddSurveyIdToStatistics (20120213083305)
+Migrating to CreateRoles (20120221085727)
+Migrating to AddRoleToSurvey (20120224020359)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (15.9ms)[0m  [1mALTER TABLE "surveys" ADD COLUMN "role" character varying(255)[0m
+  [1m[35m (17.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120224020359')
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (19.1ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'authentications'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (0.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'choices'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (0.6ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'questions'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (0.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'records'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36m (0.8ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'roles'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_roles_on_name on roles (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16485
+ AND a.attnum IN (2)
+
+  [1m[36m (0.7ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'roles_users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_roles_users_on_role_id_and_user_id on roles_users (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16496
+ AND a.attnum IN (1,2)
+
+  [1m[36m (0.5ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'statistics'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (0.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'surveys'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_surveys_on_name_and_desc on surveys (0.2ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16407
+ AND a.attnum IN (3,4)
+[0m
+  [1m[35m (0.6ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+
+  [1m[36mColumns for index index_users_on_email on users (0.2ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16391
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_users_on_reset_password_token on users (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16391
+ AND a.attnum IN (4)
+
+  [1m[36m (0.6ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, pg_get_indexdef(d.indexrelid), t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users_roles'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-27 10:24:27 +0800
+Processing by SurveysController#index as HTML
+  [1m[36mRole Load (30.6ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" IS NULL AND "roles"."name" = 'SuperAdmin' LIMIT 1[0m
+  [1m[35mRole Load (0.7ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" IS NULL AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mRole Load (0.6ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" IS NULL AND "roles"."name" = 'Creator' LIMIT 1[0m
+Redirected to http://localhost:3000/users/login
+Completed 302 Found in 289ms (ActiveRecord: 37.6ms)
+
+
+Started GET "/users/login" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Processing by SessionsController#new as HTML
+  Rendered devise/_links.erb (2.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (89.9ms)
+Completed 200 OK in 292ms (Views: 291.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /roles.css - 200 OK (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /application.css - 200 OK (36ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /surveys.css - 200 OK (1ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /statistics.css - 200 OK (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /scaffolds.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /jquery.js - 200 OK (2ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /authentications.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /jquery_ujs.js - 200 OK (2ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /authentications.js - 200 OK (1ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /roles.js - 200 OK (1ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /statistics.js - 200 OK (1ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /surveys.js - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-02-27 10:24:28 +0800
+Served asset /application.js - 200 OK (6ms)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2012-02-27 10:24:38 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wCpANzhxp9cHte3o79gltkndNaXSsSw7YT38HcrO+/s=", "user"=>{"email"=>"zhiqiangzhan@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (16.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'zhiqiangzhan@gmail.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2012-02-23 07:25:09.314953', "current_sign_in_at" = '2012-02-27 02:24:38.309981', "sign_in_count" = 14, "updated_at" = '2012-02-27 02:24:38.310958' WHERE "users"."id" = 1
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 276ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-27 10:24:38 +0800
+Processing by SurveysController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (15.6ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'SuperAdmin' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'SuperAdmin' LIMIT 1
+  [1m[36mSurvey Load (24.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" [0m
+  Rendered surveys/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 74ms (Views: 12.9ms | ActiveRecord: 40.2ms)
+
+
+Started GET "/roles/" for 127.0.0.1 at 2012-02-27 10:24:47 +0800
+Processing by RolesController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'SuperAdmin' LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" 
+  Rendered roles/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 18ms (Views: 12.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/roles/users" for 127.0.0.1 at 2012-02-27 10:24:51 +0800
+Processing by RolesController#users as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'SuperAdmin' LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" 
+  [1m[36mRole Load (0.5ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 8[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 3[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 5[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 6
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 7[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1
+  Rendered roles/users.html.erb within layouts/application (11.7ms)
+Completed 200 OK in 88ms (Views: 79.6ms | ActiveRecord: 4.3ms)
+
+
+Started DELETE "/users/logout" for 127.0.0.1 at 2012-02-27 10:25:00 +0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wCpANzhxp9cHte3o79gltkndNaXSsSw7YT38HcrO+/s="}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 43ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-27 10:25:00 +0800
+Processing by SurveysController#index as HTML
+  [1m[35mRole Load (1.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" IS NULL AND "roles"."name" = 'SuperAdmin' LIMIT 1
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" IS NULL AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" IS NULL AND "roles"."name" = 'Creator' LIMIT 1
+Redirected to http://localhost:3000/users/login
+Completed 302 Found in 9ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/users/login" for 127.0.0.1 at 2012-02-27 10:25:00 +0800
+Processing by SessionsController#new as HTML
+  Rendered devise/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 10ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2012-02-27 10:25:13 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GjE4vOD1jeNW9/CIis+t84uFfNEH6FhGeHscP1Y6ojo=", "user"=>{"email"=>"guest@vanceinfo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'guest@vanceinfo.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2012-02-22 09:50:01.076419', "current_sign_in_at" = '2012-02-27 02:25:13.152725', "sign_in_count" = 12, "updated_at" = '2012-02-27 02:25:13.153421' WHERE "users"."id" = 8[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 81ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-27 10:25:13 +0800
+Processing by SurveysController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 8 AND "roles"."name" = 'SuperAdmin' LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 8 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 8 AND "roles"."name" = 'Creator' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 8 AND "roles"."name" = 'SuperAdmin' LIMIT 1[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 8
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."role" IN ('Creator')[0m
+  Rendered surveys/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 16ms (Views: 6.8ms | ActiveRecord: 1.6ms)
+
+
+Started DELETE "/users/logout" for 127.0.0.1 at 2012-02-27 10:25:24 +0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"GjE4vOD1jeNW9/CIis+t84uFfNEH6FhGeHscP1Y6ojo="}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-27 10:25:24 +0800
+Processing by SurveysController#index as HTML
+  [1m[36mRole Load (1.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" IS NULL AND "roles"."name" = 'SuperAdmin' LIMIT 1[0m
+  [1m[35mRole Load (0.8ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" IS NULL AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mRole Load (0.6ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" IS NULL AND "roles"."name" = 'Creator' LIMIT 1[0m
+Redirected to http://localhost:3000/users/login
+Completed 302 Found in 138ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/users/login" for 127.0.0.1 at 2012-02-27 10:25:24 +0800
+Processing by SessionsController#new as HTML
+  Rendered devise/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2012-02-27 10:25:37 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gOkS4n/sT5NZZu6ukLU27Qm7MOu41m6eLjouTFzvaOc=", "user"=>{"email"=>"zhiqiangzhan@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'zhiqiangzhan@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2012-02-27 02:24:38.309981', "current_sign_in_at" = '2012-02-27 02:25:37.792798', "sign_in_count" = 15, "updated_at" = '2012-02-27 02:25:37.793309' WHERE "users"."id" = 1
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 82ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-27 10:25:37 +0800
+Processing by SurveysController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'SuperAdmin' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'SuperAdmin' LIMIT 1
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" [0m
+  Rendered surveys/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 47ms (Views: 39.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/surveys/1" for 127.0.0.1 at 2012-02-27 10:25:56 +0800
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSurvey Load (36.9ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.6ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'SuperAdmin' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m
+  [1m[35m (19.3ms)[0m  SELECT COUNT(*) FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mQuestion Load (0.4ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.6ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.3ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.3ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  Rendered surveys/show.html.erb within layouts/application (134.8ms)
+Completed 200 OK in 195ms (Views: 124.6ms | ActiveRecord: 62.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-27 10:25:58 +0800
+Processing by SurveysController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'SuperAdmin' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'SuperAdmin' LIMIT 1[0m
+  [1m[35mSurvey Load (0.2ms)[0m  SELECT "surveys".* FROM "surveys" 
+  Rendered surveys/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 18ms (Views: 10.2ms | ActiveRecord: 1.2ms)
+PG::Error: ERROR:  invalid input syntax for integer: "role"
+: SELECT  "surveys".* FROM "surveys"  WHERE "surveys"."id" = $1 LIMIT 1
+
+
+Started GET "/surveys/1/edit" for 127.0.0.1 at 2012-02-27 10:27:30 +0800
+Processing by SurveysController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'SuperAdmin' LIMIT 1[0m
+  [1m[35mQuestion Load (0.4ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mChoice Load (0.4ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1[0m
+  Rendered surveys/_choice_fields.html.erb (0.9ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_question_fields.html.erb (11.9ms)
+  [1m[35mChoice Load (0.3ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_question_fields.html.erb (14.7ms)
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3[0m
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_question_fields.html.erb (4.0ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_question_fields.html.erb (3.3ms)
+  Rendered surveys/_form.html.erb (89.9ms)
+  Rendered surveys/edit.html.erb within layouts/application (91.8ms)
+Completed 200 OK in 142ms (Views: 134.9ms | ActiveRecord: 2.2ms)
