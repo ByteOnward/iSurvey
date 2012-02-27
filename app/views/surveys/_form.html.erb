@@ -16,8 +16,8 @@
   <%= f.text_field :name, :size => 100%><br />
   <span class="title"><%= f.label :desc, "Description:" %></span><br />
   <%= f.text_area :desc, :size => "90x6" %><br />
-  <span class="title"><%= f.label :role, "Group:" %></span><br />
-  <%= f.text_field :role %><br />
+  <span class="title"><%= f.label :group, "Group:" %></span><br />
+  <%= f.select :group, survey_groups %><br />
 </p>
 
   <div class="questions">

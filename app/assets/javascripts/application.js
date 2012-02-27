@@ -106,7 +106,7 @@ $(document).ready(function(){
 });
 
 
-//Here script need to move to roles..js.coffee
+//Here script need to move to roles.js.coffee
 $(function(){
 	$('form[data-remote]').on('ajax:success', function(evt, data, eventName, xhr){
 		var status = data.status;
@@ -125,8 +125,18 @@ $(function(){
 		$(this).parents('form[name=grant_form]').attr('action', $(this).data('link')).submit();
 	});
 	
-	$(".role:contains('Admin')").css('background-color', '#ffcc66').css('color', '#006699');
-	$(".role:contains('SuperAdmin')").css('background-color', '#ff6600').css('color', '#f0f0f0');
-	$(".role:contains('Creator')").css('background-color', '#669933').css('color', '#cfcfcf');	
+	$(".role:contains('System')").css('background-color', '#ffcc66').css('color', '#006699');
+	$(".role:contains('Admin')").css('background-color', '#ff6600').css('color', '#f0f0f0');
+	$(".role:contains('Owner')").css('background-color', '#669933').css('color', '#cfcfcf');	
+	
+	var edit_form = $('form[name=edit_role_form]').hide();
+	var items = $('.list_roles a[data-remote]');
+	items.on('ajax:success', function(ext, data, eventName, xhr){
+		items.show(100);
+		$('input[name="role[name]"]', edit_form).val(data.name);
+		$('select', edit_form).val(data.group);
+		edit_form.attr('action', '/roles/update/' + data.id);
+		edit_form.show(100).appendTo($(this).hide().parent());
+	});
 	
 });

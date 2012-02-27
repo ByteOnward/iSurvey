@@ -1,17 +1,18 @@
 class SurveysController < ApplicationController
   
-#  before_filter :authenticate_user!
+  before_filter :authenticate_user!
 #  authorize_resource
   load_and_authorize_resource :except => [:index, :new]
   
   # GET /surveys
   # GET /surveys.json
   def index
-#    @surveys = Survey.all
-    if current_user.role? :super_admin
+    if current_user.role? :admin
       @surveys = Survey.all
     else
-      @surveys = Survey.where(:role => current_user.roles.reduce([]){|a, role| a << role.name})
+      roles = current_user.roles.reduce(['Public']){|a, role| a << role.name}
+      @surveys = Survey.where("surveys.group in (?) or user_id = ?", roles, current_user.id)
+#      @surveys = Survey.where(:group => current_user.roles.reduce(['Public']){|a, role| a << role.name})
     end
     respond_to do |format|
       format.html # index.html.erb

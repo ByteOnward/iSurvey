@@ -20,6 +20,29 @@ class RolesController < ApplicationController
     end
   end
   
+  def show
+      role = Role.find(params[:id])
+      if role
+        render :json => role
+      else
+        render :status => 500
+      end
+  end
+  
+  def update
+    role = Role.find(params[:id])
+    role2 = params[:role]
+    if(role.name == role2[:name] && role.group == role2[:group])
+      render :json => '{"status": "nochanged"}'
+    else
+      if role.update_attributes(params[:role])
+        render :json => '{"status": "success"}'
+      else
+        render :status => 500
+      end
+    end
+  end
+  
   def users
     @users = User.all
     @roles = Role.all
@@ -63,7 +86,6 @@ class RolesController < ApplicationController
       render :text => "#{error}", :content_type => 'text/plain'
     end
   end
-  
   
   def unauthorized
     

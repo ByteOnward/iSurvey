@@ -1,19 +1,21 @@
 class Ability
   include CanCan::Ability
-
-
-
+  
+  
   def initialize(user, ip_address)
     user ||= User.new # guest user
-    if user.role? :super_admin
+    if user.role? :admin
       can :manage, :all
-    elsif user.role? :admin
-      can :manage, [Survey, User]
-    elsif user.role? :creator
-      can [:read, :create],  [Survey]
+    elsif user.role? :owner
+      can [:create],  [Survey]    
       can :manage, Survey, :user_id => user.id
+      can :read, Survey do |survey|
+        user.role?(survey.group) || survey.group == 'Public'
+      end
     elsif user.id
-      can :read, Survey
+      can :read, Survey do |survey|
+        user.role?(survey.group) || survey.group == 'Public'
+      end
     end
    
     # Define abilities for the passed in user here. For example:
