@@ -1,6 +1,8 @@
 class Ability
   include CanCan::Ability
 
+
+
   def initialize(user, ip_address)
     user ||= User.new # guest user
     if user.role? :super_admin
@@ -11,7 +13,7 @@ class Ability
       can [:read, :create],  [Survey]
       can :manage, Survey, :user_id => user.id
     elsif user.id
-      can :read, Survey      
+      can :read, Survey
     end
    
     # Define abilities for the passed in user here. For example:

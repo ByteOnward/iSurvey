@@ -6,8 +6,8 @@ I want to create a new survey easily
 
 Background:
 Given there are the following users:
-| email             | password |
-| admin@example.com | password |
+| email             | password | role |
+| admin@example.com | password | Admin|
 And I am signed in as "admin@example.com" with password "password"
 And I am on "the homepage"
 When I follow "New Survey"

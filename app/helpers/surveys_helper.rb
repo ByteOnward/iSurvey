@@ -35,8 +35,6 @@ module SurveysHelper
     else
       raw radio_button_tag("q[#{question.id}]", false) 
     end
-  end
-  
-
+  end  
   
 end

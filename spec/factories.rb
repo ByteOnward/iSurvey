@@ -8,3 +8,8 @@ Factory.define :survey do |survey|
   survey.name "TestName"
   survey.desc "TestDesc"
 end
+
+Factory.define :role, :parent => :user do |admin|
+  admin.role 'Admin'
+  admin.superuser true
+end

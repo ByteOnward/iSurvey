@@ -2,12 +2,17 @@ class SurveysController < ApplicationController
   
 #  before_filter :authenticate_user!
 #  authorize_resource
-  load_and_authorize_resource
+  load_and_authorize_resource 
   
   # GET /surveys
   # GET /surveys.json
   def index
 #    @surveys = Survey.all
+    if current_user.role? :super_admin
+      @surveys = Survey.all
+    else
+      @surveys = Survey.where(:role => current_user.roles.reduce([]){|a, role| a << role.name})
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @surveys }
