@@ -2,7 +2,7 @@ class SurveysController < ApplicationController
   
   before_filter :authenticate_user!
 #  authorize_resource
-  load_and_authorize_resource :except => [:index, :new]
+  load_and_authorize_resource :except => [:index, :new, :take, :stats]
   
   # GET /surveys
   # GET /surveys.json
@@ -85,13 +85,15 @@ class SurveysController < ApplicationController
   
   
   def stats
-    @stats = Statistics.where("survey_id = ?", params[:id]).first
     @survey = Survey.find(params[:id]);
+    authorize! :read, @survey, :message => "Unable to read this article." 
+    @stats = Statistics.where("survey_id = ?", params[:id]).first    
     @result = @stats ? stats_of_percentage(@stats, @survey) : Hash.new(0)
   end
   
-  def take       
-    status = allow_user_take_survey && take_survey
+  def take          
+    authorize! :read, Survey.find(params[:id]), :message => "Unable to read this article." 
+    status = allow_user_take_survey && take_survey    
     respond_to do |format|
       if status
         format.html { redirect_to action: 'stats', notice: 'Thank you for your participation.' }

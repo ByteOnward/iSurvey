@@ -13,7 +13,7 @@ class Ability
         user.role?(survey.group) || survey.group == 'Public'
       end
     elsif user.id
-      can :read, Survey do |survey|
+      can [:read], Survey do |survey|
         user.role?(survey.group) || survey.group == 'Public'
       end
     end
