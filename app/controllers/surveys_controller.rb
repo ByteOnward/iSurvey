@@ -2,7 +2,7 @@ class SurveysController < ApplicationController
   
 #  before_filter :authenticate_user!
 #  authorize_resource
-  load_and_authorize_resource 
+  load_and_authorize_resource :except => [:index, :new]
   
   # GET /surveys
   # GET /surveys.json
@@ -23,7 +23,7 @@ class SurveysController < ApplicationController
   # GET /surveys/new
   # GET /surveys/new.json
   def new
-#    @survey = Survey.new
+    @survey = Survey.new
     3.times do
       question = @survey.questions.build
         3.times do
