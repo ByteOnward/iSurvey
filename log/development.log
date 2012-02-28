@@ -40613,3 +40613,951 @@ Served asset /surveys.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-02-27 18:26:17 +0800
 Served asset /application.js - 304 Not Modified (0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20120208142352)
+Migrating to CreateSurveys (20120208143153)
+Migrating to CreateAuthentications (20120208153332)
+Migrating to CreateQuestions (20120209025710)
+Migrating to CreateChoices (20120209025740)
+Migrating to RemoveSurveyIdFromChoice (20120213020036)
+Migrating to CreateStatistics (20120213022627)
+Migrating to CreateRecords (20120213022957)
+Migrating to AddSurveyIdToStatistics (20120213083305)
+Migrating to CreateRoles (20120221085727)
+Migrating to AddRoleToSurvey (20120224020359)
+Migrating to RemoveRoleFromSurvey (20120227065439)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TEMPORARY TABLE "altered_surveys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "name" varchar(255) NOT NULL, "desc" varchar(255), "status" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "role" varchar(255)) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("surveys")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_surveys_on_name_and_desc')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("altered_surveys")[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "temp_index_altered_surveys_on_name_and_desc" ON "altered_surveys" ("name", "desc")
+  [1m[36m (0.2ms)[0m  [1mSELECT * FROM "surveys"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_surveys" ("id","user_id","name","desc","status","created_at","updated_at","role") VALUES (1, NULL, '可口可乐公司在中国市场问卷调查', '非常感谢您合作帮组完成这份问卷调查，这是一份针对可口可乐公司和汇源果汁公司间的问卷调查，旨在研究品牌战略带来的利益。', 0, '2012-02-13 01:55:56.451131', '2012-02-27 02:07:49.302801', 'SuperAdmin')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_surveys" ("id","user_id","name","desc","status","created_at","updated_at","role") VALUES (2, NULL, 'How are you?', 'Fine, thank you!', 0, '2012-02-13 04:00:34.020935', '2012-02-24 07:13:01.709742', 'Admin')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_surveys" ("id","user_id","name","desc","status","created_at","updated_at","role") VALUES (3, NULL, '编程语言大调查', '编程语言大调查', 0, '2012-02-14 14:49:12.102094', '2012-02-27 02:08:14.342084', 'Admin')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_surveys" ("id","user_id","name","desc","status","created_at","updated_at","role") VALUES (4, NULL, 'Testing Skills', 'Testing Hello World.', 0, '2012-02-14 15:37:18.285439', '2012-02-24 09:05:49.077582', 'SuperAdmin')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_surveys" ("id","user_id","name","desc","status","created_at","updated_at","role") VALUES (5, NULL, '互联网媒体业务问卷调查', '互联网媒体', 0, '2012-02-14 15:39:27.040495', '2012-02-24 09:02:49.179466', 'Admin')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "altered_surveys" ("id","user_id","name","desc","status","created_at","updated_at","role") VALUES (6, NULL, '国家法定节假日调整方案问卷调查', '国家法定节假日调整方案', 0, '2012-02-15 02:01:14.129785', '2012-02-27 02:08:32.525565', 'Creator')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_surveys" ("id","user_id","name","desc","status","created_at","updated_at","role") VALUES (7, 1, 'AAAAAAA', 'Description not empty.', 0, '2012-02-22 06:36:45.048025', '2012-02-27 02:03:23.448296', 'Creator')
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "surveys"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "surveys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "name" varchar(255) NOT NULL, "desc" varchar(255), "status" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("altered_surveys")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('temp_index_altered_surveys_on_name_and_desc')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("surveys")[0m
+  [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "index_surveys_on_name_and_desc" ON "surveys" ("name", "desc")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_surveys"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "surveys" ("id","user_id","name","desc","status","created_at","updated_at") VALUES (1, NULL, '可口可乐公司在中国市场问卷调查', '非常感谢您合作帮组完成这份问卷调查，这是一份针对可口可乐公司和汇源果汁公司间的问卷调查，旨在研究品牌战略带来的利益。', 0, '2012-02-13 01:55:56.451131', '2012-02-27 02:07:49.302801')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "surveys" ("id","user_id","name","desc","status","created_at","updated_at") VALUES (2, NULL, 'How are you?', 'Fine, thank you!', 0, '2012-02-13 04:00:34.020935', '2012-02-24 07:13:01.709742')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "surveys" ("id","user_id","name","desc","status","created_at","updated_at") VALUES (3, NULL, '编程语言大调查', '编程语言大调查', 0, '2012-02-14 14:49:12.102094', '2012-02-27 02:08:14.342084')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "surveys" ("id","user_id","name","desc","status","created_at","updated_at") VALUES (4, NULL, 'Testing Skills', 'Testing Hello World.', 0, '2012-02-14 15:37:18.285439', '2012-02-24 09:05:49.077582')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "surveys" ("id","user_id","name","desc","status","created_at","updated_at") VALUES (5, NULL, '互联网媒体业务问卷调查', '互联网媒体', 0, '2012-02-14 15:39:27.040495', '2012-02-24 09:02:49.179466')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "surveys" ("id","user_id","name","desc","status","created_at","updated_at") VALUES (6, NULL, '国家法定节假日调整方案问卷调查', '国家法定节假日调整方案', 0, '2012-02-15 02:01:14.129785', '2012-02-27 02:08:32.525565')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "surveys" ("id","user_id","name","desc","status","created_at","updated_at") VALUES (7, 1, 'AAAAAAA', 'Description not empty.', 0, '2012-02-22 06:36:45.048025', '2012-02-27 02:03:23.448296')
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "altered_surveys"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120227065439')
+  [1m[36m (72.4ms)[0m  [1mcommit transaction[0m
+Migrating to AddGroupToSurvey (20120227065710)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "surveys" ADD "group" varchar(255) DEFAULT 'Public'[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120227065710')
+  [1m[36m (93.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("authentications")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("choices")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("questions")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("records")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("results")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("roles")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_roles_on_name')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("roles_users")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_roles_users_on_role_id_and_user_id')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("statistics")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("surveys")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_surveys_on_name_and_desc')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_reset_password_token')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (79.1ms)[0m  [1mCREATE TABLE "authentications" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "provider" varchar(255), "uid" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (49.6ms)[0m  CREATE TABLE "choices" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question_id" integer, "content" varchar(255) NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (61.3ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "survey_id" integer, "title" varchar(255) NOT NULL, "question_type" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (86.6ms)[0m  CREATE TABLE "records" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "statistics_id" integer, "survey_id" integer, "question_id" integer, "choice_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (98.4ms)[0m  [1mCREATE TABLE "results" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "survey_id" integer, "question_id" integer, "choice_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (81.9ms)[0m  CREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "group" varchar(255) DEFAULT 'default', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("roles")[0m
+  [1m[35m (115.7ms)[0m  CREATE UNIQUE INDEX "index_roles_on_name" ON "roles" ("name")
+  [1m[36m (82.9ms)[0m  [1mCREATE TABLE "roles_users" ("role_id" integer, "user_id" integer) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("roles_users")
+  [1m[36m (190.0ms)[0m  [1mCREATE UNIQUE INDEX "index_roles_users_on_role_id_and_user_id" ON "roles_users" ("role_id", "user_id")[0m
+  [1m[35m (90.0ms)[0m  CREATE TABLE "statistics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "survey_id" integer) 
+  [1m[36m (189.8ms)[0m  [1mCREATE TABLE "surveys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "name" varchar(255) NOT NULL, "desc" varchar(255), "status" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "group" varchar(255) DEFAULT 'Public') [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("surveys")
+  [1m[36m (215.5ms)[0m  [1mCREATE UNIQUE INDEX "index_surveys_on_name_and_desc" ON "surveys" ("name", "desc")[0m
+  [1m[35m (90.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (50.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36m (97.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (282.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (249.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (264.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120227065710')
+  [1m[36m (273.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120213022957')[0m
+  [1m[35m (257.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120227065439')
+  [1m[36m (249.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120208143153')[0m
+  [1m[35m (248.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120209025740')
+  [1m[36m (240.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120224020359')[0m
+  [1m[35m (240.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120213083305')
+  [1m[36m (257.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120221085727')[0m
+  [1m[35m (199.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120208153332')
+  [1m[36m (207.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120213022627')[0m
+  [1m[35m (282.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120209025710')
+  [1m[36m (249.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120213020036')[0m
+  [1m[35m (207.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120208142352')
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-28 14:50:50 +0800
+Processing by SurveysController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mRole Load (0.8ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+  [1m[35mSurvey Load (0.5ms)[0m  SELECT "surveys".* FROM "surveys" WHERE (surveys.group in ('Public','SuperAdmin') or user_id = 4)
+SQLite3::SQLException: near "group": syntax error: SELECT "surveys".* FROM "surveys"  WHERE (surveys.group in ('Public','SuperAdmin') or user_id = 4)
+  Rendered surveys/index.html.erb within layouts/application (149.7ms)
+Completed 500 Internal Server Error in 823ms
+
+ActionView::Template::Error (SQLite3::SQLException: near "group": syntax error: SELECT "surveys".* FROM "surveys"  WHERE (surveys.group in ('Public','SuperAdmin') or user_id = 4)):
+    3: <div class="view_surveys">
+    4: 	<div class="title_bar">Survey</div>
+    5: 	<ul class="list_surveys">
+    6: 		<% @surveys.each do |survey| %>
+    7: 		<li>
+    8: 			<span class="title"><td><%= link_to survey.name, survey %></td></span>
+    9: 			<span class="management">
+  app/views/surveys/index.html.erb:6:in `_app_views_surveys_index_html_erb__1024893176_86108200'
+  app/controllers/surveys_controller.rb:17:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-28 14:50:51 +0800
+Processing by SurveysController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+  [1m[35mSurvey Load (0.3ms)[0m  SELECT "surveys".* FROM "surveys" WHERE (surveys.group in ('Public','SuperAdmin') or user_id = 4)
+SQLite3::SQLException: near "group": syntax error: SELECT "surveys".* FROM "surveys"  WHERE (surveys.group in ('Public','SuperAdmin') or user_id = 4)
+  Rendered surveys/index.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 10ms
+
+ActionView::Template::Error (SQLite3::SQLException: near "group": syntax error: SELECT "surveys".* FROM "surveys"  WHERE (surveys.group in ('Public','SuperAdmin') or user_id = 4)):
+    3: <div class="view_surveys">
+    4: 	<div class="title_bar">Survey</div>
+    5: 	<ul class="list_surveys">
+    6: 		<% @surveys.each do |survey| %>
+    7: 		<li>
+    8: 			<span class="title"><td><%= link_to survey.name, survey %></td></span>
+    9: 			<span class="management">
+  app/views/surveys/index.html.erb:6:in `_app_views_surveys_index_html_erb__1024893176_86108200'
+  app/controllers/surveys_controller.rb:17:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-28 14:54:00 +0800
+Processing by SurveysController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+  [1m[35mSurvey Load (0.2ms)[0m  SELECT "surveys".* FROM "surveys" WHERE (group in ('Public','SuperAdmin') or user_id = 4)
+SQLite3::SQLException: near "group": syntax error: SELECT "surveys".* FROM "surveys"  WHERE (group in ('Public','SuperAdmin') or user_id = 4)
+  Rendered surveys/index.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 48ms
+
+ActionView::Template::Error (SQLite3::SQLException: near "group": syntax error: SELECT "surveys".* FROM "surveys"  WHERE (group in ('Public','SuperAdmin') or user_id = 4)):
+    3: <div class="view_surveys">
+    4: 	<div class="title_bar">Survey</div>
+    5: 	<ul class="list_surveys">
+    6: 		<% @surveys.each do |survey| %>
+    7: 		<li>
+    8: 			<span class="title"><td><%= link_to survey.name, survey %></td></span>
+    9: 			<span class="management">
+  app/views/surveys/index.html.erb:6:in `_app_views_surveys_index_html_erb__1024893176_86108200'
+  app/controllers/surveys_controller.rb:17:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-28 14:54:43 +0800
+Processing by SurveysController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4[0m
+  [1m[35mSurvey Load (0.4ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."group" IN ('Public', 'SuperAdmin')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Owner' LIMIT 1
+  Rendered surveys/index.html.erb within layouts/application (25.3ms)
+Compiled roles.css  (60ms)  (pid 15368)
+Compiled roles.js  (118ms)  (pid 15368)
+Completed 200 OK in 402ms (Views: 296.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /scaffolds.css - 304 Not Modified (17ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /authentications.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /surveys.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /roles.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /application.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /statistics.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /authentications.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /roles.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /statistics.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /surveys.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-02-28 14:54:44 +0800
+Served asset /application.js - 304 Not Modified (13ms)
+SQLite3::SQLException: near "group": syntax error: SELECT "surveys".* FROM "surveys"  WHERE (survey.group in ('Admin','SuperAdmin'))
+SQLite3::SQLException: near "group": syntax error: SELECT "surveys".* FROM "surveys"  WHERE (survey.group in ('Admin','SuperAdmin'))
+SQLite3::SQLException: near "group": syntax error: SELECT "surveys".* FROM "surveys"  WHERE ("survey".group in ('Admin','SuperAdmin'))
+SQLite3::SQLException: no such column: survey.group: SELECT "surveys".* FROM "surveys"  WHERE ("survey"."group" in ('Admin','SuperAdmin'))
+SQLite3::SQLException: near "group": syntax error: SELECT "surveys".* FROM "surveys"  WHERE (surveys.group in ('Admin','SuperAdmin') or user_id = 1)
+
+
+Started DELETE "/users/logout" for 127.0.0.1 at 2012-02-28 15:00:23 +0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xSgjHCIoj8lW0vPUqNcmkOXERoom+l5jYtC24K3hQtc="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 95ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-28 15:00:23 +0800
+Processing by SurveysController#index as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/login" for 127.0.0.1 at 2012-02-28 15:00:23 +0800
+Processing by SessionsController#new as HTML
+  Rendered devise/_links.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (24.5ms)
+Completed 200 OK in 101ms (Views: 99.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /authentications.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:24 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/login" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Processing by SessionsController#new as HTML
+  Rendered devise/_links.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 18ms (Views: 16.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /application.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:25 +0800
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/users/login" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Processing by SessionsController#new as HTML
+  Rendered devise/_links.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /authentications.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /surveys.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-02-28 15:00:27 +0800
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2012-02-28 15:00:33 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3XjsYvEU0+cmEkeTB2X4TsdvUjyRScr6ZPD63Px2puE=", "user"=>{"email"=>"jjzxcc@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'jjzxcc@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2012-02-27 02:14:39.061787', "current_sign_in_at" = '2012-02-28 07:00:33.354347', "sign_in_count" = 11, "updated_at" = '2012-02-28 07:00:33.355031' WHERE "users"."id" = 4
+  [1m[36m (166.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 291ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-28 15:00:33 +0800
+Processing by SurveysController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+  [1m[36mSurvey Load (0.3ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE (surveys.group in ('Public','SuperAdmin') or user_id = 4)[0m
+SQLite3::SQLException: near "group": syntax error: SELECT "surveys".* FROM "surveys"  WHERE (surveys.group in ('Public','SuperAdmin') or user_id = 4)
+  Rendered surveys/index.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 23ms
+
+ActionView::Template::Error (SQLite3::SQLException: near "group": syntax error: SELECT "surveys".* FROM "surveys"  WHERE (surveys.group in ('Public','SuperAdmin') or user_id = 4)):
+    3: <div class="view_surveys">
+    4: 	<div class="title_bar">Survey</div>
+    5: 	<ul class="list_surveys">
+    6: 		<% @surveys.each do |survey| %>
+    7: 		<li>
+    8: 			<span class="title"><td><%= link_to survey.name, survey %></td></span>
+    9: 			<span class="management">
+  app/views/surveys/index.html.erb:6:in `_app_views_surveys_index_html_erb__1024893176_86108200'
+  app/controllers/surveys_controller.rb:17:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-28 15:00:57 +0800
+
+SyntaxError (/home/expedia/projects/iSurvey/app/controllers/surveys_controller.rb:14: syntax error, unexpected tIDENTIFIER, expecting ')'
+...urveys = Survey.where(""surveys"."group" in (?) or user_id =...
+...                               ^
+/home/expedia/projects/iSurvey/app/controllers/surveys_controller.rb:14: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+... Survey.where(""surveys"."group" in (?) or user_id = ?", rol...
+...                               ^
+/home/expedia/projects/iSurvey/app/controllers/surveys_controller.rb:14: syntax error, unexpected ')', expecting keyword_end
+/home/expedia/projects/iSurvey/app/controllers/surveys_controller.rb:166: syntax error, unexpected $end, expecting keyword_end):
+  activesupport (3.2.1) lib/active_support/dependencies.rb:469:in `load'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:469:in `block in load_file'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:639:in `new_constants_in'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:468:in `load_file'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:353:in `require_or_load'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:502:in `load_missing_constant'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:192:in `block in const_missing'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:190:in `each'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:190:in `const_missing'
+  activesupport (3.2.1) lib/active_support/inflector/methods.rb:229:in `block in constantize'
+  activesupport (3.2.1) lib/active_support/inflector/methods.rb:228:in `each'
+  activesupport (3.2.1) lib/active_support/inflector/methods.rb:228:in `constantize'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:554:in `get'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:62:in `controller_reference'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:47:in `controller'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:26:in `call'
+  journey (1.0.3) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.3) lib/journey/router.rb:56:in `each'
+  journey (1.0.3) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.0.2) lib/omniauth/strategy.rb:168:in `call!'
+  omniauth (1.0.2) lib/omniauth/strategy.rb:148:in `call'
+  omniauth (1.0.2) lib/omniauth/strategy.rb:366:in `call_app!'
+  omniauth-identity (1.0.0) lib/omniauth/strategies/identity.rb:36:in `other_phase'
+  omniauth (1.0.2) lib/omniauth/strategy.rb:167:in `call!'
+  omniauth (1.0.2) lib/omniauth/strategy.rb:148:in `call'
+  omniauth (1.0.2) lib/omniauth/builder.rb:42:in `call'
+  warden (1.1.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.1.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.1.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__849558968__call__1007233010__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /usr/local/rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-28 15:00:58 +0800
+
+SyntaxError (/home/expedia/projects/iSurvey/app/controllers/surveys_controller.rb:14: syntax error, unexpected tIDENTIFIER, expecting ')'
+...urveys = Survey.where(""surveys"."group" in (?) or user_id =...
+...                               ^
+/home/expedia/projects/iSurvey/app/controllers/surveys_controller.rb:14: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+... Survey.where(""surveys"."group" in (?) or user_id = ?", rol...
+...                               ^
+/home/expedia/projects/iSurvey/app/controllers/surveys_controller.rb:14: syntax error, unexpected ')', expecting keyword_end
+/home/expedia/projects/iSurvey/app/controllers/surveys_controller.rb:166: syntax error, unexpected $end, expecting keyword_end):
+  activesupport (3.2.1) lib/active_support/dependencies.rb:469:in `load'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:469:in `block in load_file'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:639:in `new_constants_in'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:468:in `load_file'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:353:in `require_or_load'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:502:in `load_missing_constant'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:192:in `block in const_missing'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:190:in `each'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:190:in `const_missing'
+  activesupport (3.2.1) lib/active_support/inflector/methods.rb:229:in `block in constantize'
+  activesupport (3.2.1) lib/active_support/inflector/methods.rb:228:in `each'
+  activesupport (3.2.1) lib/active_support/inflector/methods.rb:228:in `constantize'
+  activesupport (3.2.1) lib/active_support/dependencies.rb:554:in `get'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:62:in `controller_reference'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:47:in `controller'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:26:in `call'
+  journey (1.0.3) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.3) lib/journey/router.rb:56:in `each'
+  journey (1.0.3) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.1) lib/action_dispatch/routing/route_set.rb:589:in `call'
+  omniauth (1.0.2) lib/omniauth/strategy.rb:168:in `call!'
+  omniauth (1.0.2) lib/omniauth/strategy.rb:148:in `call'
+  omniauth (1.0.2) lib/omniauth/strategy.rb:366:in `call_app!'
+  omniauth-identity (1.0.0) lib/omniauth/strategies/identity.rb:36:in `other_phase'
+  omniauth (1.0.2) lib/omniauth/strategy.rb:167:in `call!'
+  omniauth (1.0.2) lib/omniauth/strategy.rb:148:in `call'
+  omniauth (1.0.2) lib/omniauth/builder.rb:42:in `call'
+  warden (1.1.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.1.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.1.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.1) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `_run__849558968__call__1007233010__callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.1) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.1) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.1) lib/rails/engine.rb:479:in `call'
+  railties (3.2.1) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.1) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /usr/local/rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-28 15:01:27 +0800
+Processing by SurveysController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+  [1m[36mSurvey Load (0.3ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE ("surveys"."group" in ('Public','SuperAdmin') or user_id = 4)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Owner' LIMIT 1[0m
+  Rendered surveys/index.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 76ms (Views: 29.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:27 +0800
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:27 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:27 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:27 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:27 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:27 +0800
+Served asset /authentications.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:27 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:27 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:27 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:27 +0800
+Served asset /roles.js - 304 Not Modified (74ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:28 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:28 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:28 +0800
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started DELETE "/users/logout" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"3XjsYvEU0+cmEkeTB2X4TsdvUjyRScr6ZPD63Px2puE="}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Processing by SurveysController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/login" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Processing by SessionsController#new as HTML
+  Rendered devise/_links.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /scaffolds.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /statistics.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /authentications.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:30 +0800
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2012-02-28 15:01:34 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8NPlIgRlxh/R+Gnf6YPR6/7HWfOzM2a88f600Pwchi8=", "user"=>{"email"=>"jjzxcc@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'jjzxcc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "remember_created_at" = '2012-02-28 07:01:34.557595', "updated_at" = '2012-02-28 07:01:34.558087' WHERE "users"."id" = 4[0m
+  [1m[35m (71.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2012-02-28 07:00:33.354347', "current_sign_in_at" = '2012-02-28 07:01:34.632871', "sign_in_count" = 12, "updated_at" = '2012-02-28 07:01:34.633650' WHERE "users"."id" = 4
+  [1m[36m (134.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 312ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-28 15:01:34 +0800
+Processing by SurveysController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+  [1m[36mSurvey Load (0.4ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE ("surveys"."group" in ('Public','SuperAdmin') or user_id = 4)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4 AND "roles"."name" = 'Owner' LIMIT 1[0m
+  Rendered surveys/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 26ms (Views: 20.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:34 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:34 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:34 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:34 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:34 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:35 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:35 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:35 +0800
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:35 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:35 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:35 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:35 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:35 +0800
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started DELETE "/users/logout" for 127.0.0.1 at 2012-02-28 15:01:36 +0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8NPlIgRlxh/R+Gnf6YPR6/7HWfOzM2a88f600Pwchi8="}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "users" SET "remember_created_at" = NULL, "updated_at" = '2012-02-28 07:01:36.825572' WHERE "users"."id" = 4
+  [1m[36m (51.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 56ms (ActiveRecord: 52.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-28 15:01:36 +0800
+Processing by SurveysController#index as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/login" for 127.0.0.1 at 2012-02-28 15:01:36 +0800
+Processing by SessionsController#new as HTML
+  Rendered devise/_links.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 17ms (Views: 16.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-02-28 15:01:37 +0800
+Served asset /application.js - 304 Not Modified (1ms)

@@ -11,8 +11,8 @@ class SurveysController < ApplicationController
       @surveys = Survey.all
     else
       roles = current_user.roles.reduce(['Public']){|a, role| a << role.name}
-      @surveys = Survey.where("surveys.group in (?) or user_id = ?", roles, current_user.id)
-#      @surveys = Survey.where(:group => current_user.roles.reduce(['Public']){|a, role| a << role.name})
+      @surveys = Survey.where('"surveys"."group" in (?) or user_id = ?', roles, current_user.id)
+      #@surveys = Survey.where(:group => current_user.roles.reduce(['Public']){|a, role| a << role.name})
     end
     respond_to do |format|
       format.html # index.html.erb
