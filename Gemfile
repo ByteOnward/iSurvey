@@ -13,15 +13,15 @@ gem 'cancan'
 
 group :production do
   # gems specifically for Heroku go here
-  gem "sqlite3"
+  gem "pg"
 end
 
 group :development do
-  gem "sqlite3"
+  gem "pg"
 end
 
 group :test do
-  gem "sqlite3"
+  gem "pg"
 end
 
 # Gems used only for assets and not required
