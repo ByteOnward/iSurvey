@@ -2,29 +2,36 @@
 
 <div class="view_roles">
 	<div class="title_bar">Roles</div>
-	<div class="list_roles">
-		<% @roles.each do |role| %>
-		<div>
-			<%= link_to role.name, "/roles/show/#{role.id}", :remote => true %>
-		</div>
-		<% end %>
+	<div class="table list_roles">
+	<% @roles.each do |role| %>
+			<div class="tr">
+				<div>
+					<span class="td col1"><%= role.name %></span>
+					<span class="td col2"><%= role.group %></span>
+					<span class="td"><%= link_to :Edit, "/roles/show/#{role.id}", :remote => true %></span>
+				</div>
+			</div>
+	<% end %>
 	</div>
 	
-	
+<div class="bordered">	
 	<%= form_tag({:action => "add"}, :name => 'add_role_form', :remote => true) do%>
 		<%= text_field_tag("role[name]") %>
 		<%= select_tag("role[group]", options_for_select({:public => 'public', :admin => 'admin'}))%>
 		<%= submit_tag("Add Role", :class => "title") %>
 	<% end %>
-	<br />
-	
+</div>
+
+<div class="edit_role_form">	
 	<%= form_tag({:action => "edit"}, :name => 'edit_role_form', :remote => true) do%>
-		<%= text_field_tag("role[name]") %>
-		<%= select_tag("role[group]", options_for_select({:public => 'public', :admin => 'admin'}))%>
-		<%= submit_tag("Update", :class => "title") %>
+			<span class="td col1"><%= text_field_tag("role[name]") %></span>
+			<span class="td col2"><%= select_tag("role[group]", options_for_select({:public => 'public', :admin => 'admin'}))%></span>
+			<span class="td"><%= submit_tag("Update", :class => "title") %></span>
 	<% end %>
-	
-	<br />
-	<%= link_to 'Grant Roles for Users', '/roles/users' %>
-	
+</div>
+
+	<div class="bordered">
+		<%= link_to 'Grant Roles for Users', '/roles/users' %>
+	</div>	
+
 </div>

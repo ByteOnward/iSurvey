@@ -44,7 +44,8 @@ class RolesController < ApplicationController
   end
   
   def users
-    @users = User.all
+    search_string = params[:search_string] || ''
+    @users = User.where("email like ?", "%#{search_string}%")
     @roles = Role.all
     respond_to do |format|
       format.html # index.html.erb

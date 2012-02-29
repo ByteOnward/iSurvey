@@ -129,14 +129,19 @@ $(function(){
 	$(".role:contains('Admin')").css('background-color', '#ff6600').css('color', '#f0f0f0');
 	$(".role:contains('Owner')").css('background-color', '#669933').css('color', '#cfcfcf');	
 	
-	var edit_form = $('form[name=edit_role_form]').hide();
-	var items = $('.list_roles a[data-remote]');
-	items.on('ajax:success', function(ext, data, eventName, xhr){
-		items.show(100);
+	var edit_form_div = $('div.edit_role_form').hide();
+	var edit_form = $('form[name=edit_role_form]');
+	var items = $('.list_roles .tr>div');
+	var links = $('.list_roles a[data-remote]');
+	links.on('ajax:success', function(ext, data, eventName, xhr){
 		$('input[name="role[name]"]', edit_form).val(data.name);
-		$('select', edit_form).val(data.group);
+		$('select', edit_form).val(data.group);		
 		edit_form.attr('action', '/roles/update/' + data.id);
-		edit_form.show(100).appendTo($(this).hide().parent());
+		items.show();
+		$(this).parent().parent().hide(100);
+		edit_form.show(100).appendTo($(this).parents('.tr'));
 	});
+	
+
 	
 });

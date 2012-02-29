@@ -15,7 +15,15 @@
 body {
   background-color: #4B7399;
   font-family: Verdana, Helvetica, Arial;
-  font-size: 14px;
+  font-size: 15px;
+}
+
+div.bordered{
+	border:1px solid #339933;
+	border-radius:6px;
+	margin:5px 0px 10px 0px;
+	padding:5px 0px 5px 3px;
+	clear:both;
 }
 
 a img {
@@ -156,3 +164,36 @@ a {
   text-align: center;
   margin-bottom: 10px;
 }
+
+div.table{
+	width:600px;
+	border:1px solid #99cc99;
+	border-radius:8px;
+	padding:3px;
+}
+
+div.table .tr{
+	height:25px;
+	border-top:1px dotted #99cc99;
+	clear:both;
+	margin:0px;
+	padding:5px 0px 0px 5px;
+}
+div.table .tr span.td{
+	display:block;
+	float:left;
+	margin:0px;
+}
+
+.col1{
+	width:180px;
+}
+
+.col2{
+	width:180px;
+}
+
+
+
+
+
