@@ -87,8 +87,13 @@ class SurveysController < ApplicationController
   def stats
     @survey = Survey.find(params[:id]);
     authorize! :read, @survey, :message => "Unable to read this article." 
-    @stats = Statistics.where("survey_id = ?", params[:id]).first    
-    @result = @stats ? stats_of_percentage(@stats, @survey) : Hash.new(0)
+    @stats = Statistics.where("survey_id = ?", params[:id]).first        
+    result_by_choices, result_by_users = @stats ? stats_of_percentage(@stats, @survey) : [Hash.new(0), Hash.new(0)]
+    if params[:choices]
+      @result = result_by_choices
+    else
+      @result = result_by_users
+    end  
   end
   
   def take          
@@ -142,6 +147,17 @@ class SurveysController < ApplicationController
       end
     end
     
+    def users_for_questions(stats)
+      stats.records.reduce({}) do|m, r| 
+        m.tap do |ht|
+          unless ht[r.question_id]
+            ht[r.question_id] = Set.new
+          end
+          ht[r.question_id] << r.user_id
+        end
+      end
+    end
+    
     def stats_by_questions(stats)
       stats.records.reduce(Hash.new(0)){|m, r| m.tap{|ht| ht[r.question_id] += 1}}
     end
@@ -153,13 +169,16 @@ class SurveysController < ApplicationController
     def stats_of_percentage(stats, survey)
       questions = stats_by_questions(stats)
       choices = stats_by_choices(stats)
+      users = users_for_questions(stats)
       result = {}
+      result_by_users = {}
       survey.questions.each do |q|
         q.choices.each do |c|
-          result[c.id] = choices[c.id] * 1.0 / questions[q.id]
+          result[c.id] = [choices[c.id], questions[q.id]]
+          result_by_users[c.id] = [choices[c.id], users[q.id].size]
         end
       end
-      return result  
+      return result, result_by_users
     end
     
  

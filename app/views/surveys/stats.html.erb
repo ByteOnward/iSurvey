@@ -11,9 +11,12 @@
 	  <div class="question_body">
 		<% q.choices.each_with_index do |c, j| %>			
 			<div class="question_item">
-			<%= j %>. <%= c.content %>
+			<%= j %>. <%= c.content %><span style="font-size:9px;"> (<%= "#{@result[c.id][0]}/#{@result[c.id][1]}" %>)</span>
 			<div class="progress"> 
-				<div data-progress="<%= "%.2f" % @result[c.id] %>"></div><div class="progress_number"> <%= "%.0f" % (@result[c.id] * 100) %>%</div>
+				<div data-progress="<%= "%.2f" % (@result[c.id][0] * 1.0 / @result[c.id][1])  %>"></div>
+				<div class="progress_number"> 
+					<%= "%.0f" % (@result[c.id][0] * 1.0 / @result[c.id][1] * 100) %>% 
+				</div>
 			</div>
 			</div>
 		<% end %>
@@ -27,4 +30,4 @@
   </div>
 </div>
 
-<%= link_to 'Back', @survey %>
+<%= link_to 'Back', @survey %> | <%= link_to (params['choices'] ? "Statistics of Users" : "Statistics of Choices"),  (params['choices'] ? url_for(:action => 'stats') : url_for(:action => 'stats', :choices => 'yes'))%>
