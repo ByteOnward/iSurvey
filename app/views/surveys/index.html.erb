@@ -3,6 +3,7 @@
 <div class="view_surveys">
 	<div class="title_bar">Survey</div>
 	<ul class="list_surveys">
+		<%= will_paginate(@surveys) %>
 		<% @surveys.each do |survey| %>
 		<li>
 			<span class="title"><td><%= link_to survey.name, survey %></td></span>
@@ -17,6 +18,7 @@
 			<span class="time"><%= survey.created_at.strftime('%Y-%m-%d %H:%M:%S') %></span>
 		</li>
 		<% end %>
+		<%= will_paginate(@surveys) %>
 	</ul>
 </div>
 

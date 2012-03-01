@@ -7,7 +7,7 @@
 		Search Users:	<%= text_field_tag :search_string %><%= submit_tag("Search", :class => "title") %>
 	<%end %>
 	</div>
-
+	<%= will_paginate(@users) %>
 	<%= form_tag({:action => "grant"}, :name => 'grant_form', :remote => true) do%>
 	<table class="user_roles" cellspacing="1" cellspadding="0">
 		<% @users.each do |user| %>
