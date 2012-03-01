@@ -63,3 +63,4 @@ gem 'factory_girl_rails', :group => :test
 gem 'cucumber-rails', :group => :test
 gem 'capybara', :group => :test
 gem "will_paginate", "~> 3.0.3"
+gem 'ci_reporter'
