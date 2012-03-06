@@ -3,13 +3,13 @@
 <div class="view_surveys">
 	<div class="title_bar">Survey</div>
 	<ul class="list_surveys">
-		<%= will_paginate(@surveys) %>
 		<% @surveys.each do |survey| %>
 		<li>
 			<span class="title"><td><%= link_to survey.name, survey %></td></span>
 			<span class="management">
 			<%if can? :update, survey%>
 				<%= link_to 'Edit', edit_survey_path(survey) %> | 
+				<%= link_to 'New', "#{new_survey_path}/#{survey.id}", :title => "New from this survey."  %> | 
 			<%end%> 
 			<%if can? :destroy, survey%>
 				<%= link_to 'Destroy', survey, confirm: 'Are you sure?', method: :delete %>
@@ -17,9 +17,9 @@
 			</span>
 			<span class="time"><%= survey.created_at.strftime('%Y-%m-%d %H:%M:%S') %></span>
 		</li>
-		<% end %>
-		<%= will_paginate(@surveys) %>
+		<% end %>		
 	</ul>
+	<div class="apple_pagination"><%= will_paginate @surveys %></div>
 </div>
 
 <%if can? :create, Survey %>

@@ -45,7 +45,7 @@ class RolesController < ApplicationController
   
   def users
     search_string = params[:search_string] || ''
-    @users = User.where("email like ?", "%#{search_string}%").paginate(:page => params[:page], :per_page => 10).order('email ASC')
+    @users = User.where("email like ?", "%#{search_string}%").paginate(:page => params[:page], :per_page => 5).order('email ASC')
     @roles = Role.all
     respond_to do |format|
       format.html # index.html.erb

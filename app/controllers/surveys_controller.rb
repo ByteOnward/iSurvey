@@ -9,10 +9,10 @@ class SurveysController < ApplicationController
   def index
     if current_user.role? :admin
       #@surveys = Survey.all
-      @surveys = Survey.paginate(:page => params[:page], :per_page => 10).order('created_at ASC')
+      @surveys = Survey.paginate(:page => params[:page], :per_page => 8).order('created_at ASC')
     else
       roles = current_user.roles.reduce(['Public']){|a, role| a << role.name}
-      @surveys = Survey.where('"surveys"."group" in (?) or user_id = ?', roles, current_user.id).paginate(:page => params[:page], :per_page => 10).order('created_at ASC')
+      @surveys = Survey.where('"surveys"."group" in (?) or user_id = ?', roles, current_user.id).paginate(:page => params[:page], :per_page => 8).order('created_at ASC')
       #@surveys = Survey.where(:group => current_user.roles.reduce(['Public']){|a, role| a << role.name})
     end
     respond_to do |format|
@@ -26,11 +26,22 @@ class SurveysController < ApplicationController
   # GET /surveys/new.json
   def new
     @survey = Survey.new
-    3.times do
-      question = @survey.questions.build
-        3.times do
-          question.choices.build
-        end
+    is_new = true
+    if params[:id]
+      begin
+        clone_survey Survey.find(params[:id]), @survey
+        is_new = false
+      rescue ActiveRecord::RecordNotFound => e
+        #do nothing.
+      end
+    end
+    if is_new     
+      3.times do
+        question = @survey.questions.build
+          3.times do
+            question.choices.build
+          end
+      end
     end
     respond_to do |format|
       format.html # new.html.erb
@@ -180,6 +191,19 @@ class SurveysController < ApplicationController
         end
       end
       return result, result_by_users
+    end
+    
+    def clone_survey src, dest
+      dest.name = src.name
+      dest.desc = src.desc
+      src.questions.each do |q|
+        question = dest.questions.build
+        question.title = q.title
+        q.choices.each do|c|
+          choice = question.choices.build
+          choice.content = c.content
+        end
+      end
     end
     
  

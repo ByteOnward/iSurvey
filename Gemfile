@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
+source 'http://localhost'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.2'
 gem 'execjs'
 gem 'therubyracer'
 
