@@ -60,6 +60,12 @@ class SurveysController < ApplicationController
 #    @survey = Survey.new(params[:survey])
     respond_to do |format|
       if @survey.save
+	if @survey.group != 'Public'
+	  @users = Role.find_by_name(@survey.group).users
+	  @users.each do |user|
+	    Notifier.survey_inviter(@survey, user).deliver
+	  end
+	end
         format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
         format.json { render json: @survey, status: :created, location: @survey }
       else
