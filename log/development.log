@@ -77639,3 +77639,2350 @@ Served asset /surveys.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 14:53:45 +0800
 Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 15:21:13 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSurvey Load (18.6ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mRole Load (0.8ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mStatistics Load (0.7ms)[0m  SELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1
+  [1m[36mRecord Load (1.0ms)[0m  [1mSELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1[0m
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mChoice Load (0.3ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3[0m
+Completed 500 Internal Server Error in 425ms
+
+NameError (undefined local variable or method `survey' for #<SurveysController:0x000001025ae0d0>):
+  app/controllers/surveys_controller.rb:104:in `stats'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 15:21:40 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.5ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.8ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.3ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.3ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.3ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" WHERE (name = 'Public') LIMIT 1[0m
+Completed 500 Internal Server Error in 112ms
+
+NoMethodError (undefined method `users' for nil:NilClass):
+  app/controllers/surveys_controller.rb:107:in `stats'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.1ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 15:22:19 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.3ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.9ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.3ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" WHERE (name = 'Public') LIMIT 1[0m
+Completed 500 Internal Server Error in 114ms
+
+NoMethodError (undefined method `users' for nil:NilClass):
+  app/controllers/surveys_controller.rb:108:in `stats'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (29.5ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 15:22:34 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.3ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.2ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.5ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  Rendered surveys/stats.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 225ms (Views: 111.0ms | ActiveRecord: 12.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /application.css - 304 Not Modified (26ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /authentications.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /roles.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /statistics.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /surveys.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /authentications.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /roles.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /statistics.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /surveys.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 15:22:35 +0800
+Served asset /application.js - 304 Not Modified (29ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.3ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.3ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.1ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  Rendered surveys/stats.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 123ms (Views: 9.1ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 15:23:48 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.3ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.3ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.3ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.1ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (32.6ms)[0m  SELECT DISTINCT COUNT("records"."user_id") FROM "records" 
+  Rendered surveys/stats.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 158ms (Views: 13.5ms | ActiveRecord: 44.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 15:29:22 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+PG::Error: ERROR:  invalid input syntax for integer: "unique"
+: SELECT  "records".* FROM "records"  WHERE "records"."id" = $1 LIMIT 1
+PG::Error: ERROR:  invalid input syntax for integer: "unique"
+: SELECT  "records".* FROM "records"  WHERE "records"."id" = $1 LIMIT 1
+PG::Error: ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: SELECT "records".* FROM "records"  WHERE (survey_id)
+                                                  ^
+: SELECT "records".* FROM "records"  WHERE (survey_id)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSurvey Load (0.2ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mRole Load (18.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mStatistics Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1
+  [1m[36mRecord Load (0.3ms)[0m  [1mSELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1[0m
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1[0m
+  [1m[35mChoice Load (0.3ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT("records"."user_id") FROM "records" WHERE (survey_id = 1)[0m
+  Rendered surveys/stats.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 175ms (Views: 32.6ms | ActiveRecord: 31.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 15:51:45 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.2ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.2ms)[0m  SELECT DISTINCT COUNT("records"."user_id") FROM "records" WHERE (survey_id = 1)
+  Rendered surveys/stats.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 18ms (Views: 8.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 15:54:24 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSurvey Load (0.2ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mStatistics Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1
+  [1m[36mRecord Load (0.3ms)[0m  [1mSELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1[0m
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1[0m
+  [1m[35mChoice Load (0.3ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT("records"."user_id") FROM "records" WHERE (survey_id = 1)[0m
+  Rendered surveys/stats.html.erb within layouts/application (27.5ms)
+Completed 200 OK in 150ms (Views: 33.2ms | ActiveRecord: 12.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 15:55:40 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.3ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.3ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35m (0.1ms)[0m  SELECT DISTINCT COUNT("records"."user_id") FROM "records" WHERE (survey_id = 1)
+  Rendered surveys/stats.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 147ms (Views: 31.9ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:49 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSurvey Load (0.2ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mStatistics Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1
+  [1m[36mRecord Load (0.2ms)[0m  [1mSELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1[0m
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36m (0.3ms)[0m  [1mSELECT DISTINCT COUNT("records"."user_id") FROM "records" WHERE (survey_id = 1)[0m
+  Rendered surveys/stats.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 18ms (Views: 8.6ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 15:57:50 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 15:59:10 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.3ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.3ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mRecord Load (0.3ms)[0m  SELECT DISTINCT user_id FROM "records" WHERE (survey_id = 1)
+  Rendered surveys/stats.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 126ms (Views: 9.0ms | ActiveRecord: 13.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 15:59:11 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSurvey Load (0.3ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mStatistics Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1
+  [1m[36mRecord Load (0.2ms)[0m  [1mSELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1[0m
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1[0m
+  [1m[35mChoice Load (0.5ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT("records"."user_id") FROM "records" WHERE (survey_id = 1)[0m
+  Rendered surveys/stats.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 125ms (Views: 9.1ms | ActiveRecord: 12.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:00:26 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.3ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  Rendered surveys/stats.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 149ms (Views: 9.6ms | ActiveRecord: 13.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:08 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:01:36 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.3ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.3ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.3ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  Rendered surveys/stats.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 153ms (Views: 9.1ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:01:37 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.2ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.3ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  Rendered surveys/stats.html.erb within layouts/application (27.6ms)
+Completed 200 OK in 152ms (Views: 33.4ms | ActiveRecord: 12.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:08:30 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.2ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mRecord Load (0.1ms)[0m  SELECT DISTINCT user_id FROM "records" WHERE (survey_id = 1)
+  [1m[36m (0.1ms)[0m  [1mSELECT DISTINCT COUNT("records"."user_id") FROM "records" WHERE (survey_id = 1)[0m
+  Rendered surveys/stats.html.erb within layouts/application (26.9ms)
+Completed 200 OK in 150ms (Views: 33.3ms | ActiveRecord: 12.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:17:13 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:18:02 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.3ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.2ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.1ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mRecord Load (0.2ms)[0m  SELECT DISTINCT user_id FROM "records" WHERE (survey_id = 1)
+  Rendered surveys/stats.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 185ms (Views: 33.8ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:03 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSurvey Load (0.2ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mStatistics Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1
+  [1m[36mRecord Load (0.3ms)[0m  [1mSELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1[0m
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1[0m
+  [1m[35mChoice Load (0.3ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT COUNT("records"."user_id") FROM "records" WHERE (survey_id = 1)[0m
+  Rendered surveys/stats.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 127ms (Views: 8.5ms | ActiveRecord: 13.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:18:28 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.3ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.3ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mRecord Load (0.2ms)[0m  SELECT DISTINCT user_id FROM "records" WHERE (survey_id = 1)
+  Rendered surveys/stats.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 125ms (Views: 9.0ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:08 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSurvey Load (0.2ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mStatistics Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1
+  [1m[36mRecord Load (0.2ms)[0m  [1mSELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1[0m
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36mRecord Load (0.2ms)[0m  [1mSELECT DISTINCT user_id FROM "records" WHERE (survey_id = 1)[0m
+  Rendered surveys/stats.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 42ms (Views: 8.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:09 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.2ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mRecord Load (0.2ms)[0m  SELECT DISTINCT user_id FROM "records" WHERE (survey_id = 1)
+  Rendered surveys/stats.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 18ms (Views: 8.1ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:10 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSurvey Load (0.3ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mRole Load (0.6ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mStatistics Load (0.2ms)[0m  SELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1
+  [1m[36mRecord Load (0.3ms)[0m  [1mSELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1[0m
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" 
+  [1m[36mRecord Load (0.2ms)[0m  [1mSELECT DISTINCT user_id FROM "records" WHERE (survey_id = 1)[0m
+  Rendered surveys/stats.html.erb within layouts/application (28.4ms)
+Completed 200 OK in 45ms (Views: 34.4ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:11 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Processing by SurveysController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mSurvey Load (0.5ms)[0m  SELECT "surveys".* FROM "surveys" ORDER BY created_at ASC LIMIT 8 OFFSET 0
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "surveys" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  Rendered surveys/index.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 27ms (Views: 22.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:39 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSurvey Load (0.2ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1[0m
+  [1m[35mChoice Load (0.4ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3[0m
+  Rendered surveys/show.html.erb within layouts/application (43.9ms)
+Completed 200 OK in 57ms (Views: 48.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:41 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/edit" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Processing by SurveysController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" WHERE "roles"."group" = 'public'
+  [1m[36mQuestion Load (0.1ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.3ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  Rendered surveys/_choice_fields.html.erb (0.9ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_question_fields.html.erb (11.2ms)
+  [1m[36mChoice Load (0.3ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.5ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_question_fields.html.erb (15.7ms)
+  [1m[35mChoice Load (0.3ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_question_fields.html.erb (4.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_choice_fields.html.erb (0.4ms)
+  Rendered surveys/_question_fields.html.erb (25.3ms)
+  Rendered surveys/_form.html.erb (66.2ms)
+  Rendered surveys/edit.html.erb within layouts/application (112.0ms)
+Completed 200 OK in 146ms (Views: 116.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:45 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started PUT "/surveys/1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Processing by SurveysController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y9VbAOdoRqbmHmZVzblB68ftdmCtxMpmFGRGskX1Gh4=", "survey"=>{"name"=>"欢迎光临iSurvey", "desc"=>"希望大家再接再厉，踊跃参与", "group"=>"Expedia", "questions_attributes"=>{"0"=>{"_destroy"=>"false", "title"=>"你最喜欢的技术是什么？", "question_type"=>"2", "choices_attributes"=>{"0"=>{"_destroy"=>"false", "content"=>"降龙十八掌", "id"=>"1"}, "1"=>{"_destroy"=>"false", "content"=>"独孤九剑", "id"=>"2"}, "2"=>{"_destroy"=>"false", "content"=>"九阴真经", "id"=>"3"}, "3"=>{"_destroy"=>"false", "content"=>"蛤蟆功", "id"=>"4"}, "4"=>{"_destroy"=>"false", "content"=>"乾坤大挪移", "id"=>"5"}, "5"=>{"_destroy"=>"false", "content"=>"吸星大法", "id"=>"6"}, "6"=>{"_destroy"=>"false", "content"=>"避邪剑法", "id"=>"25"}}, "id"=>"1"}, "1"=>{"_destroy"=>"false", "title"=>"你认为技术的最佳组合是什么？", "question_type"=>"1", "choices_attributes"=>{"0"=>{"_destroy"=>"false", "content"=>"凌波微步", "id"=>"7"}, "1"=>{"_destroy"=>"false", "content"=>"降龙十八掌", "id"=>"8"}, "2"=>{"_destroy"=>"false", "content"=>"易筋经", "id"=>"9"}, "3"=>{"_destroy"=>"false", "content"=>"葵花宝典", "id"=>"10"}, "4"=>{"_destroy"=>"false", "content"=>"太极拳", "id"=>"11"}, "5"=>{"_destroy"=>"false", "content"=>"乾坤大挪移", "id"=>"12"}, "6"=>{"_destroy"=>"false", "content"=>"打狗棒法", "id"=>"13"}, "7"=>{"_destroy"=>"false", "content"=>"九阴真经", "id"=>"14"}, "8"=>{"_destroy"=>"false", "content"=>"辟邪剑法", "id"=>"15"}, "9"=>{"_destroy"=>"false", "content"=>"蛤蟆功", "id"=>"16"}, "10"=>{"_destroy"=>"false", "content"=>"六脉神剑", "id"=>"17"}, "11"=>{"_destroy"=>"false", "content"=>"一阳指", "id"=>"18"}, "12"=>{"_destroy"=>"false", "content"=>"大力金刚指", "id"=>"19"}, "13"=>{"_destroy"=>"false", "content"=>"拈花指", "id"=>"20"}, "14"=>{"_destroy"=>"false", "content"=>"九阳神功", "id"=>"24"}}, "id"=>"2"}, "2"=>{"_destroy"=>"false", "title"=>"你最喜欢的工具是？", "question_type"=>"2", "choices_attributes"=>{"0"=>{"_destroy"=>"false", "content"=>"倚天剑", "id"=>"21"}, "1"=>{"_destroy"=>"false", "content"=>"屠龙刀", "id"=>"22"}, "2"=>{"_destroy"=>"false", "content"=>"打狗棒", "id"=>"23"}}, "id"=>"3"}}}, "commit"=>"Submit", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSurvey Load (0.2ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1 AND "questions"."id" IN (1, 2, 3)[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1 AND "choices"."id" IN (1, 2, 3, 4, 5, 6, 25)
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2 AND "choices"."id" IN (7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24)[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3 AND "choices"."id" IN (21, 22, 23)
+  [1m[36m (0.3ms)[0m  [1mUPDATE "surveys" SET "group" = 'Expedia', "updated_at" = '2012-03-06 08:21:53.756895' WHERE "surveys"."id" = 1[0m
+  [1m[35m (11.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/surveys/1
+Completed 302 Found in 29ms (ActiveRecord: 13.6ms)
+
+
+Started GET "/surveys/1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSurvey Load (0.1ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mQuestion Load (0.1ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mChoice Load (0.1ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2
+  [1m[36mChoice Load (0.4ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3[0m
+  Rendered surveys/show.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 53ms (Views: 46.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:53 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.2ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.3ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" WHERE (name = 'Expedia') LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" INNER JOIN "roles_users" ON "users"."id" = "roles_users"."user_id" WHERE "roles_users"."role_id" = 5
+  [1m[36mRecord Load (0.1ms)[0m  [1mSELECT DISTINCT user_id FROM "records" WHERE (survey_id = 1)[0m
+  Rendered surveys/stats.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 43ms (Views: 32.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:21:57 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/roles/" for 127.0.0.1 at 2012-03-06 16:22:08 +0800
+Processing by RolesController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" 
+  Rendered roles/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 68ms (Views: 63.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:08 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:09 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:09 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:09 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:09 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:09 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:09 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:09 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:09 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:09 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:09 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:09 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:09 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/roles/users" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Processing by RolesController#users as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" [0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" WHERE (email like '%%')
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE (email like '%%') ORDER BY email ASC LIMIT 5 OFFSET 0[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 3
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 5[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 8
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 9[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 2
+  Rendered roles/users.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 20ms (Views: 12.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:11 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/roles/users?page=2" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Processing by RolesController#users as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" [0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" WHERE (email like '%%')
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE (email like '%%') ORDER BY email ASC LIMIT 5 OFFSET 5[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 7
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 6[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1[0m
+  Rendered roles/users.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 19ms (Views: 11.6ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:29 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started POST "/roles/grant" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Processing by RolesController#grant as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y9VbAOdoRqbmHmZVzblB68ftdmCtxMpmFGRGskX1Gh4=", "users"=>{"6"=>"1", "4"=>"1"}, "role"=>"5"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (6, 4)
+  [1m[36mRole Load (14.0ms)[0m  [1mSELECT "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", "5"]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" INNER JOIN "roles_users" ON "users"."id" = "roles_users"."user_id" WHERE "roles_users"."role_id" = 5
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (15.1ms)[0m  INSERT INTO "roles_users" ("role_id", "user_id") VALUES (5, 4)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "roles_users" ("role_id", "user_id") VALUES (5, 6)[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+  Rendered text template (0.0ms)
+Completed 200 OK in 79ms (Views: 40.4ms | ActiveRecord: 31.8ms)
+
+
+Started GET "/roles/users?page=2" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Processing by RolesController#users as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" [0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" WHERE (email like '%%')
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE (email like '%%') ORDER BY email ASC LIMIT 5 OFFSET 5[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 7
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 6[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 4
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1[0m
+  Rendered roles/users.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 19ms (Views: 11.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:44 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Processing by SurveysController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mSurvey Load (0.3ms)[0m  SELECT "surveys".* FROM "surveys" ORDER BY created_at ASC LIMIT 8 OFFSET 0
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "surveys" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  Rendered surveys/index.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:48 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSurvey Load (0.2ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1
+  [1m[36mChoice Load (0.1ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1[0m
+  [1m[35mChoice Load (0.4ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2
+  [1m[36mChoice Load (0.3ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3[0m
+  Rendered surveys/show.html.erb within layouts/application (42.3ms)
+Completed 200 OK in 54ms (Views: 46.9ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:50 +0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/surveys/1/stats" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Processing by SurveysController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSurvey Load (0.3ms)[0m  [1mSELECT "surveys".* FROM "surveys" WHERE "surveys"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "roles_users" ON "roles"."id" = "roles_users"."role_id" WHERE "roles_users"."user_id" = 1 AND "roles"."name" = 'Admin' LIMIT 1
+  [1m[36mStatistics Load (0.2ms)[0m  [1mSELECT "statistics".* FROM "statistics" WHERE (survey_id = '1') LIMIT 1[0m
+  [1m[35mRecord Load (0.3ms)[0m  SELECT "records".* FROM "records" WHERE "records"."statistics_id" = 1
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."survey_id" = 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 1
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 2[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."question_id" = 3
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" WHERE (name = 'Expedia') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "roles_users" ON "users"."id" = "roles_users"."user_id" WHERE "roles_users"."role_id" = 5
+  [1m[36mRecord Load (0.1ms)[0m  [1mSELECT DISTINCT user_id FROM "records" WHERE (survey_id = 1)[0m
+  Rendered surveys/stats.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 20ms (Views: 8.1ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /authentications.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /roles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /statistics.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.css?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /surveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/authentications.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /authentications.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/roles.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /roles.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/statistics.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /statistics.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/surveys.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /surveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-03-06 16:22:52 +0800
+Served asset /application.js - 304 Not Modified (0ms)

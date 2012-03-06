@@ -101,6 +101,14 @@ class SurveysController < ApplicationController
     authorize! :read, @survey, :message => "Unable to read this article." 
     @stats = Statistics.where("survey_id = ?", params[:id]).first        
     result_by_choices, result_by_users = @stats ? stats_of_percentage(@stats, @survey) : [Hash.new(0), Hash.new(0)]
+    if @survey.group == 'Public'
+      @user_count = User.all.size 
+    else
+      @user_count = Role.where('name = ?', @survey.group).first.users.size
+    end
+    users = Record.where("survey_id = ?", @survey.id).select(:user_id).uniq
+    puts users #BUG BUG BUG, here make sure the sql is laoded.
+    @take_user_count = users.size  
     if params[:choices]
       @result = result_by_choices
     else

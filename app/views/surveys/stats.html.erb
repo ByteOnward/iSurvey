@@ -1,7 +1,7 @@
 <div class="survey">
   <div class="survey_title"><%= @survey.name %></div>	
   <div class="survey_info">
-	<div class="page_status">Page: 1/1 Question No:<%= @survey.questions.size %></div>
+	<div class="page_status">Page: 1/1 Question No:<%= @survey.questions.size %> Stats: <%= "#{@take_user_count}/#{@user_count}"%></div>
 	<%= @survey.desc %>
   </div>
   <div class="survey_body">
