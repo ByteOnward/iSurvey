@@ -1,7 +1,9 @@
 ISurvey::Application.routes.draw do
   resources :authentications
 #  resorces :statistics
-  resources :surveys
+  resources :surveys do
+    resources :comments
+  end
   
   devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout', :registration => 'register' },
             :controllers => { :sessions => "sessions" }

@@ -122,17 +122,17 @@ class SurveysController < ApplicationController
     end  
   end
   
-  def take          
-    authorize! :read, Survey.find(params[:id]), :message => "Unable to read this article." 
+  def take       
+    @survey = Survey.find(params[:id])  
+    authorize! :read, @survey, :message => "Unable to read this article." 
     status = allow_user_take_survey && take_survey    
     respond_to do |format|
       if status
-        format.html { redirect_to action: 'stats', notice: 'Thank you for your participation.' }
+        format.html { redirect_to survey_comments_path(@survey), notice: 'Thank you for your participation.' }
         format.json { render json: @stats, status: :created, location: @survey }
       else
         error = @stats ? @stats.errors : "You have already taken this survey."
-        @survey = Survey.find(params[:id])
-        format.html { redirect_to @survey, alert: error }
+        format.html { redirect_to survey_comments_path(@survey), alert: error }
         format.json { render json: error, status: :unprocessable_entity }
       end
     end

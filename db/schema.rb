@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120228071241) do
+ActiveRecord::Schema.define(:version => 20120309074915) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(:version => 20120228071241) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "comments", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "survey_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["user_id", "survey_id"], :name => "index_comments_on_user_id_and_survey_id"
 
   create_table "questions", :force => true do |t|
     t.integer  "survey_id"
@@ -47,10 +57,10 @@ ActiveRecord::Schema.define(:version => 20120228071241) do
   end
 
   create_table "roles", :force => true do |t|
-    t.string   "name",                              :null => false
-    t.string   "group",      :default => "default"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.string   "name",                             :null => false
+    t.string   "group",      :default => "public"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   add_index "roles", ["name"], :name => "index_roles_on_name", :unique => true
@@ -102,10 +112,5 @@ ActiveRecord::Schema.define(:version => 20120228071241) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "users_roles", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "role_id"
-  end
 
 end

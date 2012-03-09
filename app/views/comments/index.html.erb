@@ -1,0 +1,24 @@
+  <% unless @survey.comments.empty? %>
+  <div class="comment">
+    <% @comments.each do |comment| %>
+      <div class="content">
+        <span class="comment_content"><%= comment.content %></span><br />
+	<span class="comment_info">Posted by <%= comment.user.email %> at <%= time_ago_in_words(comment.created_at) %> ago.</span>
+      </div>
+      <% if current_user == comment.user %>
+          <span class="comment_destroy"><%= link_to 'Destroy', survey_comment_path(@survey, comment), confirm: 'Are you sure?', method: :delete %></span>
+      <%end%>
+    <%end%>
+  </div>
+  <%end%>
+  <div class="apple_pagination"><%= will_paginate @comments %></div>
+
+  <%= form_for [@survey, current_user.comments.new] do |f| %>
+    <%= f.label :content, "Your Comment" %><br />
+    <%= f.text_area :content, :rows => 4, :cols => 60  %><br />
+    <%= f.submit "Add Comment", :controller => 'comments', :action => 'create' %>
+  <%end%>
+
+<%= link_to 'Back', @survey %>
+
+
