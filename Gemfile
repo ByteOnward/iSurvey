@@ -63,4 +63,10 @@ gem 'factory_girl_rails', :group => :test
 gem 'cucumber-rails', :group => :test
 gem 'capybara', :group => :test
 gem "will_paginate", "~> 3.0.3"
+
+#gem used to produce Unit test, Rspec and cucumber report
 gem 'ci_reporter'
+
+#gem used to generate Rcov report
+gem 'simplecov'
+gem 'simplecov-rcov'
