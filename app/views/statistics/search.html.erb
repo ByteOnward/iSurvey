@@ -11,7 +11,7 @@
 
 	  <div class="question_body">
 		<% q.choices.each_with_index do |c, j| %>			
-			<div class="question_item">
+			<div class="question_item"<%=raw is_selected(@choices, c.id) ? ' style="background-color:#3FC0C0; color:#f0f0f0;"' : ''%>>
 			<%= is_selected(@choices, c.id) ? '√' : '∆'%>
 			<%= c.content %>
 			</div>
