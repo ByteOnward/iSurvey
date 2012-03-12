@@ -1,13 +1,17 @@
-  <% unless @survey.comments.empty? %>
+  <div class="title"><%= @survey.name %></div>
+	<% unless @survey.comments.empty? %>
   <div class="comment">
     <% @comments.each do |comment| %>
-      <div class="content">
-        <span class="comment_content"><%= comment.content %></span><br />
-	<span class="comment_info">Posted by <%= comment.user.email %> at <%= time_ago_in_words(comment.created_at) %> ago.</span>
+      <div class=" bordered content">
+        <div class="comment_content"><%= comment.content %></div>
+				<div class="comment_info" style="height:20px; float:right;clear:both;">
+					Posted by <%= comment.user.email %> at <%= time_ago_in_words(comment.created_at) %> ago.
+					<% if current_user == comment.user %>
+		          <%= link_to 'Destroy', survey_comment_path(@survey, comment), confirm: 'Are you sure?', method: :delete %>
+		      <%end%>
+				</div>
+
       </div>
-      <% if current_user == comment.user %>
-          <span class="comment_destroy"><%= link_to 'Destroy', survey_comment_path(@survey, comment), confirm: 'Are you sure?', method: :delete %></span>
-      <%end%>
     <%end%>
   </div>
   <%end%>
