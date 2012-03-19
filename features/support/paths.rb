@@ -3,8 +3,8 @@
     
     when /the homepage/
       root_path
-    when /SurveyCreation page/
-      surveys_path
+    when /signup page/
+      new_user_registration_path
     
     # Add more page name => path mappings here
     
