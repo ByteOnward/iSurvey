@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/authentication.rb</title>
+    <title>app/mailers/testmailer.rb</title>
     <link href="./assets/0.2.3/screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="./assets/0.2.3/print.css" media="print" rel="stylesheet" type="text/css" />
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1>Isurvey C0 Coverage Information - Simploco - RCov</h1>
-    <h2>app/models/authentication.rb</h2>
+    <h2>app/mailers/testmailer.rb</h2>
 
     <div class="report_table_wrapper">
       <table class='report' id='report_table'>
@@ -24,9 +24,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-authentication_rb.html">app/models/authentication.rb</a></td>
+            <td class="left_align"><a href="app-mailers-testmailer_rb.html">app/mailers/testmailer.rb</a></td>
+            <td class='right_align'><tt>3</tt></td>
             <td class='right_align'><tt>2</tt></td>
-            <td class='right_align'><tt>1</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
       <div class="percent_graph">
         <div class="covered" style="width:100px"></div>
@@ -51,10 +51,13 @@
     <table class="details">
       <tbody>
         <tr class="marked">
-          <td><pre><a name="line2">2</a> class Authentication &lt; ActiveRecord::Base</pre></td>
+          <td><pre><a name="line2">2</a> class Testmailer &lt; ActionMailer::Base</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line3">3</a>   default from: &quot;from@example.com&quot;</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line3">3</a> end</pre></td>
+          <td><pre><a name="line4">4</a> end</pre></td>
         </tr>
       </tbody>
     </table>
