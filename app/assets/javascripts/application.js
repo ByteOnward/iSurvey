@@ -14,6 +14,24 @@
 //= require jquery_ujs
 //= require_tree .
 
+if(typeof(current_index) == 'undefined'){
+	var current_index = 0;
+}
+
+$(function(){
+	
+	function init_tabs(){
+		$(".tabs > ul").addClass("tab-title");
+		$(".tabs > div").addClass("tab-content");	
+		$('.tab-title').each(function(i, e){
+			$(e).find('li').eq(current_index).addClass("selected");	
+		});		
+	}
+	
+	init_tabs();
+	
+});
+
 $(document).ready(function(){
 	var bind_choice = function(){
 		$ctx = $(this).parent().parent();
@@ -141,7 +159,4 @@ $(function(){
 		$(this).parent().parent().hide(100);
 		edit_form.show(100).appendTo($(this).parents('.tr'));
 	});
-	
-
-	
 });

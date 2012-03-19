@@ -48,3 +48,10 @@ ISurvey::Application.configure do
     :enable_starttle_auto => true
   }
 end
+
+=begin
+silence_warnings do 
+  require "pry" 
+  IRB = Pry 
+end
+=end

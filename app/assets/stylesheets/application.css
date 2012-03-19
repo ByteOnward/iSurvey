@@ -32,6 +32,7 @@ a img {
 
 a {
   color: #0000FF;
+	text-decoration: none;
 }
 
 .clear {
@@ -41,13 +42,18 @@ a {
 }
 
 #container {
-  width: 75%;
+  width: 80%;
   margin: 0 auto;
   background-color: #FFF;
-  padding: 20px 40px;
+  padding: 5px 40px;
   border: solid 1px black;
   margin-top: 20px;
 }
+
+#user_nav {
+	clear:both;
+}
+
 
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
@@ -202,6 +208,9 @@ div.table .tr span.td{
 	padding:3px;
 	background: #f1f1f1;
 	border: 1px solid #e5e5e5;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .apple_pagination a, .apple_pagination span {
@@ -231,4 +240,19 @@ div.table .tr span.td{
 .apple_pagination a:hover, .apple_pagination a:focus {
 	text-decoration: underline; 
 }
+
+.tabs{
+	clear:both;
+}
+
+.tab-title, .tab-title li{margin:0; padding:0; list-style:none;}
+.tab-title {border:solid #2647a0; border-width:0 0 5px; zoom:1; position:relative;}
+.tab-title li{margin:0 0.05em -0.3em 0; padding:1px 0 0; zoom:1; display:inline-block; *display:inline; vertical-align:bottom; cursor:pointer;}
+.tab-title li.selected {margin-bottom:0;}
+.tab-title li a{border:solid #a3a3a3;  border-width: 1px 1px 0 1px; color:#000; cursor:pointer; font-size:85%; padding:0.3em .75em; text-decoration:none; display:block; display:inline-block; padding:6px 10px; position:relative; text-decoration: none; vertical-align:bottom;}
+.tab-title .selected a, .tab-title .selected a:focus, .tab-title .selected a:hover {background:#2647a0; color:#fff;}
+.tab-title .selected a {padding:0.4em 0.75em; border-color:#243356;}
+
+.tab-content {}
+.tab-content .hide{display:none;}
 

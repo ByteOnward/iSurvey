@@ -18,6 +18,7 @@ end
 
 group :development do
   gem "pg"
+  gem 'pry'
 end
 
 group :test do

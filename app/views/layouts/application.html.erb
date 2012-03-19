@@ -3,6 +3,7 @@
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "iSurvey" %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= yield(:script) %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield(:head) %>
@@ -13,15 +14,6 @@
       <% if user_signed_in? %>
         Signed in as <%= current_user.email %>.<br />
         Not you? <%= link_to "Sign out", destroy_user_session_path, :confirm => 'Are you sure you want to Logout!', :method => :delete, :class => "remove"%>
-				
-				<% if can? :manage, Role %>
-				<%= link_to "Manage Roles", '/roles/' %>
-				<% end%>
-				
-				<% if can? :manage, Survey %>
-				<%= link_to "Manage Surveys", surveys_path %>
-				<% end%>
-				
       <% else %>
         <%= link_to "Sign In", '/users/login' %>
       <% end %>
@@ -30,9 +22,25 @@
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
-	 
-    <%= yield %>
+
+		<div class="tabs" style="width:100%;">
+			<ul>
+				<% if can? :manage, Survey %>
+					<li><%= link_to "Manage Surveys", surveys_path %></li>
+				<% else %>
+					<li><%= link_to "Surveys", surveys_path %></li>
+				<% end%>
+				<% if can? :manage, Role %>
+					<li><%= link_to "Manage Roles", '/roles/' %></li>
+					<li><%= link_to "Manage Users", '/roles/users' %></li>
+				<% end%>
+			</ul>
+			<div style="padding:20px 30px 30px 30px;">			
+	  		<div><%= yield %></div>
+			</div>
+		<div>
   </div>
+
   <%= yield(:footer)%>  
 </body>
 </html>

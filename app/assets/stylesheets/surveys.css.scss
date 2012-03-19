@@ -13,6 +13,9 @@ div.view_surveys{
 	margin-bottom:20px;
 	.title_bar{
 		border:1px outset #cfcfcf;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
 		background-color:#fcfcfc;
 		font-weight:thin;
 		height:30px;
@@ -22,7 +25,10 @@ div.view_surveys{
 	}
 	.list_surveys{
 		border:1px outset #cfcfcf;
-		margin-top:0px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		margin-top:5px;
 		margin-bottom:5px;
 		background-color:#fcfcfc;
 		li{
@@ -93,13 +99,16 @@ div{
 		padding:30px 0px 20px 0px;
 	  }
 	}
-  	.questions{
+  .questions{
 		margin: 10px 0px 10px 0px;	
 		div.group{		
 			margin: 3px 0px 10px 0px;
 			padding:10px 10px 10px 10px;
 			background-color:#e8e8e8;
 			border: 1px outset #e0e0e0;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+			border-radius: 10px;
 			label {
 				font-weight: bold;
 				font-size: 12px;
@@ -112,6 +121,9 @@ div{
 					padding: 5px 10px 5px 10px;
 					background-color:#f6f9f6;
 					border:3px solid #f6f6f6;
+					-moz-border-radius: 10px;
+					-webkit-border-radius: 10px;
+					border-radius: 10px;
 				}
 			}
 		}
