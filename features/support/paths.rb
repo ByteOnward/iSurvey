@@ -5,7 +5,9 @@
       root_path
     when /signup page/
       new_user_registration_path
-    
+    when /signin page/
+      new_user_session_path    
+  
     # Add more page name => path mappings here
     
     else
