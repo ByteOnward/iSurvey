@@ -21,6 +21,11 @@ And I fill "Email" with "example@example.com"
 And I fill "Password" with "password"
 And I fill "Password confirmation" with "password"
 And I press "Sign up"
-Then I should see "You need to sign in or sign up before continuing."
+
+# Close Devise confimable
+Then I should see "Welcome! You have signed up successfully."
+
+# Open Devise confirmable
+#Then I should see "You need to sign in or sign up before continuing."
 #And there should have a active email been sent to "example@example.com"
 
