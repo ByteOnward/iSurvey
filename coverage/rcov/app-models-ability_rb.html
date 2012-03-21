@@ -27,15 +27,15 @@
             <td class="left_align"><a href="app-models-ability_rb.html">app/models/ability.rb</a></td>
             <td class='right_align'><tt>44</tt></td>
             <td class='right_align'><tt>14</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>75.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>88.64%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:75px"></div>
-        <div class="uncovered" style="width:25px"></div>
+        <div class="covered" style="width:89px"></div>
+        <div class="uncovered" style="width:11px"></div>
       </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>21.43%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>64.29%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:21px"></div>
-        <div class="uncovered" style="width:79px"></div>
+        <div class="covered" style="width:64px"></div>
+        <div class="uncovered" style="width:36px"></div>
       </div></td>
           </tr>
         </tbody>
@@ -65,16 +65,16 @@
         <tr class="marked">
           <td><pre><a name="line6">6</a>   def initialize(user, ip_address)</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line7">7</a>     user ||= User.new # guest user</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line8">8</a>     if user.role? :admin</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line9">9</a>       can :manage, :all</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line10">10</a>     elsif user.role? :owner</pre></td>
         </tr>
         <tr class="uncovered">
@@ -92,10 +92,10 @@
         <tr class="inferred">
           <td><pre><a name="line15">15</a>       end</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line16">16</a>     elsif user.id</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line17">17</a>       can [:read], Survey do |survey|</pre></td>
         </tr>
         <tr class="uncovered">
@@ -185,7 +185,7 @@
       </tbody>
     </table>
 
-    <p>Generated on 2012-03-19 17:39:19 +0800 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+    <p>Generated on 2012-03-21 17:56:09 +0800 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
 
   </body>
 </html>

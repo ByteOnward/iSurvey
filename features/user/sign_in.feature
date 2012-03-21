@@ -18,7 +18,7 @@ Scenario: Sign in via form
 Given there are the following users:
 | email               | password |
 | example@example.com | password |
-And I am on "the homepage"
+And I am on "homepage"
 And I fill in "Email" with "example@example.com"
 And I fill in "Password" with "password"
 And I press "Sign in"
@@ -28,7 +28,7 @@ Scenario: Unconfirmed user sign in via form
 Given there are the following users:
 | email               | password | unconfirmed |
 | example@example.com | password | true        |
-And I am on "the homepage"
+And I am on "homepage"
 And I fill in "Email" with "example@example.com"
 And I fill in "Password" with "password"
 And I press "Sign in"
