@@ -1,12 +1,8 @@
-Given /^I am not logged in$/ do
-  #visit 
-end
-
 Given /^I am on "([^"]*)"$/ do |page_name|
   visit path_to(page_name)
 end
 
-Given /^I fill "([^"]*)" with "([^"]*)"$/ do |field, value|
+Given /^I fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in field, :with => value
 end
 
@@ -23,4 +19,29 @@ Then /^there should have a active email been sent to "([^"]*)"$/ do |email|
   sent = ActionMailer::Base.deliveries.last
   sent.to.should eql([user.email])
 end
+
+Given /^there are the following users:$/ do |table|
+  table.hashes.each do |attrs|
+    unconfirmed = attrs.delete("unconfirmed") == "true"
+    @user = User.create!(attrs)
+    @user.confirm! unless unconfirmed
+  end
+end
+
+When /^I follow "([^"]*)"$/ do |link|
+  click_link link
+end
+
+Given /^I am signed in as "([^"]*)"$/ do |email|
+  @user = User.find_by_email(email)
+  visit new_user_session_path
+  fill_in "Email", :with => @user[:email]
+  fill_in "Password", :with => "password"
+  click_button "Sign in"
+end
+
+Then /^I should on the "([^"]*)"$/ do |page_name|
+  URI.parse(current_url).path.should == path_to(page_name)
+end
+
 
