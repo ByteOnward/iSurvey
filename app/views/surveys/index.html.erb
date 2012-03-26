@@ -5,7 +5,7 @@
 <div class="view_surveys">
 	<div class="title_bar">Survey
 		<%if can? :create, Survey %>
-			<button style="float:right; padding:3px 10px 3px 10px; margin-top:6px;"><%= link_to 'New Survey', new_survey_path %></button>
+			<input type="button" style="float:right; padding:3px 10px 3px 10px; margin:6px 6px 0px 0px; color:#cc6633; font-weight:bolder;" data-link="<%= new_survey_path %>" value="New Survey" />
 		<% end %>			
 	</div>
 	<ul class="list_surveys">
