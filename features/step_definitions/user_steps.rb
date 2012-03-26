@@ -30,7 +30,11 @@ end
 
 And /^the role of "([^"]*)" is "([^"]*)"$/ do |email, role|
   @user = User.find_by_email (email)
-  Role.create!(:name => "Admin", :group => "admin")
+  if  role == "Admin" || role == "Owner"
+    Role.create!(:name => role, :group => "admin")
+  else
+    Role.create!(:name => role, :group => "public")
+  end
   @role = Role.find_by_name(role)
   @user.roles << @role
 end

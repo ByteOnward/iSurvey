@@ -72,3 +72,4 @@ gem 'ci_reporter'
 #gem used to generate Rcov report
 gem 'simplecov'
 gem 'simplecov-rcov'
+gem "watir-webdriver", "~> 0.5.3"
