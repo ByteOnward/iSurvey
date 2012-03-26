@@ -27,15 +27,15 @@
             <td class="left_align"><a href="app-helpers-surveys_helper_rb.html">app/helpers/surveys_helper.rb</a></td>
             <td class='right_align'><tt>50</tt></td>
             <td class='right_align'><tt>27</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>62.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>86.00%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:62px"></div>
-        <div class="uncovered" style="width:38px"></div>
+        <div class="covered" style="width:86px"></div>
+        <div class="uncovered" style="width:14px"></div>
       </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>29.63%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>74.07%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:30px"></div>
-        <div class="uncovered" style="width:70px"></div>
+        <div class="covered" style="width:74px"></div>
+        <div class="uncovered" style="width:26px"></div>
       </div></td>
           </tr>
         </tbody>
@@ -95,19 +95,19 @@
         <tr class="marked">
           <td><pre><a name="line16">16</a>   def link_to_template(f, object, association)</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line17">17</a>     fields = f.fields_for(association, object, :child_index =&gt; &quot;new_placeholder&quot;) do |builder|</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line18">18</a>       render(association.to_s.singularize + &quot;_fields&quot;, :f =&gt; builder)</pre></td>
         </tr>
         <tr class="inferred">
           <td><pre><a name="line19">19</a>     end</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line20">20</a>     content_for((association.to_s.singularize + &quot;_template&quot;).to_sym) do</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line21">21</a>       raw &quot;&lt;div id=\&quot;#{association.to_s.singularize}_template\&quot;&gt;#{fields}&lt;/div&gt;&quot;</pre></td>
         </tr>
         <tr class="inferred">
@@ -122,7 +122,7 @@
         <tr class="marked">
           <td><pre><a name="line25">25</a>   def new_question</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line26">26</a>     Question.new.tap{|q| 3.times{q.choices.build}}    </pre></td>
         </tr>
         <tr class="inferred">
@@ -134,7 +134,7 @@
         <tr class="marked">
           <td><pre><a name="line29">29</a>   def new_choice</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line30">30</a>     Choice.new</pre></td>
         </tr>
         <tr class="inferred">
@@ -146,7 +146,7 @@
         <tr class="marked">
           <td><pre><a name="line33">33</a>   def leading_choice(question)</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line34">34</a>     if(question.question_type == 1)</pre></td>
         </tr>
         <tr class="uncovered">
@@ -155,7 +155,7 @@
         <tr class="inferred">
           <td><pre><a name="line36">36</a>     else</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line37">37</a>       raw radio_button_tag(&quot;q[#{question.id}]&quot;, false) </pre></td>
         </tr>
         <tr class="inferred">
@@ -170,13 +170,13 @@
         <tr class="marked">
           <td><pre><a name="line41">41</a>   def survey_groups</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line42">42</a>     roles = []</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line43">43</a>     if current_user.role?(:admin)</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line44">44</a>       roles = Role.where(:group =&gt; 'public')</pre></td>
         </tr>
         <tr class="inferred">
@@ -188,7 +188,7 @@
         <tr class="inferred">
           <td><pre><a name="line47">47</a>     end</pre></td>
         </tr>
-        <tr class="uncovered">
+        <tr class="marked">
           <td><pre><a name="line48">48</a>     roles.reduce({Public: 'Public'}){|m, role| m.tap{|ht|ht[role.name] = role.name}}</pre></td>
         </tr>
         <tr class="inferred">
@@ -203,7 +203,7 @@
       </tbody>
     </table>
 
-    <p>Generated on 2012-03-19 17:39:19 +0800 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+    <p>Generated on 2012-03-26 09:20:59 +0800 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
 
   </body>
 </html>

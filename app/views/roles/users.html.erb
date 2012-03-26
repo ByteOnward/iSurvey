@@ -7,7 +7,7 @@
 	<div class="title_bar">Roles Grant.</div>
 	<div class="bordered">
 	<%= form_tag({:action => "users"}, :name => 'search_users') do%>
-		Search Users:	<%= text_field_tag :search_string %><%= submit_tag("Search", :class => "title") %>
+			<%= label_tag :search_string, "Search Users:" %><%= text_field_tag :search_string %><%= submit_tag("Search", :class => "title") %>
 	<%end %>
 	</div>
 	<div class="apple_pagination"><%= will_paginate(@users) %></div>

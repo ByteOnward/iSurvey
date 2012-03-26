@@ -28,6 +28,17 @@ Given /^there are the following users:$/ do |table|
   end
 end
 
+And /^the role of "([^"]*)" is "([^"]*)"$/ do |email, role|
+  @user = User.find_by_email (email)
+  if  role == "Admin" || role == "Owner"
+    Role.create!(:name => role, :group => "admin")
+  else
+    Role.create!(:name => role, :group => "public")
+  end
+  @role = Role.find_by_name(role)
+  @user.roles << @role
+end
+
 When /^I follow "([^"]*)"$/ do |link|
   click_link link
 end
@@ -43,5 +54,4 @@ end
 Then /^I should on the "([^"]*)"$/ do |page_name|
   URI.parse(current_url).path.should == path_to(page_name)
 end
-
 
