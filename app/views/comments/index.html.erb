@@ -7,10 +7,9 @@
 				<div class="comment_info" style="height:20px; float:right;clear:both;">
 					Posted by <%= comment.user.email %> at <%= time_ago_in_words(comment.created_at) %> ago.
 					<% if current_user == comment.user %>
-		          <%= link_to 'Destroy', survey_comment_path(@survey, comment), confirm: 'Are you sure?', method: :delete %>
+		          <%= link_to 'Delete', survey_comment_path(@survey, comment), confirm: 'Are you sure?', method: :delete %>
 		      <%end%>
 				</div>
-
       </div>
     <%end%>
   </div>
@@ -23,6 +22,6 @@
     <%= f.submit "Add Comment", :controller => 'comments', :action => 'create' %>
   <%end%>
 
-<%= link_to 'Back', @survey %>
+	<%= link_to 'Back', @survey %>
 
 

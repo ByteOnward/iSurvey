@@ -9,10 +9,10 @@ class SurveysController < ApplicationController
   def index
     if current_user.role? :admin
       #@surveys = Survey.all
-      @surveys = Survey.paginate(:page => params[:page], :per_page => 8).order('created_at ASC')
+      @surveys = Survey.paginate(:page => params[:page], :per_page => 12).order('updated_at DESC')
     else
       roles = current_user.roles.reduce(['Public']){|a, role| a << role.name}
-      @surveys = Survey.where('"surveys"."group" in (?) or user_id = ?', roles, current_user.id).paginate(:page => params[:page], :per_page => 8).order('created_at ASC')
+      @surveys = Survey.where('"surveys"."group" in (?) or user_id = ?', roles, current_user.id).paginate(:page => params[:page], :per_page => 12).order('updated_at DESC')
       #@surveys = Survey.where(:group => current_user.roles.reduce(['Public']){|a, role| a << role.name})
     end
     respond_to do |format|

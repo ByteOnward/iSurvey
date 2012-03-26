@@ -71,6 +71,17 @@ $(document).ready(function(){
 		});
 	});
 	
+	//Cancel the beforeunload function.
+	$(".survey>.actions>.submit").on('confirm:complete', function(e, sure){
+		if(sure){
+			$(window).off('.check_leave_page');
+//			$(window).on('beforeunload', function(e){
+//				//if no data return, this event will not be trigger.
+//				e.preventDefault();
+//			});
+		}
+	});
+	
 	//For user go back the Browser(Safari, Chrome), we should keep the operation record.
 	$(':checked').each(function(){
 		$(this).next(':hidden').val(false);

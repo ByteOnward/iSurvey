@@ -43,6 +43,15 @@ class RolesController < ApplicationController
     end
   end
   
+  def delete
+    @role = Role.find(params[:id])
+    @role.destroy
+    respond_to do |format|
+      format.html { redirect_to :action => :index }
+      format.json { head :no_content }
+    end
+  end
+  
   def users
     search_string = params[:search_string] || ''
     @users = User.where("email like ?", "%#{search_string}%").paginate(:page => params[:page], :per_page => 15).order('email ASC')

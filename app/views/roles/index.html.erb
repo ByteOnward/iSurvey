@@ -5,12 +5,22 @@
 <div class="view_roles">
 	<div class="title_bar">Roles</div>
 	<div class="table list_roles">
-	<% @roles.each do |role| %>
+	<div class="tr">
+		<div>
+			<span class="td col1">Name</span>
+			<span class="td col2">Group</span>
+			<span class="td">Operation</span>
+		</div>
+	</div>
+	<% @roles.each do |role| %>			
 			<div class="tr">
 				<div>
 					<span class="td col1"><%= role.name %></span>
 					<span class="td col2"><%= role.group %></span>
-					<span class="td"><%= link_to :Edit, "/roles/show/#{role.id}", :remote => true %></span>
+					<span class="td">
+						<%= link_to :Edit, "/roles/show/#{role.id}", :remote => true %> |
+						<%= link_to 'Delete', "/roles/delete/#{role.id}", confirm: 'Are you sure?', method: :delete %>
+					</span>
 				</div>
 			</div>
 	<% end %>
@@ -31,9 +41,8 @@
 			<span class="td"><%= submit_tag("Update", :class => "title") %></span>
 	<% end %>
 </div>
-
-	<div class="bordered">
-		<%= link_to 'Grant Roles for Users', '/roles/users' %>
-	</div>	
+	
 
 </div>
+
+

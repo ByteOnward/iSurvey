@@ -36,15 +36,20 @@
     <%end%> 
   </div>
   <div class="take_survey">
-	<%= submit_tag("Take Survey", :class => "title") %>
-	<%= submit_tag("View Result", :class => "title", :type => 'button', "data-link" => url_for(:action => 'stats')) %>
-  </div>
+	<%= submit_tag("投票", :class => "title") %>
+	</div>
 </div>
 
 <%end%>
 
+<div class="footer">
 <%if can? :update, @survey %>
-<%= link_to 'Edit', edit_survey_path(@survey) %> 
-<% end %>|
-<%= link_to 'Back', surveys_path %>
+<%= link_to '编辑', edit_survey_path(@survey) %>|
+<% end %>
+<%= link_to '发表评论', survey_comments_path(@survey) %>|
+<%if can? :update, @survey %>
+<%= link_to '查看结果', url_for(:action => 'stats') %>|
+<% end %>
+<%= link_to '返回', surveys_path %>
+</div>
 

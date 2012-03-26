@@ -13,6 +13,7 @@
 	<div class="apple_pagination"><%= will_paginate(@users) %></div>
 	<%= form_tag({:action => "grant"}, :name => 'grant_form', :remote => true) do%>
 	<table class="user_roles" cellspacing="1" cellspadding="0">
+		<tbody>
 		<% @users.each do |user| %>
 		<tr>
 			<td><%= user.email %></td>
@@ -24,6 +25,7 @@
 			<td><%= check_box_tag("users[#{user.id}]") %></td>
 		</tr>
 		<% end %>
+		<tbody>
 	</table>
 	<div class="grant_operation bordered">
 	Role: <%= select_tag :role, options_for_select(@roles.reduce(Hash.new){|m, role| m.tap{|ht| ht[role.name] = role.id}}) %>
@@ -33,5 +35,3 @@
 	<%end%>
 	
 </div>
-
-<%= link_to 'Back', '/roles' %>

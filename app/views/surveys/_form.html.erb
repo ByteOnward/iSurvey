@@ -30,11 +30,10 @@
   <button class="title" type="button">Add Question</button>
 
   <div class="actions">
-    <%= f.submit "Submit", :class=>"submit"%>
+    <%= f.submit "Submit", :class=>"submit", :confirm => "Are you sure to submit the survey." %>
   </div>
 
-
-<% link_to_template(f,  new_question, :questions) %>
+	<% link_to_template(f,  new_question, :questions) %>
 
 </div>
 
@@ -45,3 +44,8 @@
 	<%= yield(:question_template)%>
 	<%= yield(:choice_template)%>
 </div>
+<script type="text/javascript">
+	$(window).on('beforeunload.check_leave_page', function(e){
+		return "离开此页面可能造成你当前编辑的内容丢失!";
+	});
+</script>
