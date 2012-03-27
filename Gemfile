@@ -73,3 +73,4 @@ gem 'ci_reporter'
 gem 'simplecov'
 gem 'simplecov-rcov'
 gem "watir-webdriver", "~> 0.5.3"
+gem 'headless'

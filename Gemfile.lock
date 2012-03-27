@@ -88,6 +88,7 @@ GEM
     gherkin (2.9.0)
       json (>= 1.4.6)
     hashie (1.2.0)
+    headless (0.2.2)
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.3)
@@ -220,6 +221,7 @@ DEPENDENCIES
   email_spec
   execjs
   factory_girl_rails
+  headless
   jquery-rails
   omniauth-github
   omniauth-identity
