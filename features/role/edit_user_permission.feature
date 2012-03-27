@@ -4,6 +4,7 @@ Feature: Edit User Permission
   As a admin
   I want to edit users' permission easily
 
+  @javascript
   Scenario: edit users' permission
     Given there are the following users:
       | email               | password |

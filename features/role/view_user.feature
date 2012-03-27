@@ -4,6 +4,7 @@ Feature: View Users
   As a admin
   I want to be able to see a list of users
 
+  @javascript
   Scenario: view users
     Given there are the following users:
     | email               | password |

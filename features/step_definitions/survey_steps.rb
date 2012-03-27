@@ -1,5 +1,23 @@
+Given /^I fill in "([^"]*)" with empty$/ do |field|
+  fill_in field, :with => nil
+end
+
+Given /^I click "([^"]*)"$/ do |button|
+  if button == "Delete" || button == "Sign out"
+    click_link button
+  else
+    click_button button
+  end
+  page.driver.browser.switch_to.alert.accept
+  #page.evaluate_script('window.confirm = function() { return true; }')
+end
+
 When /^I select "([^\"]*)" from "([^\"]*)"$/ do |value, field|
   select(value, :from => field)
+end
+
+When /^I click New Survey button$/ do
+  find('.title_bar > input').click
 end
 
 And /^I should be on the project page for "([^"]*)"$/ do |name|
@@ -41,25 +59,36 @@ Then /^there should have a invite email been sent to "([^"]*)"$/ do |email|
 end
 
 And /^I fill in new choice with "([^"]*)"$/ do |value|
-
+  question = find(".survey > .questions")
+  choices =  question.all('.choices>div>span.group>textarea')
+  choices[1].set(value)
 end
 
-When /^I click "([^"]*)" to delete "([^"]*)"$/ do |arg1, arg2|
-#  puts page.body
-  puts find('.questions>.group>label>a.delete').inspect
-  require "watir-webdriver"
-  require "watir-webdriver/extensions/alerts"
-
-  browser = Watir::Browser.new
-  browser.goto 'http://localhost:3000/users/login'
-  fill_in "Email", :with => "admin@example.com"
-  fill_in "Password", :with => "password"
-  click_button "Sign in"
-  click_link "Edit"
-  browser.confirm(true) do
-    browser.link(:xpath, '/html/body/div/div[2]/div[1]/div/form/div[2]/div[1]/div/label[1]/a').click
+When /^I click X to delete "([^"]*)"$/ do |content|
+  if content == "TestQuestion"
+    find('.questions>.group>label>a.delete').click
+  elsif content == "TestChoice"
+    find('.questions>.group>.choices label>a.delete').click
   end
-
-
+  page.driver.browser.switch_to.alert.accept
 end
 
+And /^I fill in new question with "([^"]*)"$/ do |text|
+  questions = all('.survey > .questions > .group > textarea')
+  questions[1].set(text)
+end
+
+And /^I fill in choice of "([^"]*)"with "([^"]*)"$/ do |content, value|
+  questions = all('.survey > .questions > .group')
+  question = questions.last
+  choices = question.all('.choices>div>span.group>textarea')
+  choices[0].set(value)
+end
+
+When /^I choose "([^\"]*)"$/ do |field|
+  find('.survey > .survey_body > .question > .question_body > .question_item > input').set(true)
+end
+
+And /^I should be on the result page for "([^"]*)"$/ do |name|
+  URI.parse(current_url).path.should == '/surveys/1/stats'
+end

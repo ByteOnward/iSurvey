@@ -4,6 +4,7 @@ Feature: Search User
   As a admin
   I want to search a user easily
 
+  @javascript
   Scenario: search users
     Given there are the following users:
       | email               | password |

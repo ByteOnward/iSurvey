@@ -1,11 +1,11 @@
-Feature: Add Choice
+Feature: Delete Choice
 
-  In order to add choices to a question
-  As a survey creator
-  I want to add choices easily
+  In order to delete choices to a survey
+  As a survey owner or admin
+  I want to delete choices to my own survey
 
   @javascript
-  Scenario: add choices
+  Scenario: delete choices
     Given there are the following users:
       | email               | password |
       | admin@example.com   | password |
@@ -13,10 +13,8 @@ Feature: Add Choice
     And I am signed in as "admin@example.com"
     Given there is a survey called "Skillset"
     And I am on "homepage"
-    When I follow "Edit"
-    When I press "Add Choice"
-    And I fill in new choice with "TestNewChoice"
+    And I follow "Edit"
+    When I click X to delete "TestChoice"
     And I click "Submit"
-    Then I should see "TestChoice"
-    And I should see "TestNewChoice"
-
+    Then I should see "TestQuestion"
+    And I should not see "TestChoice"

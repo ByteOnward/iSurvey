@@ -4,6 +4,7 @@ In order to view survey dashboard
 As a new user
 I want to sign up a account
 
+@javascript
 Scenario: unsuccessful sign up
 Given I am on "signup page"
 And I fill in "Email" with "invalid@email"
@@ -13,6 +14,7 @@ When I press "Sign up"
 Then I should see "Email is invalid"
 And I should see "Password doesn't match confirmation"
 
+@javascript
 Scenario: successful sign up
 Given I am on "signup page"
 And I fill in "Email" with "example@example.com"

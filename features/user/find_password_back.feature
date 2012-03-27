@@ -12,11 +12,13 @@ Given there are the following users:
 And I am on "signin page"
 When I follow "Forgot your password?"
 
+@javascript
 Scenario: find password back
 When I fill in "Email" with "example@example.com"
 And I press "Send me reset password instructions"
 Then I should see "You will receive an email with instructions about how to reset your password in a few minutes."
 
+@javascript
 Scenario: find password with a nonexistent email
 When I fill in "Email" with "nonexistentuser@example.com"
 And I press "Send me reset password instructions"

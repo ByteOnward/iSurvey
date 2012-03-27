@@ -1,8 +1,8 @@
-Feature: Add Choice
+Feature: Add Question
 
-  In order to add choices to a question
+  In order to add questions to a survey
   As a survey creator
-  I want to add choices easily
+  I want to add questions easily
 
   @javascript
   Scenario: add choices
@@ -14,9 +14,12 @@ Feature: Add Choice
     Given there is a survey called "Skillset"
     And I am on "homepage"
     When I follow "Edit"
-    When I press "Add Choice"
-    And I fill in new choice with "TestNewChoice"
+    When I press "Add Question"
+    And I fill in new question with "TestNewQuestion"
+    And I fill in choice of "TestNewQuestion"with "TestNewChoice"
     And I click "Submit"
     Then I should see "TestChoice"
+    And I should see "TestChoice"
+    And I should see "TestNewQuestion"
     And I should see "TestNewChoice"
 

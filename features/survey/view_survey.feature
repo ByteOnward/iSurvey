@@ -15,6 +15,7 @@ Feature: View Survey
     And there is a survey called "Go for fun"
     And the group of "Go for fun" is "EWE"
 
+  @javascript
   Scenario: Viewing visible surveys
     And I am on "homepage"
     And I should see "Skillset"

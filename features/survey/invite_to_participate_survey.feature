@@ -4,6 +4,7 @@ Feature: Invite to Participate Survey
   As a survey owner or admin
   I want to send out notification email with link 
 
+@javascript
 Scenario: Send notification email to invite users to participate survey
   Given there are the following users:
     | email               | password |

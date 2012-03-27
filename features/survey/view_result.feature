@@ -1,11 +1,11 @@
-Feature: Delete Question
+Feature: View Result
 
-  In order to delete questions to a survey
+  In order to view the result of a survey
   As a survey owner or admin
-  I want to delete questions to my own survey
+  I want to view the result of a survey easily
 
   @javascript
-  Scenario: delete questions
+  Scenario: view result
     Given there are the following users:
       | email               | password |
       | admin@example.com   | password |
@@ -13,8 +13,6 @@ Feature: Delete Question
     And I am signed in as "admin@example.com"
     Given there is a survey called "Skillset"
     And I am on "homepage"
-    And I follow "Edit"
-    When I click X to delete "TestQuestion"
-    And I click "Submit"
-    Then I should not see "TestQuestion"
-    And I should not see "TestChoice"
+    And I follow "Skillset"
+    And I follow "查看结果"
+    Then I should be on the result page for "Skillset"
