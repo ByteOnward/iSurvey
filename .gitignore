@@ -3,6 +3,8 @@ log/*.log
 tmp/**/*
 Gemfile.lock
 log/**/*
+.idea/
+.bundle/
 
 
 
