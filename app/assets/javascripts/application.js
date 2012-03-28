@@ -164,7 +164,7 @@ $(function(){
 	var links = $('.list_roles a[data-remote]');
 	links.on('ajax:success', function(ext, data, eventName, xhr){
 		$('input[name="role[name]"]', edit_form).val(data.name);
-		$('select', edit_form).val(data.group);		
+		$('select', edit_form).val(data.group);
 		edit_form.attr('action', '/roles/update/' + data.id);
 		items.show();
 		$(this).parent().parent().hide(100);
