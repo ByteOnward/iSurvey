@@ -32,10 +32,14 @@ class RolesController < ApplicationController
   def update
     role = Role.find(params[:id])
     role2 = params[:role]
+    #for chrome bug second select value='false'
+    if(role2[:group] == 'false')
+      role2[:group] = 'admin'
+    end
     if(role.name == role2[:name] && role.group == role2[:group])
       render :json => '{"status": "nochanged"}'
     else
-      if role.update_attributes(params[:role])
+      if role.update_attributes(role2)
         render :json => '{"status": "success"}'
       else
         render :status => 500
