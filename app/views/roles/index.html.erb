@@ -37,12 +37,17 @@
 <div class="edit_role_form">	
 	<%= form_tag({:action => "edit"}, :name => 'edit_role_form', :remote => true) do%>
 			<span class="td col1"><%= text_field_tag("role[name]") %></span>
-			<span class="td col2"><%= select_tag("role[group]", options_for_select({:public => 'public', :admin => 'admin'}))%></span>
+			<span class="td col2">
+				<%= select_tag("role[group]", options_for_select({:public => 'public', :admin => 'admin'}))%>
+			</span>
 			<span class="td"><%= submit_tag("Update", :class => "title") %></span>
 	<% end %>
 </div>
 	
 
 </div>
+
+
+
 
 
