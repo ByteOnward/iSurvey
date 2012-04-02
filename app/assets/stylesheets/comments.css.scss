@@ -2,20 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div .content{
-  height: 60px;
-  width: 60%;
-  border: 1px solid #ccc;
-  margin-top: 10px;
-  margin-botton: 10px;
-  padding: 10px;
-}
 
-div .comment_content{
-
-}
-
-div .comment_info{
-  font-size: 85%;
-  color: #666;
+div.comment{
+	margin-bottom:10px;
+	.content{
+	  width:80%;
+		border:1px solid #339933;
+		border-radius:6px;
+		margin-bottom:20px;
+		padding:0px 0px 5px 0px;
+		.comment_content{
+			margin:0px 0px 0px 0px;
+			padding:0px 6px 0px 6px;
+			p{
+				margin:3px;
+			}
+		}
+		.comment_info{
+			height:15px;
+			padding-right:5px;
+			.footnode{
+				font-size: 80%;
+			  color: #666;
+				height:20px;
+				float: right;
+			}
+		}
+	}
 }

@@ -2,18 +2,21 @@
 	<% unless @survey.comments.empty? %>
   <div class="comment">
     <% @comments.each do |comment| %>
-      <div class=" bordered content">
-        <div class="comment_content"><%= comment.content %></div>
-				<div class="comment_info" style="height:20px; float:right;clear:both;">
+      <div class="content">
+        <div class="comment_content"><%= raw textilize(comment.content) %></div>
+				<div class="comment_info">
+					<div class="footnode">
 					Posted by <%= comment.user.email %> at <%= time_ago_in_words(comment.created_at) %> ago.
 					<% if current_user == comment.user %>
 		          <%= link_to 'Delete', survey_comment_path(@survey, comment), confirm: 'Are you sure?', method: :delete %>
 		      <%end%>
+					</div>
 				</div>
       </div>
     <%end%>
   </div>
   <%end%>
+
   <div class="apple_pagination"><%= will_paginate @comments %></div>
 
   <%= form_for [@survey, current_user.comments.new] do |f| %>
