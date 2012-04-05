@@ -54,7 +54,7 @@ end
 
 Then /^there should have a invite email been sent to "([^"]*)"$/ do |email|
   user = User.find_by_email(email)
-  sent = ActionMailer::Base.deliveries.last
+  sent = Notifier.deliveries.last
   sent.to.should eql([user.email])
 end
 

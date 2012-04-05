@@ -22,9 +22,9 @@ end
 
 Given /^there are the following users:$/ do |table|
   table.hashes.each do |attrs|
-    unconfirmed = attrs.delete("unconfirmed") == "true"
+    #unconfirmed = attrs.delete("unconfirmed") == "true"
     @user = User.create!(attrs)
-    @user.confirm! unless unconfirmed
+    #@user.confirm! unless unconfirmed
   end
 end
 
