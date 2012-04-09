@@ -43,12 +43,12 @@
 
 <div class="footer">
 <%if can? :update, @survey %>
-<%= link_to '编辑', edit_survey_path(@survey) %>|
+<%= link_to 'Edit', edit_survey_path(@survey) %>|
 <% end %>
-<%= link_to '发表评论', survey_comments_path(@survey) %>|
+<%= link_to 'Comments', survey_comments_path(@survey) %>|
 <%if can? :update, @survey %>
-<%= link_to '查看结果', url_for(:action => 'stats') %>|
+<%= link_to 'Statistics', url_for(:action => 'stats') %>|
 <% end %>
-<%= link_to '返回', surveys_path %>
+<%= link_to 'Back', surveys_path %>
 </div>
 

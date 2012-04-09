@@ -260,3 +260,7 @@ div.table .tr span.td{
 	clear:both;
 }
 
+.footnote{
+    text-align: center;
+    font-size: 13px;
+}

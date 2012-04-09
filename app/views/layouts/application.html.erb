@@ -28,7 +28,7 @@
 				<% if can? :manage, Survey %>
 					<li><%= link_to "Manage Surveys", surveys_path %></li>
 				<% else %>
-					<li><%= link_to "Surveys", surveys_path %></li>
+					<li><%= link_to "Home", surveys_path %></li>
 				<% end%>
 				<% if can? :manage, Role %>
 					<li><%= link_to "Manage Roles", '/roles/' %></li>
@@ -41,6 +41,8 @@
 		<div>
   </div>
 
-  <%= yield(:footer)%>  
+  <%= yield(:footer)%> 
+  
+  <div class="footnote">Made by IID</div>
 </body>
 </html>

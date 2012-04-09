@@ -105,7 +105,7 @@ class SurveysController < ApplicationController
   def stats
     @survey = Survey.find(params[:id]);
     authorize! :read, @survey, :message => "Unable to read this article." 
-    @stats = Statistics.where("survey_id = ?", params[:id]).first        
+    @stats = Statistics.where("survey_id = ?", params[:id]).first
     result_by_choices, result_by_users = @stats ? stats_of_percentage(@stats, @survey) : [Hash.new(0), Hash.new(0)]
     if @survey.group == 'Public'
       @user_count = User.all.size 
@@ -143,9 +143,15 @@ class SurveysController < ApplicationController
   # GET /surveys/1.json
   def show
     @survey = Survey.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @survey }
+    if allow_user_take_survey
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @survey }
+      end
+    else
+      respond_to do |format|
+        format.html {redirect_to url_for(:action => 'search', :controller => 'statistics', :user_id => current_user.id, :survey_id => @survey.id)}
+      end
     end
   end
  
