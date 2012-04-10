@@ -15,7 +15,7 @@
   <div class="survey_body">
     <% @survey.questions.each_with_index do |q, i|%>
 	<div class="question">
-	  <div class="question_title"><%= i + 1 %>.<%= q.title %></div>
+	  <div class="question_title"><%= i + 1 %>.<%= q.title %><% if q.question_type == 1 %> (Multiple)<%else%> (Single)<%end%></div>
 	  <div class="question_body">
 		<% q.choices.each_with_index do |c, j| %>			
 			<div class="question_item">
