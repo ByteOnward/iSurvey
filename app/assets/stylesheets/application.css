@@ -172,7 +172,7 @@ a {
 }
 
 div.table{
-	width:600px;
+	width:400px;
 	border:1px solid #99cc99;
 	border-radius:8px;
 	padding:3px;
@@ -202,7 +202,7 @@ div.table .tr span.td{
 
 
 .apple_pagination {
-	cursor: default; 
+	cursor: default;
 	font-size:12px;
 	margin:0px 0px;
 	padding:3px;
@@ -214,10 +214,10 @@ div.table .tr span.td{
 }
 
 .apple_pagination a, .apple_pagination span {
-	padding: 0.2em 0.3em; 
+	padding: 0.2em 0.3em;
 }
 .apple_pagination .disabled {
-	color: #aaaaaa; 
+	color: #aaaaaa;
 }
 .apple_pagination .current {
 	font-style: normal;
@@ -230,15 +230,15 @@ div.table .tr span.td{
   -moz-border-radius: 1em;
 	-webkit-border-radius: 1em;
 	border-radius: 1em;
-	text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; 
+	text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;
 	text-align:center;
 }
 .apple_pagination a {
 	text-decoration: none;
-	color: black; 
+	color: black;
 }
 .apple_pagination a:hover, .apple_pagination a:focus {
-	text-decoration: underline; 
+	text-decoration: underline;
 }
 
 .tabs{
@@ -263,4 +263,13 @@ div.table .tr span.td{
 .footnote{
     text-align: center;
     font-size: 13px;
+}
+
+div.add_group{
+    width: 400px;
+    border:1px solid #339933;
+    border-radius:6px;
+    margin:5px 0px 10px 0px;
+    padding:5px 0px 5px 3px;
+    clear:both;
 }

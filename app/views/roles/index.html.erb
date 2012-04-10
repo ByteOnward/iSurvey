@@ -7,8 +7,7 @@
 	<div class="table list_roles">
 	<div class="tr">
 		<div>
-			<span class="td col1">Name</span>
-			<span class="td col2">Group</span>
+			<span class="td col1">Group</span>
 			<span class="td">Operation</span>
 		</div>
 	</div>
@@ -16,7 +15,6 @@
 			<div class="tr">
 				<div>
 					<span class="td col1"><%= role.name %></span>
-					<span class="td col2"><%= role.group %></span>
 					<span class="td">
 						<%= link_to :Edit, "/roles/show/#{role.id}", :remote => true %> |
 						<%= link_to 'Delete', "/roles/delete/#{role.id}", confirm: 'Are you sure?', method: :delete %>
@@ -25,12 +23,12 @@
 			</div>
 	<% end %>
 	</div>
-	
-<div class="bordered">	
+
+<div class="add_group">
 	<%= form_tag({:action => "add"}, :name => 'add_role_form', :remote => true) do%>
 		<%= text_field_tag("role[name]") %>
-		<%= select_tag("role[group]", options_for_select({:public => 'public', :admin => 'admin'}))%>
-		<%= submit_tag("Add Role", :class => "title") %>
+		<%= hidden_field_tag("role[group]", ({:public => 'public', :admin => 'admin'}))%>
+		<%= submit_tag("Add Group", :class => "title") %>
 	<% end %>
 </div>
 
@@ -38,7 +36,7 @@
 	<%= form_tag({:action => "edit"}, :name => 'edit_role_form', :remote => true) do%>
 			<span class="td col1"><%= text_field_tag("role[name]") %></span>
 			<span class="td col2">
-				<%= select_tag("role[group]", options_for_select({:public => 'public', :admin => 'admin'}))%>
+				<%= hidden_field_tag("role[group]", ({:public => 'public', :admin => 'admin'}))%>
 			</span>
 			<span class="td"><%= submit_tag("Update", :class => "title") %></span>
 	<% end %>

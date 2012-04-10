@@ -55,6 +55,20 @@ class RolesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def destroy
+    @user = User.find(params[:id])
+    if @user == current_user
+      respond_to do |format|
+        format.html {redirect_to '/roles/users', :alert => 'You cannot destroy yourself.'}
+      end
+    else
+      @user.destroy
+      respond_to do |format|
+        format.html {redirect_to '/roles/users'}
+      end
+    end
+  end
   
   def users
     search_string = params[:search_string] || ''

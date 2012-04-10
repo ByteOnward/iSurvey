@@ -23,6 +23,7 @@
 				<%end%>
 			</td>
 			<td><%= check_box_tag("users[#{user.id}]") %></td>
+            <td><%= link_to 'Delete',  "/roles/destroy/#{user.id}", confirm: 'Are you sure?', method: :delete %></td>
 		</tr>
 		<% end %>
 		<tbody>
