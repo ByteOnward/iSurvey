@@ -14,8 +14,16 @@
 	<%= form_tag({:action => "grant"}, :name => 'grant_form', :remote => true) do%>
 	<table class="user_roles" cellspacing="1" cellspadding="0">
 		<tbody>
+        <tr>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Group</td>
+          <td></td>
+          <td></td>
+        </tr>
 		<% @users.each do |user| %>
 		<tr>
+            <td><%= user.username %></td>
 			<td><%= user.email %></td>
 			<td>
 				<%user.roles.each do|role|%>
