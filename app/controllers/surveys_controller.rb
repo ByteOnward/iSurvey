@@ -156,6 +156,15 @@ class SurveysController < ApplicationController
       end
     end
   end
+
+  def search
+    search_string = params[:search_string] || ''
+    @surveys = Survey.where("name like ?", "%#{search_string}%").paginate(:page => params[:page], :per_page => 12).order('updated_at DESC')
+    respond_to do |format|
+      format.html
+      format.json { render json: @surveys }
+    end
+  end
  
   private
     def take_survey

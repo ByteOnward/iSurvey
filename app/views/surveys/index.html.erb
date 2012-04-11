@@ -6,8 +6,13 @@
 	<div class="title_bar">Survey
 		<%if can? :create, Survey %>
 			<input type="button" style="float:right; padding:3px 10px 3px 10px; margin:0px 6px 0px 0px; color:#cc6633; font-weight:bolder;" data-link="<%= new_survey_path %>" value="New Survey" />
-		<% end %>			
+		<% end %>
 	</div>
+  <div class="search_survey">
+    <%= form_tag({:controller => "surveys", :action => "search"}, :name => 'search_surveys') do%>
+        <%= label_tag :search_string, "Search Surveys:" %><%= text_field_tag :search_string %><%= submit_tag("Search", :class => "title") %>
+    <%end %>
+  </div>
 	<ul class="list_surveys">
 		<% @surveys.each do |survey| %>
 		<li>
