@@ -118,7 +118,7 @@ class RolesController < ApplicationController
   def group
     @roles = Role.all
     @role = Role.find_by_name(params[:role])
-    @users = @role.users
+    @users = @role.users.paginate(:page => params[:page], :per_page => 15).order('email ASC')
     respond_to do |format|
       format.html
       format.json { render json: @users }

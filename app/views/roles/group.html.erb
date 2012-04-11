@@ -10,7 +10,7 @@
         <%= label_tag :search_string, "Search Users:" %><%= text_field_tag :search_string %><%= submit_tag("Search", :class => "title") %>
     <%end %>
   </div>
-
+  <div class="apple_pagination"><%= will_paginate @users %></div>
   <%= form_tag({:action => "grant"}, :name => 'grant_form', :remote => true) do%>
       <table class="user_roles" cellspacing="1" cellspadding="0">
         <tbody>
