@@ -35,17 +35,16 @@
     <%end%> 
   </div>
   <div class="take_survey">
-	<%= submit_tag("投票", :class => "title") %>
+	<%= submit_tag("Submit", :class => "title") %>
 	</div>
 </div>
 
 <%end%>
 
-<div class="footer">
+<div class="link_content">
 <%if can? :update, @survey %>
 <%= link_to 'Edit', edit_survey_path(@survey) %>|
 <% end %>
-<%= link_to 'Comments', survey_comments_path(@survey) %>|
 <%if can? :update, @survey %>
 <%= link_to 'Statistics', url_for(:action => 'stats') %>|
 <% end %>

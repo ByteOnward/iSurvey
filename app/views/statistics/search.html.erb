@@ -1,33 +1,82 @@
-<div class="survey">
-  <div class="survey_title"><%= @survey.name %></div>	
-  <div class="survey_info">
-	<div class="page_status">Page: 1/1 Question No:<%= @survey.questions.size %></div>
-	<%= @survey.desc %>
-  </div>
-  <div class="survey_body">
-    <% @survey.questions.each_with_index do |q, i|%>
-	<div class="question">
-	  <div class="question_title"><%= i + 1 %>.<%= q.title %></div>
+<% content_for(:frame_style){"stats_frame_style"} %>
 
-	  <div class="question_body">
-		<% q.choices.each_with_index do |c, j| %>			
-			<div class="question_item"<%=raw is_selected(@choices, c.id) ? ' style="background-color:#3FC0C0; color:#f0f0f0;"' : ''%>>
-			<%= is_selected(@choices, c.id) ? '√' : '∆'%>
-			<%= c.content %>
-			</div>
-		<% end %>
-	  </div>
+<div class="stats">
+  <div class="main_content">
+    <div class="survey">
+      <div class="survey_title"><%= @survey.name %></div>
+      <div class="survey_info">
+        <div class="page_status">Page: 1/1 Question No:<%= @survey.questions.size %></div>
+        <%= @survey.desc %>
+      </div>
+      <div class="survey_body">
+        <% @survey.questions.each_with_index do |q, i| %>
+            <div class="question">
+              <div class="question_title"><%= i + 1 %>.<%= q.title %></div>
+
+              <div class="question_body">
+                <% q.choices.each_with_index do |c, j| %>
+                    <div class="question_item"<%= raw is_selected(@choices, c.id) ? ' style="background-color:#3FC0C0; color:#f0f0f0;"' : '' %>>
+                      <%= is_selected(@choices, c.id) ? '√' : '∆' %>
+                      <%= c.content %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+      </div>
     </div>
-    <%end%> 
+  </div>
+  <div class="right_content">
+      <% unless @survey.comments.empty? %>
+          <div class="comments">
+            <% @comments.each do |comment| %>
+                <div class="content">
+                  <div class="comment_content"><%= raw textilize(comment.content) %></div>
+                  <div class="comment_info">
+                    <div class="footnode">
+                      Posted by <%= comment.user.username %> at <%= time_ago_in_words(comment.created_at) %> ago.
+                      <% if current_user == comment.user %>
+                          <%= link_to 'Delete', survey_comment_path(@survey, comment), confirm: 'Are you sure?', method: :delete %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+            <div class="apple_pagination"><%= will_paginate @comments %></div>
+          </div>
+      <% end %>
+      <div class="comment_form">
+      <%= form_for [@survey, current_user.comments.new] do |f| %>
+          <%= f.label :content, "Your Comment" %>
+          <br/>
+          <%= f.text_area :content, :rows => 3, :cols => 40 %>
+          <br/>
+          <%= f.submit "Add Comment", :controller => 'comments', :action => 'create', :remote => true %>
+      <% end %>
+      </div>
+  </div>
+
+  <div class="link_content">
+    <%if can? :update, @survey %>
+        <%= link_to 'Statistics', url_for(:action => 'stats', :controller => 'surveys', :user_id => current_user.id, :survey_id => @survey.id, :id => @survey.id) %>|
+    <% end %>
+    <%= link_to 'Back', surveys_path %>
   </div>
 
 </div>
 
-<div class="footer">
-  <%= link_to 'Comments', survey_comments_path(@survey) %>|
-  <%if can? :update, @survey %>
-      <%= link_to 'Statistics', url_for(:action => 'stats', :controller => 'surveys', :user_id => current_user.id, :survey_id => @survey.id, :id => @survey.id) %>|
-  <% end %>
-  <%= link_to 'Back', surveys_path %>
-</div>
 
+
+
+
+
+
+
+<!--
+
+
+
+
+
+
+-->

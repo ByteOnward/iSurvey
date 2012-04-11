@@ -13,9 +13,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to survey_comments_url, :notice => 'Comment was created successfully.'}
+        format.js
+        format.html { redirect_to url_for(:action => 'search', :controller => 'statistics', :user_id => current_user.id, :survey_id => @survey.id), :notice => 'Comment was created successfully.'}
       else
-        format.html { redirect_to survey_comments_url, :notice => 'Comment failed to create.' }
+        format.html { redirect_to url_for(:action => 'search', :controller => 'statistics', :user_id => current_user.id, :survey_id => @survey.id), :notice => 'Comment failed to create.' }
       end
     end
   end
@@ -26,11 +27,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @survey = Survey.find(params[:survey_id])
     @comment = current_user.comments.find(params[:id])
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to survey_comments_url }
+      format.html {redirect_to url_for(:action => 'search', :controller => 'statistics', :user_id => current_user.id, :survey_id => @survey.id)}
     end
   end
 end

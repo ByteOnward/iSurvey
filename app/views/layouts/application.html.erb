@@ -9,40 +9,51 @@
   <%= yield(:head) %>
 </head>
 <body>
-  <div id="container">
-    <div id="user_nav">
-      <% if user_signed_in? %>
-        Signed in as <%= current_user.email %>.<br />
-        Not you? <%= link_to "Sign out", destroy_user_session_path, :confirm => 'Are you sure you want to Logout!', :method => :delete, :class => "remove"%>
-      <% else %>
-        <%= link_to "Sign In", '/users/login' %>
-      <% end %>
-    </div>
-		
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
 
-		<div class="tabs" style="width:100%;">
-			<ul>
-				<% if can? :manage, Survey %>
-					<li><%= link_to "Manage Surveys", surveys_path %></li>
-				<% else %>
-					<li><%= link_to "Home", surveys_path %></li>
-				<% end%>
-				<% if can? :manage, Role %>
-					<li><%= link_to "Manage Roles", '/roles/' %></li>
-					<li><%= link_to "Manage Users", '/roles/users' %></li>
-				<% end%>
-			</ul>
-			<div style="padding:20px 30px 30px 30px;">			
-	  		<div><%= yield %></div>
-			</div>
-		<div>
+<div class="header">
+  <div id="user_nav">
+    <% if user_signed_in? %>
+        Signed in as <%= current_user.email %>.<br/>
+        Not
+        you? <%= link_to "Sign out", destroy_user_session_path, :confirm => 'Are you sure you want to Logout!', :method => :delete, :class => "remove" %>
+    <% else %>
+        <%= link_to "Sign In", '/users/login' %>
+    <% end %>
   </div>
 
-  <%= yield(:footer)%> 
+  <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+  <div class="clear"></div>
+</div>
+
+<div id="container">
+  <div class="tabs">
+    <ul>
+      <% if can? :manage, Survey %>
+          <li><%= link_to "Manage Surveys", surveys_path %></li>
+      <% else %>
+          <li><%= link_to "Home", surveys_path %></li>
+      <% end %>
+      <% if can? :manage, Role %>
+          <li><%= link_to "Manage Roles", '/roles/' %></li>
+          <li><%= link_to "Manage Users", '/roles/users' %></li>
+      <% end %>
+    </ul>
+
+    <div class="<%= content_for?(:frame_style) ? yield(:frame_style) : 'frame_padding' %>">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+
   
-  <div class="footnote">Made by IID</div>
+<div class="footer">
+    Made by IID
+  <%= yield(:footer)%>
+</div>
+
+
 </body>
 </html>

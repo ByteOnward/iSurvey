@@ -31,8 +31,8 @@ a img {
 }
 
 a {
-  color: #0000FF;
-	text-decoration: none;
+    color: #0000FF;
+    text-decoration: none;
 }
 
 .clear {
@@ -41,24 +41,32 @@ a {
   overflow: hidden;
 }
 
+.header {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #FFF;
+}
+
 #container {
   width: 80%;
   margin: 0 auto;
   background-color: #FFF;
-  padding: 5px 40px;
-  border: solid 1px black;
-  margin-top: 20px;
+  padding:20px 0;
 }
 
 #user_nav {
-	clear:both;
+    float: right;
+    margin:5px 10px 10px 0px;
+    text-align: right;
+    clear:both;
 }
 
 
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
-  margin-bottom: 10px;
+  margin: 5px auto 10px auto;
   width: 320px;
+  float: left;
 }
 
 #flash_notice {
@@ -103,11 +111,6 @@ a {
   margin: 0;
 }
 
-#user_nav {
-  float: right;
-  margin-bottom: 10px;
-  text-align: right;
-}
 
 .authentications {
   margin-bottom: 30px;
@@ -242,7 +245,10 @@ div.table .tr span.td{
 }
 
 .tabs{
+    width:900px;
 	clear:both;
+    margin: 0px auto;
+    padding:0px 20px;
 }
 
 .tab-title, .tab-title li{margin:0; padding:0; list-style:none;}
@@ -260,9 +266,9 @@ div.table .tr span.td{
 	clear:both;
 }
 
-.footnote{
+.footer{
     text-align: center;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 div.add_group{
@@ -280,4 +286,9 @@ div.search_survey{
     margin:5px 0px 10px 0px;
     padding:5px 0px 5px 3px;
     clear:both;
+}
+
+
+.frame_padding {
+    padding:20px 30px 30px 30px;
 }

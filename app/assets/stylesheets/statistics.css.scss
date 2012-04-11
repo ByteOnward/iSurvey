@@ -1,3 +1,27 @@
 // Place all the styles related to the Statistics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.stats{
+  width:960px;
+  .main_content{
+    width:560px;
+    float: left;
+  }
+  .right_content{
+    font-size: 12px;
+    float: left;
+    margin-left:20px;
+    width:320px;
+  }
+  .link_content{
+    clear: both;
+    width:100%;
+    padding-top: 30px;
+  }
+}
+.stats_frame_style{
+  padding:10px 1px;
+}

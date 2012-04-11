@@ -130,7 +130,7 @@ class SurveysController < ApplicationController
     status = allow_user_take_survey && take_survey    
     respond_to do |format|
       if status
-        format.html { redirect_to survey_comments_path(@survey), notice: 'Thank you for your participation.' }
+        format.html { redirect_to url_for(:action => 'search', :controller => 'statistics', :user_id => current_user.id, :survey_id => @survey.id), notice: 'Thank you for your participation.' }
         format.json { render json: @stats, status: :created, location: @survey }
       else
         error = @stats ? @stats.errors : "You have already taken this survey."
@@ -161,7 +161,7 @@ class SurveysController < ApplicationController
     search_string = params[:search_string] || ''
     @surveys = Survey.where("name like ?", "%#{search_string}%").paginate(:page => params[:page], :per_page => 12).order('updated_at DESC')
     respond_to do |format|
-      format.html
+      format.html { render 'index' }
       format.json { render json: @surveys }
     end
   end
