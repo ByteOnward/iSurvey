@@ -114,6 +114,17 @@ class RolesController < ApplicationController
       render :text => "#{error}", :content_type => 'text/plain'
     end
   end
+
+  def group
+    @roles = Role.all
+    @role = Role.find_by_name(params[:role])
+    @users = @role.users
+    respond_to do |format|
+      format.html
+      format.json { render json: @users }
+    end
+
+  end
   
   def unauthorized
     

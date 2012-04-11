@@ -14,7 +14,7 @@
 	<% @roles.each do |role| %>			
 			<div class="tr">
 				<div>
-					<span class="td col1"><%= role.name %></span>
+					<span class="td col1"><%= link_to role.name, :action => "group", :role => role.name %></span>
 					<span class="td">
 						<%= link_to :Edit, "/roles/show/#{role.id}", :remote => true %> |
 						<%= link_to 'Delete', "/roles/delete/#{role.id}", confirm: 'Are you sure?', method: :delete %>
