@@ -137,7 +137,7 @@ $(document).ready(function(){
 
 //Here script need to move to roles.js.coffee
 $(function(){
-	$('form[data-remote]').on('ajax:success', function(evt, data, eventName, xhr){
+	$('.view_roles form[data-remote]').on('ajax:success', function(evt, data, eventName, xhr){
 		var status = data.status;
 		if(!status){
 			alert(data);
@@ -172,4 +172,16 @@ $(function(){
 		$(this).parent().parent().hide(100);
 		edit_form.show(100).appendTo($(this).parents('.tr'));
 	});
+});
+
+
+
+$(function(){
+	function bind_results(evt, data, eventName, xhr){
+		$('div.comments').html(data);
+		$('.comments_links a[data-remote]').on('ajax:success', bind_results);
+	}
+	$('.comment_form > form[data-remote]').on('ajax:success', bind_results);
+	$('.comments_links a[data-remote]').on('ajax:success', bind_results);
+
 });

@@ -9,7 +9,8 @@ class StatisticsController < ApplicationController
     end
     if records.size == 0
       flash[:alert] = "You haven't participate this survey."
-    end    
+    end 
+    
   end
 
 end

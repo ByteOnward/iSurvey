@@ -1,0 +1,17 @@
+<% @comments.each do |comment| %>
+    <div class="content">
+      <div class="comment_content"><%= raw textilize(comment.content) %></div>
+      <div class="comment_info">
+        <div class="footnode">
+          Posted by <%= comment.user.username %> at <%= time_ago_in_words(comment.created_at) %> ago.
+          <% if current_user == comment.user %>
+              <%= link_to 'Delete', survey_comment_path(@survey, comment), confirm: 'Are you sure?', method: :delete %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+<div class="apple_pagination comments_links">
+	<%= will_paginate_ajax @comments, :remote => true, :base_url => survey_comments_path(@survery), :previous_label => "<<", :next_label => ">>"%>
+</div>

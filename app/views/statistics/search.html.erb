@@ -42,16 +42,20 @@
                   </div>
                 </div>
             <% end %>
-            <div class="apple_pagination"><%= will_paginate @comments %></div>
+						<div class="apple_pagination comments_links">
+							<%= will_paginate_ajax @comments, :remote => true, :base_url => survey_comments_path(@survery), :previous_label => "<<", :next_label => ">>"%>
+						</div>
           </div>
+
       <% end %>
       <div class="comment_form">
-      <%= form_for [@survey, current_user.comments.new] do |f| %>
+      <%= form_for [@survey, current_user.comments.new], :remote => true do |f| %>
+			<%#= form_for survey_comments_path(@survey) do |f| %>
           <%= f.label :content, "Your Comment" %>
           <br/>
           <%= f.text_area :content, :rows => 3, :cols => 40 %>
           <br/>
-          <%= f.submit "Add Comment", :controller => 'comments', :action => 'create', :remote => true %>
+          <%= f.submit "Add Comment", :controller => 'comments', :action => 'create' %>
       <% end %>
       </div>
   </div>
@@ -63,20 +67,7 @@
     <%= link_to 'Back', surveys_path %>
   </div>
 
+
 </div>
 
 
-
-
-
-
-
-
-<!--
-
-
-
-
-
-
--->
