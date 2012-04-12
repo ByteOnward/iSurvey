@@ -183,5 +183,7 @@ $(function(){
 	}
 	$('.comment_form > form[data-remote]').on('ajax:success', bind_results);
 	$('.comments_links a[data-remote]').on('ajax:success', bind_results);
+	
+	$('#load_comments_link').click();
 
 });
