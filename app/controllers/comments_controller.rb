@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
   def index
     @survey = Survey.find(params[:survey_id])
     @comments = @survey.comments.paginate(:page => params[:page], :per_page => 5).order('created_at ASC')
-    
     render :partial => "list_comments", :content_type => 'text/html'
   end
 

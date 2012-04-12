@@ -6,7 +6,7 @@
       <div class="survey_title"><%= @survey.name %></div>
       <div class="survey_info">
         <div class="page_status">Page: 1/1 Question No:<%= @survey.questions.size %></div>
-        <%= @survey.desc %>
+        <%=raw textilize(@survey.desc) %>
       </div>
       <div class="survey_body">
         <% @survey.questions.each_with_index do |q, i| %>
@@ -30,7 +30,7 @@
       <% unless @survey.comments.empty? %>
           <div class="comments">
 						<div class="comments_links">
-            	<%= link_to "Load Comments...", survey_comments_path(@survey), :remote => true, :id => 'load_comments_link' %>
+            	<%= link_to "Loading Comments...", survey_comments_path(@survey), :remote => true, :id => 'load_comments_link' %>
 						</div>
           </div>
       <% end %>
