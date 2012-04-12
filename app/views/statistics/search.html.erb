@@ -27,13 +27,13 @@
     </div>
   </div>
   <div class="right_content">
-      <% unless @survey.comments.empty? %>
-          <div class="comments">
-						<div class="comments_links">
-            	<%= link_to "Loading Comments...", survey_comments_path(@survey), :remote => true, :id => 'load_comments_link' %>
-						</div>
-          </div>
+		<div class="comments">
+      <% unless @survey.comments.empty? %>          
+				<div class="comments_links">
+					<%= link_to "Loading Comments...", survey_comments_path(@survey), :remote => true, :id => 'load_comments_link' %>
+				</div>          
       <% end %>
+			</div>
       <div class="comment_form">
       <%= form_for [@survey, current_user.comments.new], :remote => true do |f| %>
 			<%#= form_for survey_comments_path(@survey) do |f| %>

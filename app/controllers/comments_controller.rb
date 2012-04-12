@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   def index
     @survey = Survey.find(params[:survey_id])
     @comments = @survey.comments.paginate(:page => params[:page], :per_page => 5).order('created_at ASC')
+    
     render :partial => "list_comments", :content_type => 'text/html'
   end
 
@@ -26,7 +27,6 @@ class CommentsController < ApplicationController
       if @comment.save
         format.js
         format.html do 
-          puts "===========00000000000==#{request.xhr?}"
           redirect_to url_for(:action => 'search', :controller => 'statistics', :user_id => current_user.id, :survey_id => @survey.id), :notice => 'Comment was created successfully.'
         end
       else
