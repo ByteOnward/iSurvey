@@ -49,7 +49,7 @@
           <li><%= link_to "Home", surveys_path %></li>
       <% end %>
       <% if can? :manage, Role %>
-          <li><%= link_to "Manage Roles", '/roles/' %></li>
+          <li><%= link_to "Manage Groups", '/roles/' %></li>
           <li><%= link_to "Manage Users", '/roles/users' %></li>
       <% end %>
     </ul>

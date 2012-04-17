@@ -3,7 +3,6 @@
 	<script type="text/javascript">var current_index = 1;</script>
 <%end%>
 <div class="view_roles">
-	<div class="title_bar">Roles</div>
 	<div class="table list_roles">
 	<div class="tr">
 		<div>
@@ -11,16 +10,18 @@
 			<span class="td">Operation</span>
 		</div>
 	</div>
-	<% @roles.each do |role| %>			
+	<% @roles.each do |role| %>
+          <% if (role.name != 'Owner' && role.name != 'Admin')%>
 			<div class="tr">
 				<div>
-					<span class="td col1"><%= link_to role.name, :action => "group", :role => role.name %></span>
-					<span class="td">
-						<%= link_to :Edit, "/roles/show/#{role.id}", :remote => true %> |
-						<%= link_to 'Delete', "/roles/delete/#{role.id}", confirm: 'Are you sure?', method: :delete %>
-					</span>
+                    <span class="td col1"><%= link_to role.name, :action => "group", :role => role.name %></span>
+                    <span class="td">
+                        <%= link_to :Edit, "/roles/show/#{role.id}", :remote => true %> |
+                        <%= link_to 'Delete', "/roles/delete/#{role.id}", confirm: 'Are you sure?', method: :delete %>
+                    </span>
 				</div>
 			</div>
+          <% end %>
 	<% end %>
 	</div>
 
