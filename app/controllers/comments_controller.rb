@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @survey = Survey.find(params[:survey_id])
-    @comment = current_user.comments.find(params[:id])
+    @comment = @survey.comments.find(params[:id])
     @comment.destroy
 
     respond_to do |format|
