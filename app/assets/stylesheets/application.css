@@ -44,6 +44,7 @@ a {
 .header {
     width: 80%;
     margin: 0 auto;
+		padding-top:5px;
     background-color: #FFF;
 }
 
@@ -61,12 +62,14 @@ a {
     clear:both;
 }
 
+.flash_div{
+	float:left;
+}
 
-#flash_notice, #flash_error, #flash_alert {
+#flash_notice, #flash_error, #flash_alert, #flash_warning{
   padding: 5px 8px;
-  margin: 5px auto 10px auto;
+  margin: 1px 0px 10px 5px;
   width: 320px;
-  float: left;
 }
 
 #flash_notice {
@@ -74,9 +77,19 @@ a {
   border: solid 1px #6C6;
 }
 
-#flash_error, #flash_alert {
+#flash_alert {
   background-color: #FCC;
   border: solid 1px #C66;
+}
+
+#flash_error {
+  background-color: #f09999;
+  border: solid 1px #C66;
+}
+
+#flash_warning{
+	background-color:#f0f063;
+	border: solid 1px #CC6;
 }
 
 .fieldWithErrors {
@@ -292,3 +305,5 @@ div.search_survey{
 .frame_padding {
     padding:20px 30px 30px 30px;
 }
+
+

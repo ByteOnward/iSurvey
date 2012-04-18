@@ -172,6 +172,10 @@ $(function(){
 		$(this).parent().parent().hide(100);
 		edit_form.show(100).appendTo($(this).parents('.tr'));
 	});
+	
+	$('#select_all').on('click', function(){
+		$(':checkbox[name^=users]').click();
+	});
 });
 
 

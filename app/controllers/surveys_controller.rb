@@ -7,12 +7,17 @@ class SurveysController < ApplicationController
   # GET /surveys
   # GET /surveys.json
   def index
+    where_clause = "(lock = false)"
+    if params[:keywords]
+      where_clause += " and (name like '%#{params[:keywords]}%')"
+    end
     if current_user.role? :admin
       #@surveys = Survey.all
-      @surveys = Survey.paginate(:page => params[:page], :per_page => 12).order('updated_at DESC')
+      @surveys = Survey.where(where_clause).paginate(:page => params[:page], :per_page => 12).order('updated_at DESC')
     else
       roles = current_user.roles.reduce(['Public']){|a, role| a << role.name}
-      @surveys = Survey.where('"surveys"."group" in (?) or user_id = ?', roles, current_user.id).paginate(:page => params[:page], :per_page => 12).order('updated_at DESC')
+      where_clause += ' and ("surveys"."group" in (?) or user_id = ?)'
+      @surveys = Survey.where(where_clause, roles, current_user.id).paginate(:page => params[:page], :per_page => 12).order('updated_at DESC')
       #@surveys = Survey.where(:group => current_user.roles.reduce(['Public']){|a, role| a << role.name})
     end
     respond_to do |format|
@@ -21,6 +26,14 @@ class SurveysController < ApplicationController
     end
   end
   
+  def search
+    search_string = params[:search_string] || ''
+    @surveys = Survey.where("name like ?", "%#{search_string}%").paginate(:page => params[:page], :per_page => 12).order('updated_at DESC')
+    respond_to do |format|
+      format.html { render 'index' }
+      format.json { render json: @surveys }
+    end
+  end
   
   # GET /surveys/new
   # GET /surveys/new.json
@@ -127,7 +140,7 @@ class SurveysController < ApplicationController
   def take       
     @survey = Survey.find(params[:id])  
     authorize! :read, @survey, :message => "Unable to read this article." 
-    status = allow_user_take_survey && take_survey
+    status = allow_user_take_survey? && take_survey
     respond_to do |format|
       if status
         format.html { redirect_to url_for(:action => 'search', :controller => 'statistics', :user_id => current_user.id, :survey_id => @survey.id), notice: 'Thank you for your participation.' }
@@ -145,26 +158,22 @@ class SurveysController < ApplicationController
   # GET /surveys/1.json
   def show
     @survey = Survey.find(params[:id])
-    if allow_user_take_survey && survey_open
+    if allow_user_take_survey? && (survey_open? @survey)
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @survey }
       end
     else
+      unless survey_open? @survey
+        flash[:error] = "This survery has closed."
+      end
       respond_to do |format|
         format.html {redirect_to url_for(:action => 'search', :controller => 'statistics', :user_id => current_user.id, :survey_id => @survey.id)}
       end
     end
   end
 
-  def search
-    search_string = params[:search_string] || ''
-    @surveys = Survey.where("name like ?", "%#{search_string}%").paginate(:page => params[:page], :per_page => 12).order('updated_at DESC')
-    respond_to do |format|
-      format.html { render 'index' }
-      format.json { render json: @surveys }
-    end
-  end
+
  
   private
     def take_survey
@@ -181,7 +190,7 @@ class SurveysController < ApplicationController
       return status
     end
     
-    def allow_user_take_survey
+    def allow_user_take_survey?
       record = Record.where("user_id = ? and survey_id = ?", current_user.id, params[:id]).first
       if record
         return false
@@ -190,12 +199,18 @@ class SurveysController < ApplicationController
       end
     end
 
-    def survey_open
-      @survey = Survey.find(params[:id])
-      if (@survey.duration > (Time.now.day - @survey.created_at.day))
-        return true
+    def survey_open? survey
+      if survey.lock?
+        false
       else
-        return false
+        expried = (Time.now - survey.created_at) - survey.duration * 24 * 60 * 60
+        if (expried > 0)
+          survey.lock = true
+          survey.save
+          false
+        else
+          true
+        end
       end
     end
     

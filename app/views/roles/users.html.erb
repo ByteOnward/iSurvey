@@ -17,12 +17,12 @@
           <td>Name</td>
           <td>Email</td>
           <td>Group</td>
-          <td></td>
+          <td><input type="checkbox" id="select_all" /></td>
           <td></td>
         </tr>
 		<% @users.each do |user| %>
 		<tr>
-            <td><%= user.username %></td>
+			<td><%= username(user) %></td>
 			<td><%= user.email %></td>
 			<td>
 				<%user.roles.each do|role|%>
@@ -30,15 +30,15 @@
 				<%end%>
 			</td>
 			<td><%= check_box_tag("users[#{user.id}]") %></td>
-            <td><%= link_to 'Delete',  "/roles/destroy/#{user.id}", confirm: 'Are you sure?', method: :delete %></td>
+			<td><%= link_to 'Delete',  "/roles/destroy/#{user.id}", confirm: 'Are you sure?', method: :delete %></td>
 		</tr>
 		<% end %>
 		<tbody>
 	</table>
 	<div class="grant_operation bordered">
-	Group: <%= select_tag :role, options_for_select(@roles.reduce(Hash.new){|m, role| m.tap{|ht| ht[role.name] = role.id}}) %>
-	<%= button_tag :grant,:name => 'grant', :type => 'button', "data-link" => 'grant'%>
-	<%= button_tag :ungrant, :name => 'ungrant', :type => 'button', "data-link" => 'ungrant' %>
+		<%= select_tag :role, options_for_select(@roles.reduce(Hash.new){|m, role| m.tap{|ht| ht[role.name] = role.id}}) %>
+		<%= button_tag :"Add Selected User to Group",:name => 'grant', :type => 'button', "data-link" => 'grant'%>
+		<%= button_tag :"Remove Selected User from Group", :name => 'ungrant', :type => 'button', "data-link" => 'ungrant' %>
 	</div>
 	<%end%>
 	

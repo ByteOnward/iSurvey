@@ -3,40 +3,36 @@
 	<script type="text/javascript">var current_index = 0;</script>
 <%end%>
 <div class="view_surveys">
-	<div class="title_bar">Survey
+	<div class="title_bar">
+		<div class="search_form ">
+		<%= form_tag({}, :name => 'search_surveys', :method => "GET") do%>
+        <%= label_tag :search_string, "Search Surveys:" %><%= text_field_tag :keywords %><%= submit_tag("Search", :class => "title") %>
+    <%end %>
+		</div>
+		<div class="new_operation">
 		<%if can? :create, Survey %>
 			<input type="button" style="float:right; padding:3px 10px 3px 10px; margin:0px 6px 0px 0px; color:#cc6633; font-weight:bolder;" data-link="<%= new_survey_path %>" value="New Survey" />
 		<% end %>
+		</div>
 	</div>
-  <div class="search_survey">
-    <%= form_tag({:controller => "surveys", :action => "search"}, :name => 'search_surveys') do%>
-        <%= label_tag :search_string, "Search Surveys:" %><%= text_field_tag :search_string %><%= submit_tag("Search", :class => "title") %>
-    <%end %>
-  </div>
 	<ul class="list_surveys">
 		<% @surveys.each do |survey| %>
-          <% if survey.duration > (Time.now.day - survey.created_at.day) %>
-            <li>
-                <span class="title"><%= link_to survey.name, survey %></span>
-                <% if survey.duration == 10000 %>
-                  <span class="time_limited">Time Left( unlimited days )</span>
-                <% elsif survey.duration - (Time.now.day - survey.created_at.day) == 1 %>
-                  <span class="time_limited">Time Left( <%= survey.duration - (Time.now.day - survey.created_at.day) %> day )</span>
-                <% else %>
-                  <span class="time_limited">Time Left( <%= survey.duration - (Time.now.day - survey.created_at.day) %> days )</span>
-                <% end %>
-                <span class="management">
-                <%if can? :update, survey%>
-                    <%= link_to 'Edit', edit_survey_path(survey) %> | 
-                    <%= link_to 'New', "#{new_survey_path}/#{survey.id}", :title => "New from this survey."  %> |
-                <%end%> 
-                <%if can? :destroy, survey%>
-                    <%= link_to 'Delete', survey, confirm: 'Are you sure?', method: :delete %>
-                <%end%>
-                </span>
-                <span class="time"><%= survey.updated_at.strftime('%Y-%m-%d') %></span>
-            </li>
-          <% end %>
+			<li>
+        <span class="title"><%= link_to survey.name, survey %></span> 
+				<% time_left(survey) do |duration|%>
+					<span class="time_limited">(left <%= duration %>)</span>
+				<% end %>		
+				<span class="management">
+				<%if can? :update, survey%>
+				    <%= link_to 'Edit', edit_survey_path(survey) %> | 
+				    <%= link_to 'New', "#{new_survey_path}/#{survey.id}", :title => "New from this survey."  %> |
+				<%end%> 
+				<%if can? :destroy, survey%>
+				    <%= link_to 'Delete', survey, confirm: 'Are you sure?', method: :delete %>
+				<%end%>
+				</span>
+				<span class="time"><%= survey.updated_at.strftime('%Y-%m-%d') %></span>
+			</li>
 		<% end %>		
 	</ul>
 	<div class="apple_pagination"><%= will_paginate @surveys %></div>

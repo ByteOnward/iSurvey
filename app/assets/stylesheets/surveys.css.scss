@@ -8,6 +8,11 @@
   display: none;
 }
 
+
+.time_limited{
+	color:#cfcfcf;
+}
+
 div.view_surveys{
 	clear:both;
 	margin-bottom:20px;
@@ -22,6 +27,13 @@ div.view_surveys{
 		line-height:30px;
 		veritical-align:bottom;
 		padding-left:5px;
+		.search_form{
+			float:left;
+		}
+		.new_operation{
+			padding-top:5px;
+			float:right;
+		}
 	}
 	.list_surveys{
 		border:1px outset #cfcfcf;

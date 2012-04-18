@@ -19,7 +19,7 @@
   <span class="title"><%= f.label :group, "Group:" %></span><br />
   <%= f.select :group, survey_groups %><br />
   <span class="title"><%= f.label :duration, "Open Time"  %></span><br />
-  <%= f.select :duration, {"Unlimited" => "10000", "3 days" => "3", "5 days" => "5", "7days" => "7", "15days" => "15", "30days" => "30"} %><br />
+  <%= f.select :duration, durations %><br />
 </p>
 
   <div class="questions">

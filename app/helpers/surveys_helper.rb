@@ -47,4 +47,39 @@ module SurveysHelper
     roles.reduce({Public: 'Public'}){|m, role| m.tap{|ht|ht[role.name] = role.name}}
   end
   
+  def time_left(survey)   
+    left_days = survey.duration - seconds_to_day(Time.now - survey.created_at)
+    if survey.duration < 10000 && left_days > 0      
+      if block_given?              
+        duration = "#{left_days} day"
+        duration += "s" if left_days > 1
+        yield duration
+      else        
+        "[#{survey.duration} days left]"
+      end
+    end
+  end
+  
+  def seconds_to_day seconds
+    (seconds / (60 * 60 * 24)).floor
+  end
+  
+  def durations
+    {
+      "Unlimited" => 65535, 
+      "1 day" => 1,
+      "3 days" => 3, 
+      "5 days" => 5, 
+      "7 days" => 7, 
+      "10 days" => 10, 
+      "15 days" => 15, 
+      "1 month" => 30,
+      "2 months" => 60,
+      "3 months" => 90,
+      "6 months" => 180,
+      "1 year" => 365,
+      "3 year" => 365 * 3
+    } 
+  end
+  
 end
