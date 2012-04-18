@@ -25,15 +25,7 @@ class SurveysController < ApplicationController
       format.json { render json: @surveys }
     end
   end
-  
-  def search
-    search_string = params[:search_string] || ''
-    @surveys = Survey.where("name like ?", "%#{search_string}%").paginate(:page => params[:page], :per_page => 12).order('updated_at DESC')
-    respond_to do |format|
-      format.html { render 'index' }
-      format.json { render json: @surveys }
-    end
-  end
+
   
   # GET /surveys/new
   # GET /surveys/new.json
