@@ -127,7 +127,7 @@ class SurveysController < ApplicationController
   def take       
     @survey = Survey.find(params[:id])  
     authorize! :read, @survey, :message => "Unable to read this article." 
-    status = allow_user_take_survey && take_survey    
+    status = allow_user_take_survey && take_survey
     respond_to do |format|
       if status
         format.html { redirect_to url_for(:action => 'search', :controller => 'statistics', :user_id => current_user.id, :survey_id => @survey.id), notice: 'Thank you for your participation.' }
@@ -145,7 +145,7 @@ class SurveysController < ApplicationController
   # GET /surveys/1.json
   def show
     @survey = Survey.find(params[:id])
-    if allow_user_take_survey
+    if allow_user_take_survey && survey_open
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @survey }
@@ -187,6 +187,15 @@ class SurveysController < ApplicationController
         return false
       else
         return true
+      end
+    end
+
+    def survey_open
+      @survey = Survey.find(params[:id])
+      if (@survey.duration > (Time.now.day - @survey.created_at.day))
+        return true
+      else
+        return false
       end
     end
     

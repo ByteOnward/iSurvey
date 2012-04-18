@@ -15,19 +15,28 @@
   </div>
 	<ul class="list_surveys">
 		<% @surveys.each do |survey| %>
-		<li>
-			<span class="title"><%= link_to survey.name, survey %></span>
-			<span class="management">
-			<%if can? :update, survey%>
-				<%= link_to 'Edit', edit_survey_path(survey) %> | 
-				<%= link_to 'New', "#{new_survey_path}/#{survey.id}", :title => "New from this survey."  %> |
-			<%end%> 
-			<%if can? :destroy, survey%>
-				<%= link_to 'Delete', survey, confirm: 'Are you sure?', method: :delete %>
-			<%end%>
-			</span>
-			<span class="time"><%= survey.updated_at.strftime('%Y-%m-%d') %></span>
-		</li>
+          <% if survey.duration > (Time.now.day - survey.created_at.day) %>
+            <li>
+                <span class="title"><%= link_to survey.name, survey %></span>
+                <% if survey.duration == 10000 %>
+                  <span class="time_limited">Time Left( unlimited days )</span>
+                <% elsif survey.duration - (Time.now.day - survey.created_at.day) == 1 %>
+                  <span class="time_limited">Time Left( <%= survey.duration - (Time.now.day - survey.created_at.day) %> day )</span>
+                <% else %>
+                  <span class="time_limited">Time Left( <%= survey.duration - (Time.now.day - survey.created_at.day) %> days )</span>
+                <% end %>
+                <span class="management">
+                <%if can? :update, survey%>
+                    <%= link_to 'Edit', edit_survey_path(survey) %> | 
+                    <%= link_to 'New', "#{new_survey_path}/#{survey.id}", :title => "New from this survey."  %> |
+                <%end%> 
+                <%if can? :destroy, survey%>
+                    <%= link_to 'Delete', survey, confirm: 'Are you sure?', method: :delete %>
+                <%end%>
+                </span>
+                <span class="time"><%= survey.updated_at.strftime('%Y-%m-%d') %></span>
+            </li>
+          <% end %>
 		<% end %>		
 	</ul>
 	<div class="apple_pagination"><%= will_paginate @surveys %></div>
