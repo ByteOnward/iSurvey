@@ -157,7 +157,7 @@ class SurveysController < ApplicationController
       end
     else
       unless survey_open? @survey
-        flash[:error] = "This survery has closed."
+        flash[:error] = "This survey has closed."
       end
       respond_to do |format|
         format.html {redirect_to url_for(:action => 'search', :controller => 'statistics', :user_id => current_user.id, :survey_id => @survey.id)}
