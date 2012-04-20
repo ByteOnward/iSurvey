@@ -40,9 +40,9 @@ module SurveysHelper
   def survey_groups
     roles = []
     if current_user.role?(:admin)
-      roles = Role.where(:group => 'public')
+      roles = Role.all - Role.where(:name => 'Admin') - Role.where(:name => 'Owner')
     else
-      roles = current_user.roles - Role.where(:group => 'admin')
+      roles = current_user.roles - Role.where(:name => 'Admin') - Role.where(:name => 'Owner')
     end
     roles.reduce({Public: 'Public'}){|m, role| m.tap{|ht|ht[role.name] = role.name}}
   end
