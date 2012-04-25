@@ -3,6 +3,9 @@
   <div class="survey_info">
 	<div class="page_status">Page: 1/1 Question No:<%= @survey.questions.size %> Stats: <%= "#{@take_user_count}/#{@user_count}"%></div>
 	<%=raw textilize(@survey.desc) %>
+    <div id="flash_stats">
+        <%= flash[:stats] %>
+    </div>
   </div>
   <div class="survey_body">
     <% @survey.questions.each_with_index do |q, i|%>

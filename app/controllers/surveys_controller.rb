@@ -122,10 +122,10 @@ class SurveysController < ApplicationController
     @take_user_count = users.size  
     if params[:choices]
       @result = result_by_choices
-      flash[:alert] = 'The results are counted according to choices.'
+      flash[:stats] = 'The results are counted according to choices.'
     else
       @result = result_by_users
-      flash[:alert] = 'The results are counted according to users.'
+      flash[:stats] = 'The results are counted according to users.'
     end  
   end
   

@@ -33,8 +33,10 @@
     <% end %>
   </div>
 	<div class="flash_div">
-  <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% if !flash[:stats] %>
+      <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
   <% end %>
 	</div>
 
