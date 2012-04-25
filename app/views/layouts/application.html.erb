@@ -33,7 +33,7 @@
     <% end %>
   </div>
 	<div class="flash_div">
-  <% if !flash[:stats] %>
+  <% if !flash[:stats] && !flash[:check_choice] %>
       <% flash.each do |name, msg| %>
           <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>

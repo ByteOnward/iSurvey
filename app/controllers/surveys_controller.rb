@@ -63,18 +63,31 @@ class SurveysController < ApplicationController
   # POST /surveys.json
   def create
 #    @survey = Survey.new(params[:survey])
+    status = true
+    questions = @survey.questions
+    questions.each do |q|
+      if q.choices == []
+        status = false
+      end
+    end
     respond_to do |format|
-      if @survey.save
-	      if @survey.group != 'Public'
-	        @users = Role.find_by_name(@survey.group).users
-	        @users.each do |user|
-	          Notifier.survey_inviter(@survey, user).deliver
-	        end
-	      end
-        format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
-        format.json { render json: @survey, status: :created, location: @survey }
+      if status
+        if @survey.save
+          if @survey.group != 'Public'
+            @users = Role.find_by_name(@survey.group).users
+            @users.each do |user|
+              Notifier.survey_inviter(@survey, user).deliver
+            end
+          end
+          format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
+          format.json { render json: @survey, status: :created, location: @survey }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @survey.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render action: "new" }
+        flash[:check_choice] = "Every question should have at least one choice."
+        format.html { render action: "new"}
         format.json { render json: @survey.errors, status: :unprocessable_entity }
       end
     end
@@ -84,11 +97,25 @@ class SurveysController < ApplicationController
   # PUT /surveys/1.json
   def update
 #    @survey = Survey.find(params[:id])
+    status = true
+    @survey.update_attributes(params[:survey])
+    questions = @survey.questions
+    questions.each do |q|
+      if q.choices == []
+        status = false
+      end
+    end
     respond_to do |format|
-      if @survey.update_attributes(params[:survey])
-        format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
-        format.json { head :no_content }
+      if status
+        if @survey.save
+          format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @survey.errors, status: :unprocessable_entity }
+        end
       else
+        flash[:check_choice] = "Every question should have at least one choice."
         format.html { render action: "edit" }
         format.json { render json: @survey.errors, status: :unprocessable_entity }
       end
@@ -195,8 +222,8 @@ class SurveysController < ApplicationController
       if survey.lock?
         false
       else
-        expried = (Time.now - survey.created_at) - survey.duration * 24 * 60 * 60
-        if (expried > 0)
+        expired = (Time.now - survey.created_at) - survey.duration * 24 * 60 * 60
+        if (expired > 0)
           survey.lock = true
           survey.save
           false

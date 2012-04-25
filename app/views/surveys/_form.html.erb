@@ -9,6 +9,11 @@
       </ul>
     </div>
   <% end %>
+  <% if flash[:check_choice] %>
+      <div id="flash_check_choice">
+      <%= flash[:check_choice] %>
+      </div>
+  <% end %>
 
 <div class="survey">
 <p>
