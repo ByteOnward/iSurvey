@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(:version => 20120417092035) do
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.string   "group",      :default => "Public"
-    t.integer  "duration"
+    t.integer  "duration",   :default => 65535
     t.boolean  "lock",       :default => false
   end
 

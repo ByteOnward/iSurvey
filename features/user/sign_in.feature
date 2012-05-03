@@ -17,8 +17,8 @@ I want to be able to sign in
 @javascript
 Scenario: Sign in via form
 Given there are the following users:
-| email               | password |
-| example@example.com | password |
+| username | email               | password |
+| example  | example@example.com | password |
 And I am on "homepage"
 And I fill in "Email" with "example@example.com"
 And I fill in "Password" with "password"

@@ -7,14 +7,14 @@ Feature: Invite to Participate Survey
   @javascript
   Scenario: Send notification email to invite users to participate survey
     Given there are the following users:
-      | email               | password |
-      | admin@example.com   | password |
-      | example@example.com | password |
+      | username | email               | password |
+      | admin    | admin@example.com   | password |
+      | example  | example@example.com | password |
     And the role of "admin@example.com" is "Admin"
     And the role of "example@example.com" is "EWS"
     And I am signed in as "admin@example.com"
     Given I am on "the homepage"
-    When I click New Survey button
+    When I press "New Survey"
     And I fill in "Name:" with "SkillSet"
     And I fill in "Description:" with "What status of the current employee skill sets"
     And I select "EWS" from "Group:"

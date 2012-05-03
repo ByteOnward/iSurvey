@@ -6,8 +6,8 @@ I want to find my password back easily
 
 Background:
 Given there are the following users:
-| email               | password |
-| example@example.com | password |
+| username | email               | password |
+| example  | example@example.com | password |
 
 And I am on "signin page"
 When I follow "Forgot your password?"

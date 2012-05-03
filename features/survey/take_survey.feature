@@ -6,8 +6,8 @@ Feature: Take Survey
 
   Background:
     Given there are the following users:
-      | email               | password |
-      | example@example.com | password |
+      | username | email               | password |
+      | example  | example@example.com | password |
     And the role of "example@example.com" is "EWS"
     And I am signed in as "example@example.com"
     And there is a survey called "Skillset"
@@ -18,7 +18,7 @@ Feature: Take Survey
     And I am on "homepage"
     And I follow "Skillset"
     And I choose "TestChoice"
-    When I press "投票"
+    When I press "Submit"
     Then I should see "Thank you for your participation."
 
   @javascript
@@ -26,10 +26,8 @@ Feature: Take Survey
     And I am on "homepage"
     And I follow "Skillset"
     And I choose "TestChoice"
-    When I press "投票"
+    When I press "Submit"
     Then I should see "Thank you for your participation."
     And I am on "homepage"
     And I follow "Skillset"
-    And I choose "TestChoice"
-    When I press "投票"
-    Then I should see "You have already taken this survey."
+    Then I should on the statistics page of "Skillset"

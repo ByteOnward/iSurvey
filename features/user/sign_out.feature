@@ -7,10 +7,10 @@ I want to be able to sign out
 @javascript
 Scenario: User signs out
 Given there are the following users:
-| email               | password |
-| example@example.com | password |
+  | username | email               | password |
+  | example  | example@example.com | password |
 And  I am signed in as "example@example.com" 
 When I click "Sign out"
-Then I should on the "signin page"
+Then I should on the "homepage"
 And  I should see "You need to sign in or sign up before continuing."
 

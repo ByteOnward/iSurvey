@@ -6,8 +6,8 @@ Feature: View Survey
 
   Background:
     Given there are the following users:
-      | email               | password |
-      | example@example.com | password |
+      | username | email               | password |
+      | example  | example@example.com | password |
     And the role of "example@example.com" is "EWS"
     And I am signed in as "example@example.com"
     And there is a survey called "Skillset"

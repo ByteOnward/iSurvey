@@ -7,12 +7,12 @@ Feature: View Result
   @javascript
   Scenario: view result
     Given there are the following users:
-      | email               | password |
-      | admin@example.com   | password |
+      | username | email               | password |
+      | admin    | admin@example.com   | password |
     And the role of "admin@example.com" is "Admin"
     And I am signed in as "admin@example.com"
     Given there is a survey called "Skillset"
     And I am on "homepage"
     And I follow "Skillset"
-    And I follow "查看结果"
+    And I follow "Statistics"
     Then I should be on the result page for "Skillset"

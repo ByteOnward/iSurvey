@@ -6,8 +6,8 @@ I want to update my own survey
 
 Background:
   Given there are the following users:
-    | email               | password |
-    | admin@example.com   | password |
+    | username | email               | password |
+    | admin    | admin@example.com   | password |
   And the role of "admin@example.com" is "Admin"
   And I am signed in as "admin@example.com"
   Given there is a survey called "Skillset"

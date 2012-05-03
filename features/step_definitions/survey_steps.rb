@@ -92,3 +92,7 @@ end
 And /^I should be on the result page for "([^"]*)"$/ do |name|
   URI.parse(current_url).path.should == '/surveys/1/stats'
 end
+
+Then /^I should on the statistics page of "([^"]*)"$/ do |name|
+  URI.parse(current_url).path.should == '/stats/1/1'
+end
